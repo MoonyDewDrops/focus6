@@ -9,7 +9,7 @@ if (session_status() !== PHP_SESSION_ACTIVE) {
 
 
 $dbhost = "localhost";
-$dbname = "?";
+$dbname = "focus6";
 
 $con = new mysqli($dbhost, $dbusername, $dbpassword, $dbname);
 
