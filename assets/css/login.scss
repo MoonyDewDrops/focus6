@@ -1,1 +1,86 @@
 @import "./global";
+
+body{
+    background-color: $accent-cms;
+    margin: 0;
+    padding: 0;
+    font-weight: lighter;
+}
+
+.container{
+    display: flex;
+    width: 99vw;
+    height: 99vh;
+    justify-content: center;
+    align-items: center;
+}
+
+.loginForm{
+    background-color: white;
+    display: flex;
+    width: 25vw;
+    height: 70vh;
+    border-radius: 15px;
+    box-shadow: 0px 0px 10px 0px #797c8a;
+}
+
+form {
+    display: grid;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    grid-template-columns: 80%;
+    grid-template-rows: 1fr 1fr 1fr 1fr;
+    border-radius:15px;
+    box-shadow: 0px 0px 10px 0px #9196a8 inset;
+
+    header{
+        text-align: center;
+        font-size: 2.5em;
+    }
+
+    .inputField{
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-template-rows: 1fr 1fr;
+        height: 10vh;
+
+        label{
+            grid-column: 1;
+            grid-row: 1;
+            font-size: 1.2em;
+        }
+
+        input{
+            grid-column: 1;
+            grid-row: 2;
+            border: none;
+            border-bottom: 1px solid #9196a8;
+            transition: .2s;
+        }
+
+        input:focus{
+            outline: none;
+            border: 1px solid #9196a8;
+        }
+
+        input:hover{
+            border: 1px solid #9196a8;
+        }
+
+
+        input[type="submit"]{
+            background-color: #C6CDE7;
+            color: white;
+            font-size: 1.5em;
+            border: none;
+            cursor: pointer;
+            box-shadow: 0px 0px 10px 0px #9196a8 inset;
+            transition-duration: 0.2s;
+        }
+
+        input[type="submit"]:hover{
+            background-color: #9196a8;
+        }
+    }
+}
