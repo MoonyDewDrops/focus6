@@ -15,8 +15,6 @@
 
 
             <?php
-
-            include_once 'core/db_connect.php';
             if (isset($_POST['submit'])) {
                 //getting wachtwoord & user
                 $gebruikersnaam = mysqli_real_escape_string($con, $_POST['gebruikersnaam']);
@@ -34,8 +32,8 @@
                     $hash_pass = $row['wachtwoord'];
 
                     if (password_verify($wachtwoord, $hash_pass)) {
-                        $_SESSION['Savedgebruikersnaam'] = $gebruikersnaam;
-                        header("Location: admin.php");
+                        $_SESSION['gebruikersnaam'] = $gebruikersnaam;
+                        header("Location: admin");
                         exit();
                     } else {
             ?>
