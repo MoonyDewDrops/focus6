@@ -4,6 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="<?= 'assets/css/style.css' ?>">
+    <link rel="stylesheet" href="<?= 'assets/css/login.css' ?>">
     <title>Login pagina</title>
 </head>
 
@@ -53,7 +55,6 @@
 
                 <form action="" method="post">
                     <header>Login</header>
-                    <br>
 
                     <div class="inputField">
                         <label for="gebruikersnaam">Gebruikersnaam</label>
@@ -66,7 +67,7 @@
                     </div>
 
                     <div class="inputField">
-                        <input type="submit" name="submit" value="Log nu in!">
+                        <input type="submit" name="submit" value="Inloggen">
                     </div>
                 </form>
         </div>

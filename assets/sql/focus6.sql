@@ -87,12 +87,12 @@ CREATE TABLE `paginagrid` (
 CREATE TABLE `paginainfo` (
   `id` int NOT NULL,
 
-  `informatie` varchar(500) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `informatie` varchar(500) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
   `row` int NOT NULL,
   `colum` int NOT NULL,
   `foto` tinyint(1) DEFAULT '0',
   `backgroundColor` tinyint(1) NOT NULL DEFAULT '0'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 
 -- --------------------------------------------------------
