@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Nov 15, 2024 at 09:39 AM
+-- Generation Time: Nov 18, 2024 at 11:31 AM
 -- Server version: 8.0.30
 -- PHP Version: 8.1.10
 
@@ -33,6 +33,13 @@ CREATE TABLE `contactinfo` (
   `email` varchar(100) NOT NULL,
   `bericht` varchar(500) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `contactinfo`
+--
+
+INSERT INTO `contactinfo` (`id`, `naam`, `email`, `bericht`) VALUES
+(1, 'Julia', 'julia.brouwervanoudshoorn@gmail.com', 'Ello my name jeff');
 
 -- --------------------------------------------------------
 
@@ -67,7 +74,7 @@ CREATE TABLE `pagina's` (
 CREATE TABLE `paginagrid` (
   `id` int NOT NULL,
   `rowPosition` int NOT NULL,
-  `columnPosition` int NOT NULL,
+  `columnType` int NOT NULL,
   `page` int NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -79,9 +86,14 @@ CREATE TABLE `paginagrid` (
 
 CREATE TABLE `paginainfo` (
   `id` int NOT NULL,
-  `informatie` varchar(500) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `position` int NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+  `informatie` varchar(500) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `row` int NOT NULL,
+  `colum` int NOT NULL,
+  `foto` tinyint(1) DEFAULT '0',
+  `backgroundColor` tinyint(1) NOT NULL DEFAULT '0'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
 
 -- --------------------------------------------------------
 
@@ -130,7 +142,7 @@ ALTER TABLE `paginagrid`
 --
 ALTER TABLE `paginainfo`
   ADD PRIMARY KEY (`id`),
-  ADD KEY `Constraint_FK_position` (`position`);
+  ADD KEY `Constraint_FK_position` (`row`);
 
 --
 -- Indexes for table `socials`
@@ -146,7 +158,7 @@ ALTER TABLE `socials`
 -- AUTO_INCREMENT for table `contactinfo`
 --
 ALTER TABLE `contactinfo`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `logininfo`
@@ -192,7 +204,7 @@ ALTER TABLE `paginagrid`
 -- Constraints for table `paginainfo`
 --
 ALTER TABLE `paginainfo`
-  ADD CONSTRAINT `Constraint_FK_position` FOREIGN KEY (`position`) REFERENCES `paginagrid` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT;
+  ADD CONSTRAINT `Constraint_FK_position` FOREIGN KEY (`row`) REFERENCES `paginagrid` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
