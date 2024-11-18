@@ -1,0 +1,18 @@
+services:
+  db:
+    image: mysql:8.0       # MySQL version
+    container_name: focus6  # Optional name for the container
+    environment:
+      MYSQL_ROOT_PASSWORD: rootpassword   # Root password
+      MYSQL_DATABASE: focus6_db          # Name of the database
+      MYSQL_USER: focus                  # Custom user
+      MYSQL_PASSWORD: mypassword          # Password for the custom user
+    ports:
+      - "3306:3306"                       # Expose port 3306 (MySQL default)
+    volumes:
+      - db_data:/var/lib/mysql            # Persistent storage for data
+      - ./assets/sql/focus6.sql:/docker-entrypoint-initdb.d/focus6.sql
+    restart: unless-stopped
+
+volumes:
+  db_data:                                # Volume for MySQL data
