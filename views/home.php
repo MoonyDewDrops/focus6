@@ -8,7 +8,6 @@
 <body>
     <?php
       $sql = "SELECT id, naam, email, bericht FROM contactinfo;";
-      include_once 'core/db_connect.php';
 
       $qry = $con->prepare($sql);
       if ($qry === false) {
