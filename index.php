@@ -3,7 +3,7 @@ ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 
-include_once './core/db_connect.php';
+include_once 'core/db_connect.php';
 
 
 
@@ -48,6 +48,36 @@ switch ($view) {
         $page = 'registreren.php';
         $style = 'registreren.css';
         $js = 'registreren.js';
+        break;
+    case 'createProcess':
+        $page = 'functions/creating/process.php';
+        $style = 'process.css';
+        $js = 'process.js';
+        break;
+    case 'creating':
+        $page = 'functions/creating/create.php';
+        $style = 'create.css';
+        $js = 'create.js';
+        break;
+    case 'deleteProcess':
+        $page = 'functions/deleting/process.php';
+        $style = 'process.css';
+        $js = 'process.js';
+        break;
+    case 'deleting':
+        $page = 'functions/deleting/delete.php';
+        $style = 'delete.css';
+        $js = 'delete.js';
+        break;
+    case 'editProcess':
+        $page = 'functions/editing/process.php';
+        $style = 'process.css';
+        $js = 'process.js';
+        break;
+    case 'editing':
+        $page = 'functions/editing/editing.php';
+        $style = 'editing.css';
+        $js = 'editing.js';
         break;
     default:
         $page = '404.php';

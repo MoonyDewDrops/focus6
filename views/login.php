@@ -70,7 +70,7 @@
 
 
                     <div class="link">
-                        Heb je nog niet een account? <a href="registreren.php">Registreer jezelf hier!</a>
+                        Heb je nog niet een account? <a href="registreren">Registreer jezelf hier!</a>
                     </div>
                 </form>
         </div>
