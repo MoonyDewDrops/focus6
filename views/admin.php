@@ -17,46 +17,58 @@ if (isset($_SESSION['gebruikersnaam'])) {
     $con->close();
 ?>
 
-<!DOCTYPE html>
-<html lang="en">
+    <!DOCTYPE html>
+    <html lang="en">
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CMS</title>
-</head>
-<body>
-    <div>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>CMS</title>
+    </head>
+
+    <body>
         <?php
         if (isset($paginas)) {
             foreach ($paginas as $pagina) {
         ?>
+                <div>
+                    <button class="CMSbuttons">
+                        <?= $pagina['paginaNaam']; ?>
+                    </button>
+                    <button class="">
+                        <a href='deleteProcess?id=<?= $id ?>' style="text-decoration:none;color:black;">Edit</a>
+                    </button>
+                    <button class="">
+                        <a href='editProcess?id=<?= $id ?>' style="text-decoration:none;color:black;">Delete</a>
+                    </button>
 
-
-            <button class="CMSbuttons">
-                <?= $pagina['paginaNaam']; ?>
-            </button>
-            
-            <br>
-
-
-
+                    <br>
+                </div>
         <?php
             }
         }
         ?>
-    </div>
+        <button class="CMSbuttons">
+            <a href="create" style="text-decoration:none;color:black;"> Pagina toevoegen </a>
+        </button>
 
+        <br>
+        <br>
+
+        <button>
+            <a href="contact" style="text-decoration:none;color:black;">Contacten bekijken</a>
+        </button>
 
 
     <?php
-      } else if (!isset($_SESSION['gebruikersnaam'])) {
+} else if (!isset($_SESSION['gebruikersnaam'])) {
     ?>
-      <script>
-        location.replace("http://localhost/focus6/login");
-      </script>
+        <script>
+            location.replace("http://localhost/focus6/login");
+        </script>
     <?php
-      }
+}
     ?>
-</body>
-</html>
+    </body>
+
+    </html>
