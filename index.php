@@ -44,6 +44,11 @@ switch ($view) {
         $style = 'admin.css';
         $js = 'admin.js';
         break;
+    case 'registreren':
+        $page = 'registreren.php';
+        $style = 'registreren.css';
+        $js = 'registreren.js';
+        break;
     default:
         $page = '404.php';
         $style = '404.css';
