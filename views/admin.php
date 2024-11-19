@@ -23,43 +23,35 @@ if (isset($_SESSION['gebruikersnaam'])) {
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="<?= 'assets/css/style.css' ?>">
+    <link rel="stylesheet" href="<?= 'assets/css/admin.css' ?>">
         <title>CMS</title>
     </head>
 
     <body>
+        <header>
+            <img></img>
+            <p>Welkom <?= $_SESSION['gebruikersnaam']; ?></p>
+            <a href="paginas">Paginas</a>
+            <a href="Socials">Socials</a>
+            <a href="contactberichten">Contactberichten</a>
+        </header>
         <?php
         if (isset($paginas)) {
             foreach ($paginas as $pagina) {
         ?>
                 <div>
-                    <button class="CMSbuttons">
-                        <?= $pagina['paginaNaam']; ?>
-                    </button>
-                    <button class="">
-                        <a href='editProcess?id=<?= $pagina['id'];?>' style="text-decoration:none;color:black;">Edit</a>
-                    </button>
-                    <button class="">
-                        <a href='deleteProcess?id=<?= $pagina['id'];?>' style="text-decoration:none;color:black;">Delete</a>
-                    </button>
-
-                    <br>
+                    <p><?= $pagina['paginaNaam']; ?></p>
+                    <a href='editProcess?id=<?= $pagina['id'];?>' style="text-decoration:none;color:black;">Edit</a>
+                    <a href='deleteProcess?id=<?= $pagina['id'];?>' style="text-decoration:none;color:black;">Delete</a>
                 </div>
         <?php
             }
         }
         ?>
-        <button class="CMSbuttons">
-            <a href="create" style="text-decoration:none;color:black;"> Pagina toevoegen </a>
-        </button>
-
-        <br>
-        <br>
-
-        <button>
-            <a href="contact" style="text-decoration:none;color:black;">Contacten bekijken</a>
-        </button>
-
-
+        
+        <a href="create" style="text-decoration:none;color:black;"> Pagina toevoegen </a>
+        <a href="contact" style="text-decoration:none;color:black;">Contacten bekijken</a>
     <?php
 } else if (!isset($_SESSION['gebruikersnaam'])) {
     ?>
