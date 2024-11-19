@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Nov 18, 2024 at 11:31 AM
+-- Generation Time: Nov 18, 2024 at 02:47 PM
 -- Server version: 8.0.30
 -- PHP Version: 8.1.10
 
@@ -29,10 +29,10 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `contactinfo` (
   `id` int NOT NULL,
-  `naam` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `naam` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
   `email` varchar(100) NOT NULL,
-  `bericht` varchar(500) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+  `bericht` varchar(500) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Dumping data for table `contactinfo`
@@ -49,21 +49,16 @@ INSERT INTO `contactinfo` (`id`, `naam`, `email`, `bericht`) VALUES
 
 CREATE TABLE `logininfo` (
   `id` int NOT NULL,
-  `gebruikersnaam` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `wachtwoord` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `email` varchar(100) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
--- --------------------------------------------------------
+  `gebruikersnaam` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `wachtwoord` mediumtext CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
--- Table structure for table `pagina's`
+-- Dumping data for table `logininfo`
 --
 
-CREATE TABLE `pagina's` (
-  `id` int NOT NULL,
-  `paginaNaam` varchar(50) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+INSERT INTO `logininfo` (`id`, `gebruikersnaam`, `wachtwoord`) VALUES
+(1, 'admin', '$2y$10$AYL/dfvt3afDg2H3n0erB.ClRJ3zRE7KNLup5evNGY9c3B2EL8bm.');
 
 -- --------------------------------------------------------
 
@@ -76,7 +71,7 @@ CREATE TABLE `paginagrid` (
   `rowPosition` int NOT NULL,
   `columnType` int NOT NULL,
   `page` int NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- --------------------------------------------------------
 
@@ -86,14 +81,31 @@ CREATE TABLE `paginagrid` (
 
 CREATE TABLE `paginainfo` (
   `id` int NOT NULL,
-
-  `informatie` varchar(500) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `informatie` varchar(500) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
   `row` int NOT NULL,
   `colum` int NOT NULL,
   `foto` tinyint(1) DEFAULT '0',
   `backgroundColor` tinyint(1) NOT NULL DEFAULT '0'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `paginas`
+--
+
+CREATE TABLE `paginas` (
+  `id` int NOT NULL,
+  `paginaNaam` varchar(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+--
+-- Dumping data for table `paginas`
+--
+
+INSERT INTO `paginas` (`id`, `paginaNaam`) VALUES
+(1, 'Home'),
+(2, 'Contact');
 
 -- --------------------------------------------------------
 
@@ -103,10 +115,10 @@ CREATE TABLE `paginainfo` (
 
 CREATE TABLE `socials` (
   `id` int NOT NULL,
-  `naam` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `naam` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
   `link` varchar(500) NOT NULL,
   `image` varchar(500) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Indexes for dumped tables
@@ -125,12 +137,6 @@ ALTER TABLE `logininfo`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `pagina's`
---
-ALTER TABLE `pagina's`
-  ADD PRIMARY KEY (`id`);
-
---
 -- Indexes for table `paginagrid`
 --
 ALTER TABLE `paginagrid`
@@ -143,6 +149,12 @@ ALTER TABLE `paginagrid`
 ALTER TABLE `paginainfo`
   ADD PRIMARY KEY (`id`),
   ADD KEY `Constraint_FK_position` (`row`);
+
+--
+-- Indexes for table `paginas`
+--
+ALTER TABLE `paginas`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `socials`
@@ -164,13 +176,7 @@ ALTER TABLE `contactinfo`
 -- AUTO_INCREMENT for table `logininfo`
 --
 ALTER TABLE `logininfo`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT for table `pagina's`
---
-ALTER TABLE `pagina's`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `paginagrid`
@@ -183,6 +189,12 @@ ALTER TABLE `paginagrid`
 --
 ALTER TABLE `paginainfo`
   MODIFY `id` int NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `paginas`
+--
+ALTER TABLE `paginas`
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `socials`
@@ -198,7 +210,7 @@ ALTER TABLE `socials`
 -- Constraints for table `paginagrid`
 --
 ALTER TABLE `paginagrid`
-  ADD CONSTRAINT `Constraint_FK_page_type` FOREIGN KEY (`page`) REFERENCES `pagina's` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT;
+  ADD CONSTRAINT `Constraint_FK_page_type` FOREIGN KEY (`page`) REFERENCES `paginas` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT;
 
 --
 -- Constraints for table `paginainfo`

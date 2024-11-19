@@ -44,6 +44,41 @@ switch ($view) {
         $style = 'admin.css';
         $js = 'admin.js';
         break;
+    case 'registreren':
+        $page = 'registreren.php';
+        $style = 'registreren.css';
+        $js = 'registreren.js';
+        break;
+    case 'createProcess':
+        $page = 'functions/creating/process.php';
+        $style = 'process.css';
+        $js = 'process.js';
+        break;
+    case 'creating':
+        $page = 'functions/creating/create.php';
+        $style = 'create.css';
+        $js = 'create.js';
+        break;
+    case 'deleteProcess':
+        $page = 'functions/deleting/process.php';
+        $style = 'process.css';
+        $js = 'process.js';
+        break;
+    case 'deleting':
+        $page = 'functions/deleting/delete.php';
+        $style = 'delete.css';
+        $js = 'delete.js';
+        break;
+    case 'editProcess':
+        $page = 'functions/editing/process.php';
+        $style = 'process.css';
+        $js = 'process.js';
+        break;
+    case 'editing':
+        $page = 'functions/editing/editing.php';
+        $style = 'editing.css';
+        $js = 'editing.js';
+        break;
     default:
         $page = '404.php';
         $style = '404.css';
