@@ -16,10 +16,7 @@
             <label for="naam">Pagina Naam:</label><br>
             <input type="text" id="naam" name="naam" required><br>
 
-            <label for="photo">Photo:</label><br>
-            <input type="file" id="photo" name="photo" required><br>
-
-            <input type="submit" value="Add Photo">
+            <input type="submit" value="Pagina toevoegen">
         </form>
     </div>
 </body>
