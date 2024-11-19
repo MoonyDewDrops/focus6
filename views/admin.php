@@ -36,10 +36,10 @@ if (isset($_SESSION['gebruikersnaam'])) {
                         <?= $pagina['paginaNaam']; ?>
                     </button>
                     <button class="">
-                        <a href='deleteProcess?id=<?= $id ?>' style="text-decoration:none;color:black;">Edit</a>
+                        <a href='editProcess?id=<?= $pagina['id'];?>' style="text-decoration:none;color:black;">Edit</a>
                     </button>
                     <button class="">
-                        <a href='editProcess?id=<?= $id ?>' style="text-decoration:none;color:black;">Delete</a>
+                        <a href='deleteProcess?id=<?= $pagina['id'];?>' style="text-decoration:none;color:black;">Delete</a>
                     </button>
 
                     <br>
