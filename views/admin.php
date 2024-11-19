@@ -1,5 +1,5 @@
 <?php
-if (isset($_SESSION['gebruikersnaam'])) {
+// if (isset($_SESSION['gebruikersnaam'])) {
     //sql command
     $sql = "SELECT * FROM paginas";
     $result = $con->query($sql);
@@ -60,15 +60,15 @@ if (isset($_SESSION['gebruikersnaam'])) {
         </button>
 
 
-    <?php
-} else if (!isset($_SESSION['gebruikersnaam'])) {
+    <!-- <?php
+// } else if (!isset($_SESSION['gebruikersnaam'])) {
     ?>
         <script>
             location.replace("http://localhost/focus6/login");
         </script>
     <?php
-}
-    ?>
+// }
+    ?> -->
     </body>
 
     </html>
