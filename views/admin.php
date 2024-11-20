@@ -49,7 +49,7 @@ if (isset($_SESSION['gebruikersnaam'])) {
                 }
                 ?>
             </table>
-            <a class="add" href="create"> Pagina toevoegen </a>
+            <a class="add" href="createProcess"> Pagina toevoegen </a>
         </div>
         <div id="socials" class="cmsOptions">
             <p class="optionTitle">Socials</p>
