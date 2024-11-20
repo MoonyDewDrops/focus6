@@ -10,8 +10,8 @@
 <body>
   <?php
   $sql = "SELECT id, naam, email, bericht FROM contactinfo;";
-  include_once "../core/db_connect.php";
-  // include "core/header.php";
+  include_once __DIR__ . '/../core/db_connect.php';
+  // include "core/header.php"; 
 
   $qry = $con->prepare($sql);
   if ($qry === false) {
