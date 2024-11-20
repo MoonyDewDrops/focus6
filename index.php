@@ -5,10 +5,10 @@ error_reporting(E_ALL);
 
 include_once 'core/db_connect.php';
 
-
-
+//Set the default view
 $view = '';
 
+//Check if the view is set in the URL and not empty
 if (!empty($_GET['view'])) {
     $view = htmlspecialchars($_GET['view']);
     $view = str_replace("/", "", $view);
@@ -17,7 +17,6 @@ if (!empty($_GET['view'])) {
 $page = '';
 $style = '';
 $js = '';
-
 switch ($view) {
     case '':
         $page = 'home.php';
