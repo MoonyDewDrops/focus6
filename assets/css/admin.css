@@ -42,10 +42,51 @@ header .adminlink a:hover {
   box-shadow: 0px 0px 10px 0px #9196a8 inset;
   border-radius: 20px;
 }
+.cmsOptions table {
+  width: 100%;
+  border-collapse: collapse;
+  border-bottom: 1px solid black;
+}
+.cmsOptions th,
+.cmsOptions td {
+  text-align: left;
+}
+.cmsOptions tr:nth-child(even) {
+  background-color: #d5d8e2;
+}
+.cmsOptions tr:hover {
+  background-color: #0296cc;
+  color: white;
+}
+.cmsOptions tr {
+  display: grid;
+  grid-template-columns: 8fr 1fr 1fr;
+}
 .cmsOptions .optionTitle {
   font-size: 1.5rem;
   font-style: italic;
   margin-bottom: 1rem;
   margin-top: 0;
   border-bottom: 1px solid #9196a8;
+}
+.cmsOptions .add {
+  display: flex;
+  width: 10vw;
+  height: 5vh;
+  justify-content: center;
+  align-items: center;
+  margin-top: 1rem;
+  text-decoration: none;
+  color: black;
+  font-style: italic;
+  border: 1px solid #9196a8;
+  border-radius: 20px;
+  background-color: #9196a8;
+  box-shadow: 0px 0px 10px 0px #5b5d69 inset;
+  color: white;
+}
+.cmsOptions .add:hover {
+  background-color: #d5d8e2;
+  box-shadow: 0px 0px 10px 0px #9196a8 inset;
+  color: black;
 }/*# sourceMappingURL=admin.css.map */
