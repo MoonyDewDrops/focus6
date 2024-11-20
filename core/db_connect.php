@@ -1,15 +1,11 @@
 <?php
-include_once "core/db_credentials.php";
+include_once __DIR__ . '/db_credentials.php';
 ?>
 
 <?php
 if (session_status() !== PHP_SESSION_ACTIVE) {
     session_start();
 }
-
-
-$dbhost = "localhost";
-$dbname = "focus6";
 
 $con = new mysqli($dbhost, $dbusername, $dbpassword, $dbname);
 

@@ -8,22 +8,25 @@
     <link rel="stylesheet" href="<?= 'assets/css/style.css' ?>">
     <link rel="stylesheet" href="<?= 'assets/css/header.css' ?>">
     <link rel="stylesheet" href="<?= 'assets/css/footer.css' ?>">
+
     <?php
     if ($style != '') {
-        ?>
+    ?>
         <link rel="stylesheet" href="<?= 'assets/css/' . $style ?>">
-        <?php
+    <?php
     }
     ?>
 
     <script src="<?= 'assets/js/app.js' ?>" defer></script>
     <?php
     if ($js != '') {
-        ?>
+    ?>
         <script src="<?= 'assets/js/' . $js ?>" defer></script>
-        <?php
+    <?php
     }
     ?>
-    </head>
+</head>
 
 <body>
+
+</body>
