@@ -49,7 +49,7 @@ if (isset($_SESSION['gebruikersnaam'])) {
         }
         ?>
         <button class="CMSbuttons">
-            <a href="create" style="text-decoration:none;color:black;"> Pagina toevoegen </a>
+            <a href="createProcess" style="text-decoration:none;color:black;"> Pagina toevoegen </a>
         </button>
 
         <br>
