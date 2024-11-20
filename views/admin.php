@@ -32,8 +32,9 @@ if (isset($_SESSION['gebruikersnaam'])) {
                     <?php
                 }
             }
+
             ?>
-            <a href="create" style="text-decoration:none;color:black;"> Pagina toevoegen </a>
+            <a href="createProcess" style="text-decoration:none;color:black;"> Pagina toevoegen </a>
             </div>
             <div id="socials">
                 <p>Socials</p>
@@ -45,6 +46,7 @@ if (isset($_SESSION['gebruikersnaam'])) {
             </div>
         </div>
         <?php
+
 } else if (!isset($_SESSION['gebruikersnaam'])) {
     ?>
             <script>

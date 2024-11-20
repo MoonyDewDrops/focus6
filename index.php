@@ -51,33 +51,38 @@ switch ($view) {
         break;
     case 'createProcess':
         $page = 'functions/creating/process.php';
-        $style = 'process.css';
-        $js = 'process.js';
+        $style = 'functions/creating/process.css';
+        $js = 'functions/creating/process.js';
         break;
     case 'creating':
         $page = 'functions/creating/create.php';
-        $style = 'create.css';
-        $js = 'create.js';
+        $style = 'functions/creating/create.css';
+        $js = 'functions/creating/create.js';
         break;
     case 'deleteProcess':
         $page = 'functions/deleting/process.php';
-        $style = 'process.css';
-        $js = 'process.js';
+        $style = 'functions/deleting/process.css';
+        $js = 'functions/deleting/process.js';
         break;
     case 'deleting':
         $page = 'functions/deleting/delete.php';
-        $style = 'delete.css';
-        $js = 'delete.js';
+        $style = 'functions/deleting/delete.css';
+        $js = 'functions/deleting/delete.js';
         break;
     case 'editProcess':
         $page = 'functions/editing/process.php';
-        $style = 'process.css';
-        $js = 'process.js';
+        $style = 'functions/editing/process.css';
+        $js = 'functions/editing/process.js';
         break;
     case 'editing':
         $page = 'functions/editing/editing.php';
-        $style = 'editing.css';
-        $js = 'editing.js';
+        $style = 'functions/editing/editing.css';
+        $js = 'functions/editing/editing.js';
+        break;
+    case 'customPage':
+            $page = 'customPage.php';
+            $style = 'customPage.css';
+            $js = 'customPage.js';
         break;
     default:
         $page = '404.php';
