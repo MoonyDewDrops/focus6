@@ -19,6 +19,7 @@ if (isset($_SESSION['gebruikersnaam'])) {
 
     <?php include 'core/admin_header.php'; ?>
         <div class="container">
+            <div id="paginas">
             <?php
             if (isset($paginas)) {
                 foreach ($paginas as $pagina) {
@@ -33,7 +34,15 @@ if (isset($_SESSION['gebruikersnaam'])) {
             }
             ?>
             <a href="create" style="text-decoration:none;color:black;"> Pagina toevoegen </a>
-            <a href="contact" style="text-decoration:none;color:black;">Contacten bekijken</a>
+            </div>
+            <div id="socials">
+                <p>Socials</p>
+                <a href="createSocial" style="text-decoration:none;color:black;">Social toevoegen</a>
+            </div>
+            <div id="contactberichten">
+                <p>Contacten</p>
+                <a href="contact" style="text-decoration:none;color:black;">Contacten bekijken</a>
+            </div>
         </div>
         <?php
 } else if (!isset($_SESSION['gebruikersnaam'])) {

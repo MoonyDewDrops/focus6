@@ -14,8 +14,8 @@
             <img src="https://placeholder.co/200x100"></img>
             <p>Welkom <?= $_SESSION['gebruikersnaam']; ?></p>
             <div class="adminlink">
-                <a href="paginas">Paginas</a>
-                <a href="Socials">Socials</a>
-                <a href="contactberichten">Berichten</a>
+                <a href="#paginas">Paginas</a>
+                <a href="#socials">Socials</a>
+                <a href="#contactberichten">Berichten</a>
             </div>
         </header>
