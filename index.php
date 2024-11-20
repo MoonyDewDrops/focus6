@@ -79,6 +79,11 @@ switch ($view) {
         $style = 'functions/editing/editing.css';
         $js = 'functions/editing/editing.js';
         break;
+    case 'customPage':
+            $page = 'customPage.php';
+            $style = 'customPage.css';
+            $js = 'customPage.js';
+        break;
     default:
         $page = '404.php';
         $style = '404.css';
