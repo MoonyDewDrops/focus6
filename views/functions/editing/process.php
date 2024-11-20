@@ -13,7 +13,7 @@
     <p>Overview existing rows</p>
     <?php
     if (!empty($_GET['id'])) {
-
+        $id = $_GET['id'];
         $sql = "SELECT * FROM paginagrid";
         $result = $con->query($sql);
 
@@ -23,8 +23,8 @@
                 $rows[] = $rows;
             }
         } else {
-            echo "No rows found";
-            exit;
+            // echo "No rows found";
+            // exit;
         }
 
         $con->close();
@@ -52,11 +52,24 @@
 
         <p>Add a row</p>
 
-        <form action="addingRows" method="post" enctype="multipart/form-data">
+        <form action="edit?id=<?=$id?>" method="post" enctype="multipart/form-data">
             <label for="columnType">Hoevel kolomen?</label><br>
             <input type="number" name="amountOf" placeholder="1" style="width:10%;" min="1" required>
             <br>
             <br>
+            <?php
+            $creatingRow = 1;
+            if (isset($rows['rowPosition'])){
+              if ($rows['rowPosition'] === null){
+                $creatingRow = 1;
+              } else {
+                $rows['rowPosition'] = $creatingRow++;
+              }
+            } else {
+                $creatingRow = 1;
+            }
+
+            ?>
             <input type="submit" value="Add a row">
         </form>
     <?php
