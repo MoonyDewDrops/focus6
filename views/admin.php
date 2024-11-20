@@ -14,7 +14,12 @@ if (isset($_SESSION['gebruikersnaam'])) {
         echo "No paginas found";
     }
 
-    $con->close();
+    $sqlc = "SELECT naam, email, bericht FROM contactinfo ORDER BY id DESC LIMIT 3;";
+    $contactqry = $con->prepare($sqlc);
+    $contactqry->bind_result($name, $email, $message);
+    if ($contactqry === false) {
+        echo mysqli_error($con);
+    }
     ?>
 
     <?php include 'core/admin_header.php'; ?>
@@ -33,11 +38,10 @@ if (isset($_SESSION['gebruikersnaam'])) {
                         <tr>
                             <td><?= $pagina['paginaNaam']; ?></td>
                             <td>
-                                <a href='editProcess?id=<?= $pagina['id']; ?>' style="text-decoration:none;color:black;">Edit</a>
+                                <a href='editProcess?id=<?= $pagina['id']; ?>'>Edit</a>
                             </td>
                             <td>
-                                <a href='deleteProcess?id=<?= $pagina['id']; ?>'
-                                    style="text-decoration:none;color:black;">Delete</a>
+                                <a href='deleteProcess?id=<?= $pagina['id']; ?>'>Delete</a>
                             </td>
                         </tr>
                         <?php
@@ -49,11 +53,36 @@ if (isset($_SESSION['gebruikersnaam'])) {
         </div>
         <div id="socials" class="cmsOptions">
             <p class="optionTitle">Socials</p>
-            <a href="createSocial" style="text-decoration:none;color:black;">Social toevoegen</a>
+            <table>
+                <tr>
+                    <th>Naam</th>
+                    <th colspan="2">Opties</th>
+                </tr>
+                <tr>
+                    <td>Social media?</td>
+                    <td>Edit</td>
+                    <td>Delete</td>
+                </tr>
+            </table>
+            <a class="add" href="createSocial">Social toevoegen</a>
         </div>
         <div id="contactberichten" class="cmsOptions">
             <p class="optionTitle">Contacten</p>
-            <a href="contact" style="text-decoration:none;color:black;">Contacten bekijken</a>
+            <?php
+            if ($contactqry->execute()) {
+                while ($contactqry->fetch()) {
+                    ?>
+                    <div class="berichtcontainer">
+                        <p><?= $name ?></p>
+                        <p><?= $email ?></p>
+                        <p><?= $message ?></p>
+                    </div>
+                    <?php
+                }
+            }
+            $contactqry->close();
+            ?>
+            <a class="add" href="contact">Alle berichten</a>
         </div>
     </div>
     <?php
@@ -64,6 +93,7 @@ if (isset($_SESSION['gebruikersnaam'])) {
         </script>
     <?php
 }
+$con->close();
 ?>
 </body>
 
