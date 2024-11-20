@@ -59,12 +59,8 @@
             <br>
             <?php
             $creatingRow = 1;
-            if (isset($rows['rowPosition'])){
-              if ($rows['rowPosition'] === null){
-                $creatingRow = 1;
-              } else {
+            if (isset($rows) || isset($rows['id']) || isset($rows['rowPosition'])){
                 $rows['rowPosition'] = $creatingRow++;
-              }
             } else {
                 $creatingRow = 1;
             }
