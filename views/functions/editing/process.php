@@ -1,14 +1,7 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Editing process</title>
-</head>
-
-<body>
-    <p>Overview existing rows</p>
+<?php include_once 'core/admin_header.php'; ?>
+<div class="cmsContainer">
+    <p class="cmsTitle">Overview existing rows</p>
+    <div class="gridsquare">
     <?php
     if (!empty($_GET['id'])) {
         //giving post variable
@@ -26,7 +19,7 @@
         //noemt de paginaGrid als de data, en anders een lege array.
         $paginaGrid = $result->fetch_all(MYSQLI_ASSOC) ?: [];
         //VOLGENDEEEE
-
+    
         //sql stmt
         $sql = "SELECT id, paginaNaam FROM paginas WHERE id = ?";
         $stmt = $con->prepare($sql);
@@ -44,7 +37,9 @@
         $stmt->close();
 
         $existing = 0;
-
+        ?>
+        <p>Pagina: <?= $paginaNaam ?></p>
+        <?php
         if (!empty($paginaGrid)) {
             foreach ($paginaGrid as $row) {
                 // Use loose comparison for IDs to avoid type mismatch
@@ -54,18 +49,22 @@
                     $columnType = $row['columnType'];
                     //9
                     $pageValue = $row['pageValue']; //9
-    ?>
+                    ?>
                     <!-- Display grid data -->
                     <div class="row">
                         <!-- dit is de hoeveelste row -->
                         <p>Row: <br> <?= $rowPosition ?></p>
                         <!-- dit is hoeveel kollomen er zijn -->
-                        <p>Kolom hoeveid: <br> <?= $columnType ?></p>
-                        <!-- en dit is welke pagina het is, de numerieke waarde hiervan heeft een comment met '9' erboven EN ernaast -->
-                        <p>Pagina: <br> <?= $paginaNaam ?></p>
+                        <?php 
+                        for ($i = 1; $i <= $columnType; $i++) {
+                            ?>
+                            <textarea name="content" id="content" cols="30" rows="10"></textarea>
+                            <?php
+                        }
+                        ?>
                     </div>
                     <br>
-        <?php
+                    <?php
                 }
             }
         }
@@ -75,7 +74,7 @@
         }
 
         ?>
-
+        </div>
         <p>Add a row</p>
         <?php
         $rowPosition = isset($rowPosition) ? $rowPosition + 1 : 1;
@@ -89,13 +88,15 @@
             <input type="submit" value="Add a row">
         </form>
 
-    <?php
+        <?php
     } else {
         echo 'Pagina ID is missend, probeer opnieuw!';
     }
 
     $con->close();
     ?>
+
+</div>
 </body>
 
 </html>

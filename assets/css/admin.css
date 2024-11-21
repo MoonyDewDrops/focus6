@@ -117,4 +117,60 @@ header .adminlink a:hover {
 .cmsOptions .berichtcontainer :nth-child(3) {
   grid-column: 1/span 2;
   grid-row: 2;
+}
+
+.cmsContainer {
+  background-color: white;
+  padding: 1rem;
+  margin: 1rem;
+  box-shadow: 0px 0px 10px 0px #9196a8 inset;
+  border-radius: 20px;
+}
+.cmsContainer .cmsTitle {
+  font-size: 2rem;
+  font-style: italic;
+  margin-bottom: 1rem;
+  margin-top: 0;
+  border-bottom: 1px solid #9196a8;
+}
+.cmsContainer .gridsquare {
+  border: 1px solid hotpink;
+}
+.cmsContainer form {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 1rem;
+  margin-top: 1rem;
+}
+.cmsContainer form label {
+  font-size: 1.5rem;
+  font-weight: lighter;
+}
+.cmsContainer form input {
+  font-size: 1.4rem;
+  font-style: italic;
+  padding: 5px;
+  border: none;
+  border-bottom: 2px solid #9196a8;
+}
+.cmsContainer form textarea {
+  font-size: 1.5rem;
+  font-style: italic;
+  padding: 5px;
+}
+.cmsContainer form input[type=submit] {
+  font-size: 1.5rem;
+  font-style: italic;
+  padding: 5px;
+  border: 1px solid #9196a8;
+  border-radius: 20px;
+  background-color: #9196a8;
+  box-shadow: 0px 0px 10px 0px #5b5d69 inset;
+  color: white;
+  grid-column: 2;
+}
+.cmsContainer form input[type=submit]:hover {
+  background-color: #d5d8e2;
+  box-shadow: 0px 0px 10px 0px #9196a8 inset;
+  color: black;
 }/*# sourceMappingURL=admin.css.map */
