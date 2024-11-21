@@ -1,1 +1,13 @@
-/*# sourceMappingURL=contact.css.map */
+.contact_grid {
+  display: grid;
+  place-items: center;
+  min-height: 100vh;
+  height: 100%;
+  margin: 0;
+  color: #220a0a;
+}
+
+.contact_form {
+  border: 2px solid #ccc;
+  background-color: #ffffff;
+}/*# sourceMappingURL=contact.css.map */
