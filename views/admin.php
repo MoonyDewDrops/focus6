@@ -67,7 +67,7 @@ if (isset($_SESSION['gebruikersnaam'])) {
             <a class="add" href="createSocial">Social toevoegen</a>
         </div>
         <div id="contactberichten" class="cmsOptions">
-            <p class="optionTitle">Contacten</p>
+            <p class="optionTitle">Berichten</p>
             <?php
             if ($contactqry->execute()) {
                 while ($contactqry->fetch()) {
