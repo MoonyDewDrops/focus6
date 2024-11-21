@@ -68,15 +68,20 @@ switch ($view) {
         $style = 'functions/deleting/delete.css';
         $js = 'functions/deleting/delete.js';
         break;
+    case 'addingRow':
+        $page = 'functions/editing/addingRow.php';
+        $style = 'functions/editing/addingRow.css';
+        $js = 'functions/editing/addingRow.js';
+        break;
     case 'editProcess':
         $page = 'functions/editing/process.php';
         $style = 'functions/editing/process.css';
         $js = 'functions/editing/process.js';
         break;
-    case 'editing':
-        $page = 'functions/editing/editing.php';
-        $style = 'functions/editing/editing.css';
-        $js = 'functions/editing/editing.js';
+    case 'editRow':
+        $page = 'functions/editing/editRow.php';
+        $style = 'functions/editing/editRow.css';
+        $js = 'functions/editing/editRow.js';
         break;
     case 'customPage':
             $page = 'customPage.php';
