@@ -50,6 +50,7 @@
                     //9
                     $pageValue = $row['pageValue']; //9
                     ?>
+                    <form action="editRow?id=<?=$pageValue?>" method="post" enctype="multipart/form-data">
                     <!-- Display grid data -->
                     <div class="row">
                         <!-- dit is de hoeveelste row -->
@@ -58,11 +59,27 @@
                         <?php 
                         for ($i = 1; $i <= $columnType; $i++) {
                             ?>
-                            <textarea name="content" id="content" cols="30" rows="10"></textarea>
+                            
+                            
+                            <textarea name="informatie" id="content" cols="30" rows="10"></textarea>
+                            <label for="photo">Photo:</label><br>
+                            <input type="file" id="photo" name="photo" required><br>
+                            <br><br>
+                            <input type="hidden" value="<?=$i?>" name="welkeRow">
+                            <!-- <label for="file">file</label>
+                            <input type="file" id="image" name="image"><br> -->
+                            <br><br>
+                            <label for="backgroundColor">backgroundColor</label>
+                            <input type="checkbox" name="backgroundColor"></textarea>   
+                            <br><br> 
+                            <br><br>
                             <?php
                         }
                         ?>
+                          <input type="hidden" id="columnType" name="columnType" value="<?=$columnType?>" />
+                            <input type="submit" value="Edit a row">
                     </div>
+                    </form>
                     <br>
                     <?php
                 }
