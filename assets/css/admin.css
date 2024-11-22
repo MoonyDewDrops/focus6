@@ -136,6 +136,73 @@ header .adminlink a:hover {
 .cmsContainer .gridsquare {
   border: 1px solid hotpink;
 }
+.cmsContainer .gridsquare .squareTitle {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+  margin-top: 0;
+}
+.cmsContainer .gridsquare form {
+  display: flex;
+  flex-direction: column;
+}
+.cmsContainer .gridsquare textarea {
+  resize: none;
+}
+.cmsContainer .gridsquare .columnSettings {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  height: auto;
+  width: 100%;
+}
+.cmsContainer .gridsquare .columnSettings input {
+  font-size: 1rem;
+  border: none;
+}
+.cmsContainer .gridsquare .columnSettings input[type=radio] {
+  margin-right: 5px;
+  accent-color: #9196a8;
+}
+.cmsContainer .gridsquare .columnSettings label {
+  font-size: 1rem;
+  font-weight: bold;
+}
+.cmsContainer .gridsquare .columnSettings :nth-child(1) {
+  grid-column: 1/span 2;
+}
+.cmsContainer .gridsquare .columnSettings :nth-child(2) {
+  grid-column: 1;
+}
+.cmsContainer .gridsquare .columnSettings :nth-child(3) {
+  grid-column: 2;
+}
+.cmsContainer .gridsquare .columnSettings :nth-child(4) {
+  grid-column: 1/span 2;
+  grid-row: 3;
+}
+.cmsContainer .gridsquare .row1 {
+  display: grid;
+  grid-template-columns: 1fr;
+  height: auto;
+  width: 100%;
+}
+.cmsContainer .gridsquare .row2 {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  height: auto;
+  width: 100%;
+}
+.cmsContainer .gridsquare .row3 {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  height: auto;
+  width: 100%;
+}
+.cmsContainer .gridsquare .row4 {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  height: auto;
+  width: 100%;
+}
 .cmsContainer form {
   display: grid;
   grid-template-columns: 1fr 1fr;
