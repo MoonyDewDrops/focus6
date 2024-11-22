@@ -23,7 +23,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         //else it just updates
         $updateqry->bind_param('iii', $kolomType, $id, $hoeveelsteRow);
         if ($updateqry->execute()) {
-            echo 'pagina grid updated!';
+            header("Location: editProcess?id=" . urlencode($id));
         } else {
             echo "Error updating recensie: " . $updateqry->error;
         }
@@ -37,27 +37,29 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $selectqry = $con->prepare($sql);
     $selectqry->bind_param('ii', $welkeRow, $hoeveelsteKolom);
     $selectqry->execute();
-    $selectqry->bind_result($oudeAfbeelding);
+    $selectqry->bind_result($oudeInformatie);
     $selectqry->fetch();
     $selectqry->close();
 
+    // Handle file upload if provided
     if (isset($_FILES['photo']) && $_FILES['photo']['error'] === UPLOAD_ERR_OK) {
         $imageNaam = basename($_FILES['photo']['name']);
         $imageTempName = $_FILES['photo']['tmp_name'];
         $wantedDirectory = 'C:/laragon/www/focus6/assets/fotos/';
-        echo $wantedDirectory;
         $wantedPath = $wantedDirectory . $imageNaam;
 
         if (move_uploaded_file($imageTempName, $wantedPath)) {
-            if (file_exists($oudeAfbeelding)) {
-                unlink($oudeAfbeelding);
+            if (file_exists($oudeInformatie) && strpos($oudeInformatie, $wantedDirectory) !== false) {
+                unlink($oudeInformatie);
             }
             $informatie = $wantedPath;
         } else {
-            $informatie = $oudeAfbeelding;
+            $informatie = $oudeInformatie;
         }
+    } else if (!empty($_POST['informatie'])) {
+        $informatie = $_POST['informatie'];
     } else {
-        $informatie = $oudeAfbeelding;
+        $informatie = $oudeInformatie;
     }
 
     $sql2 = "UPDATE paginainfo SET informatie = ?, foto = ?, backgroundColor = ? WHERE whichRow = ? AND colum = ?";
@@ -69,7 +71,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         //else it just updates
         $updateqry2->bind_param('siiii', $informatie, $image, $backgroundColor, $welkeRow, $hoeveelsteKolom);
         if ($updateqry2->execute()) {
-            echo 'pagina info updated!';
+            header("Location: editProcess?id=" . urlencode($id));
         } else {
             echo "Error updating recensie: " . $updateqry2->error;
         }

@@ -63,7 +63,7 @@
                             
                             <textarea name="informatie" id="content" cols="30" rows="10"></textarea>
                             <label for="photo">Photo:</label><br>
-                            <input type="file" id="photo" name="photo" required><br>
+                            <input type="file" id="photo" name="photo"><br>
                             <br><br>
                             <input type="hidden" value="<?=$i?>" name="welkeRow">
                             <!-- <label for="file">file</label>
