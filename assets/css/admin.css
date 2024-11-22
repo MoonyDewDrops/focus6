@@ -119,6 +119,11 @@ header .adminlink a:hover {
   grid-row: 2;
 }
 
+input[type=radio] {
+  margin-right: 5px;
+  accent-color: #9196a8;
+}
+
 .cmsContainer {
   background-color: white;
   padding: 1rem;
@@ -132,9 +137,6 @@ header .adminlink a:hover {
   margin-bottom: 1rem;
   margin-top: 0;
   border-bottom: 1px solid #9196a8;
-}
-.cmsContainer .gridsquare {
-  border: 1px solid hotpink;
 }
 .cmsContainer .gridsquare .squareTitle {
   font-size: 1.5rem;
@@ -157,10 +159,6 @@ header .adminlink a:hover {
 .cmsContainer .gridsquare .columnSettings input {
   font-size: 1rem;
   border: none;
-}
-.cmsContainer .gridsquare .columnSettings input[type=radio] {
-  margin-right: 5px;
-  accent-color: #9196a8;
 }
 .cmsContainer .gridsquare .columnSettings label {
   font-size: 1rem;

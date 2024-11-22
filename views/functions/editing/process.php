@@ -94,7 +94,7 @@
                                                 <span>Yes</span>
                                                 <input type="radio" name="<?= $rowPosition ?>[<?= $i ?>]['IMG']" value="Yes">
                                             </div>
-                                            
+
                                         </div>
                                         <input type="file" name="<?= $rowPosition ?>[<?= $i ?>]['file']">
                                     </div>
@@ -122,9 +122,23 @@
         $rowPosition = isset($rowPosition) ? $rowPosition + 1 : 1;
         ?>
         <form action="addingRow" method="post" enctype="multipart/form-data">
-            <label for="columnType">How many columns?</label><br>
-            <input type="number" name="columnType" placeholder="1" style="width:10%;" min="1" required>
-            <br><br>
+            <label for="columnType">Which column-type?</label><br>
+            <label class="columnPicker" for="columnType">
+                <input type="radio" name="columnType" value="1" checked>
+                <img src="assets/img/cms-style/columntype1.png" alt="placeholder">
+            </label>
+            <label class="columnPicker" for="columnType">
+                <input type="radio" name="columnType" value="2">
+                <img src="assets/img/cms-style/columntype2.png" alt="placeholder">
+            </label>
+            <label class="columnPicker" for="columnType">
+                <input type="radio" name="columnType" value="3">
+                <img src="assets/img/cms-style/columntype3.png" alt="placeholder">
+            </label>
+            <label class="columnPicker" for="columnType">
+                <input type="radio" name="columnType" value="4">
+                <img src="assets/img/cms-style/columntype4.png" alt="placeholder">
+            </label>
             <input type="hidden" value="<?= $rowPosition ?>" name="rowPosition" id="rowPosition">
             <input type="hidden" value="<?= $paginaID ?>" name="pageValue" id="pageValue">
             <input type="submit" value="Add a row">

@@ -119,6 +119,7 @@ header {
     &:hover {
       box-shadow: 0px 0px 10px 0px #9196a8;
     }
+
     p {
       margin: 0;
     }
@@ -138,6 +139,11 @@ header {
   }
 }
 
+input[type="radio"]{
+  margin-right: 5px;
+  accent-color: #9196a8;
+}
+
 .cmsContainer {
   background-color: white;
   padding: 1rem;
@@ -154,7 +160,6 @@ header {
   }
 
   .gridsquare{
-    border: 1px solid hotpink;
 
     .squareTitle{
       font-size: 1.5rem;
@@ -182,10 +187,7 @@ header {
             border: none;
         }
 
-        input[type="radio"]{
-            margin-right: 5px;
-            accent-color: #9196a8;
-        }
+       
 
         label{
             font-size: 1rem;
