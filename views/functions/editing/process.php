@@ -2,7 +2,7 @@
 <div class="cmsContainer">
     <p class="cmsTitle">Overview existing rows</p>
     <div class="gridsquare">
-        <form action="editRow" method="post" enctype="multipart/form-data">
+        <form action="editRow?id=<?=$pageValue?>" method="post" enctype="multipart/form-data">
             <?php
             if (!empty($_GET['id'])) {
                 //giving post variable

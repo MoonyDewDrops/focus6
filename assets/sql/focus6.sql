@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Nov 20, 2024 at 03:36 PM
+-- Generation Time: Nov 22, 2024 at 09:47 AM
 -- Server version: 8.0.30
 -- PHP Version: 8.1.10
 
@@ -29,10 +29,10 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `contactinfo` (
   `id` int NOT NULL,
-  `naam` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `naam` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
   `email` varchar(100) NOT NULL,
-  `bericht` varchar(500) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+  `bericht` varchar(500) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Dumping data for table `contactinfo`
@@ -49,9 +49,9 @@ INSERT INTO `contactinfo` (`id`, `naam`, `email`, `bericht`) VALUES
 
 CREATE TABLE `logininfo` (
   `id` int NOT NULL,
-  `gebruikersnaam` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `wachtwoord` mediumtext CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+  `gebruikersnaam` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `wachtwoord` mediumtext CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Dumping data for table `logininfo`
@@ -72,16 +72,19 @@ CREATE TABLE `paginagrid` (
   `rowPosition` int NOT NULL,
   `columnType` int NOT NULL,
   `pageValue` int NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Dumping data for table `paginagrid`
 --
 
 INSERT INTO `paginagrid` (`id`, `rowPosition`, `columnType`, `pageValue`) VALUES
-(1, 1, 3, 1),
+(1, 1, 1, 1),
 (2, 1, 3, 4),
-(3, 2, 5, 4);
+(3, 2, 5, 4),
+(4, 3, 3, 4),
+(5, 4, 5, 4),
+(6, 2, 1, 1);
 
 -- --------------------------------------------------------
 
@@ -91,12 +94,19 @@ INSERT INTO `paginagrid` (`id`, `rowPosition`, `columnType`, `pageValue`) VALUES
 
 CREATE TABLE `paginainfo` (
   `id` int NOT NULL,
-  `informatie` varchar(500) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `row` int NOT NULL,
+  `informatie` varchar(500) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `whichRow` int NOT NULL,
   `colum` int NOT NULL,
   `foto` tinyint(1) DEFAULT '0',
   `backgroundColor` tinyint(1) NOT NULL DEFAULT '0'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+--
+-- Dumping data for table `paginainfo`
+--
+
+INSERT INTO `paginainfo` (`id`, `informatie`, `whichRow`, `colum`, `foto`, `backgroundColor`) VALUES
+(2, 'C:/laragon/www/focus6/assets/fotos/95440ac9f32cf03e320978e754c5d634.png', 1, 1, 0, 0);
 
 -- --------------------------------------------------------
 
@@ -107,7 +117,7 @@ CREATE TABLE `paginainfo` (
 CREATE TABLE `paginas` (
   `id` int NOT NULL,
   `paginaNaam` varchar(50) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Dumping data for table `paginas`
@@ -127,10 +137,10 @@ INSERT INTO `paginas` (`id`, `paginaNaam`) VALUES
 
 CREATE TABLE `socials` (
   `id` int NOT NULL,
-  `naam` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `naam` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
   `link` varchar(500) NOT NULL,
   `image` varchar(500) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Indexes for dumped tables
@@ -160,7 +170,7 @@ ALTER TABLE `paginagrid`
 --
 ALTER TABLE `paginainfo`
   ADD PRIMARY KEY (`id`),
-  ADD KEY `Constraint_FK_position` (`row`);
+  ADD KEY `Constraint_FK_position` (`whichRow`);
 
 --
 -- Indexes for table `paginas`
@@ -194,13 +204,13 @@ ALTER TABLE `logininfo`
 -- AUTO_INCREMENT for table `paginagrid`
 --
 ALTER TABLE `paginagrid`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `paginainfo`
 --
 ALTER TABLE `paginainfo`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `paginas`
@@ -228,7 +238,7 @@ ALTER TABLE `paginagrid`
 -- Constraints for table `paginainfo`
 --
 ALTER TABLE `paginainfo`
-  ADD CONSTRAINT `Constraint_FK_position` FOREIGN KEY (`row`) REFERENCES `paginagrid` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT;
+  ADD CONSTRAINT `Constraint_FK_position` FOREIGN KEY (`whichRow`) REFERENCES `paginagrid` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
