@@ -186,7 +186,8 @@
         <?php
         $rowPosition = isset($rowPosition) ? $rowPosition + 1 : 1;
         ?>
-        <form action="addingRow" method="post" enctype="multipart/form-data">
+
+        <form action="addingRow?id=<?=$paginaID;?>" method="post" enctype="multipart/form-data">
             <label for="columnType">Which column-type?</label><br>
             <label class="columnPicker" for="columnType">
                 <input type="radio" name="columnType" value="1" checked>
@@ -204,6 +205,7 @@
                 <input type="radio" name="columnType" value="4">
                 <img src="assets/img/cms-style/columntype4.png" alt="placeholder">
             </label>
+
             <input type="hidden" value="<?= $rowPosition ?>" name="rowPosition" id="rowPosition">
             <input type="hidden" value="<?= $paginaID ?>" name="pageValue" id="pageValue">
             <input type="submit" value="Add a row">

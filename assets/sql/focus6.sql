@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Nov 22, 2024 at 09:47 AM
+-- Generation Time: Nov 25, 2024 at 12:59 PM
 -- Server version: 8.0.30
 -- PHP Version: 8.1.10
 
@@ -74,18 +74,6 @@ CREATE TABLE `paginagrid` (
   `pageValue` int NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
---
--- Dumping data for table `paginagrid`
---
-
-INSERT INTO `paginagrid` (`id`, `rowPosition`, `columnType`, `pageValue`) VALUES
-(1, 1, 1, 1),
-(2, 1, 3, 4),
-(3, 2, 5, 4),
-(4, 3, 3, 4),
-(5, 4, 5, 4),
-(6, 2, 1, 1);
-
 -- --------------------------------------------------------
 
 --
@@ -100,13 +88,6 @@ CREATE TABLE `paginainfo` (
   `foto` tinyint(1) DEFAULT '0',
   `backgroundColor` tinyint(1) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data for table `paginainfo`
---
-
-INSERT INTO `paginainfo` (`id`, `informatie`, `whichRow`, `colum`, `foto`, `backgroundColor`) VALUES
-(2, 'C:/laragon/www/focus6/assets/fotos/95440ac9f32cf03e320978e754c5d634.png', 1, 1, 0, 0);
 
 -- --------------------------------------------------------
 
@@ -204,13 +185,13 @@ ALTER TABLE `logininfo`
 -- AUTO_INCREMENT for table `paginagrid`
 --
 ALTER TABLE `paginagrid`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `paginainfo`
 --
 ALTER TABLE `paginainfo`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `paginas`

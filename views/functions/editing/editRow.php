@@ -126,6 +126,26 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $selectqry->close();
 
     // Handle file upload if provided
+  
+//     if (isset($_FILES['photo']) && $_FILES['photo']['error'] === UPLOAD_ERR_OK) {
+//         $imageNaam = basename($_FILES['photo']['name']);
+//         $imageTempName = $_FILES['photo']['tmp_name'];
+//         $wantedDirectory = 'assets/fotos/';
+//         $wantedPath = $wantedDirectory . $imageNaam;
+
+//         if (move_uploaded_file($imageTempName, $wantedPath)) {
+//             if (file_exists($oudeInformatie) && strpos($oudeInformatie, $wantedDirectory) !== false) {
+//                 unlink($oudeInformatie);
+//             }
+//             $informatie = $wantedPath;
+//         } else {
+//             $informatie = $oudeInformatie;
+//         }
+//     } else if (!empty($_POST['informatie'])) {
+//         $informatie = $_POST['informatie'];
+//     } else {
+//         $informatie = $oudeInformatie;
+//     }
 
 
 
