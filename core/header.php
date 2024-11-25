@@ -34,7 +34,7 @@
         <nav class="header-links">
             <a class="header-link" href="">Spiegelconcept</a>
             <a class="header-link" href="">Dienstverlening</a>
-            <a class="header-link" href="">Contact</a>
+            <a class="header-link" href="contact">Contact</a>
         </nav>
     </header>
 

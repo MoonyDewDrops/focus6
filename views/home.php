@@ -8,10 +8,34 @@
 </head>
 
 <body>
-  <?php
-  include __DIR__ . '/../core/header.php';
-  include __DIR__ . '/../core/footer.php';
-  ?>
+  <?php include __DIR__ . '/../core/header.php'; ?>
+
+  <main class="homepage">
+    <div class="top-image">
+      <img class="team-image" src="assets/images/IMG_9579.jpeg" alt="focus 6 team picture">
+    </div>
+
+    <p class="home-text">Focus6 biedt met haar Spiegelconcept een inspirerende en doeltreffende aanpak voor de ontwikkeling van een lerende organisatie. Ons Spiegelconcept combineert reflectie, actie en groei om teams en organisaties naar een hoger niveau te tillen. Dit innovatieve concept kan eenvoudig worden ingezet op teamniveau, waardoor de focus ligt op directe samenwerking en resultaten. Tegelijkertijd biedt het de flexibiliteit om snel op te schalen naar organisatieniveau, zodat de gehele organisatie kan profiteren van de geleerde inzichten en verbeterde dynamiek.</p>
+
+    <div class="middle-content">
+      <h3 class="middle-text">Wat Focus6 uniek maakt, is dat het Spiegelconcept volledig in de praktijk is ontwikkeld en getest. Het is geen theoretisch model, maar een aanpak die zijn waarde heeft bewezen in echte organisatiesituaties. We geloven sterk in de kracht van teams: een goed functionerend team is de motor van innovatie, samenwerking en groei. In onze visie onderscheidt een team zich wanneer het in staat is om effectief samen te werken, continu te leren van ervaringen, en vernieuwend te zijn om steeds betere prestaties te leveren.</h3>
+
+      <img class="middle-img" src="assets/images/image1.png" alt="filler image">
+    </div>
+
+    <div class="bottom-content">
+      <p class="home-text">
+        Met het Spiegelconcept geven we teams niet alleen de tools om succesvoller te worden, maar ook om als inspiratie te dienen voor de rest van de organisatie. Samen bouwen we aan een cultuur van leren, verbeteren en presteren.
+      </p>
+
+      <h3 class="bottom-text">Kortom: focus op succes!</h3>
+    </div>
+  </main>
+
+  <?php include __DIR__ . '/../core/footer.php'; ?>
+
+
+
 
 
 
