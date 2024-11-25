@@ -41,7 +41,7 @@ if (isset($_SESSION['gebruikersnaam'])) {
                                 <a href='editProcess?id=<?= $pagina['id']; ?>'>Edit</a>
                             </td>
                             <td>
-                                <a href='deleteProcess?id=<?= $pagina['id']; ?>'>Delete</a>
+                                <a href='deletePageProcess?id=<?= $pagina['id']; ?>'>Delete</a>
                             </td>
                         </tr>
                         <?php
@@ -49,7 +49,7 @@ if (isset($_SESSION['gebruikersnaam'])) {
                 }
                 ?>
             </table>
-            <a class="add" href="createProcess"> Pagina toevoegen </a>
+            <a class="add" href="?view=createProcess"> Pagina toevoegen </a>
         </div>
         <div id="socials" class="cmsOptions">
             <p class="optionTitle">Socials</p>
@@ -64,7 +64,7 @@ if (isset($_SESSION['gebruikersnaam'])) {
                     <td>Delete</td>
                 </tr>
             </table>
-            <a class="add" href="createSocial">Social toevoegen</a>
+            <a class="add" href="?view=createSocial">Social toevoegen</a>
         </div>
         <div id="contactberichten" class="cmsOptions">
             <p class="optionTitle">Berichten</p>
@@ -82,16 +82,12 @@ if (isset($_SESSION['gebruikersnaam'])) {
             }
             $contactqry->close();
             ?>
-            <a class="add" href="contact">Alle berichten</a>
+            <a class="add" href="?view=contact">Alle berichten</a>
         </div>
     </div>
     <?php
 } else if (!isset($_SESSION['gebruikersnaam'])) {
-    ?>
-        <script>
-            location.replace("http://localhost/focus6/login");
-        </script>
-    <?php
+    header("Location: ?view=login");
 }
 $con->close();
 ?>
