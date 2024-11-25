@@ -1,0 +1,50 @@
+@import "./global";
+
+.footer {
+    background-color: #C6CDE7;
+    padding-inline: 50px;
+    padding-block: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+
+    .footer-top {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 100px;
+
+        .footer-link {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+            border-bottom: 2px solid transparent;
+            transition: 0.2s;
+
+            .link-logo {
+                width: 24px;
+                height: 24px;
+            }
+
+            .link-text {
+                font-size: 20px;
+                color: black;
+            }
+        }
+
+        .footer-link:hover {
+            border-bottom: 2px solid black;
+        }
+
+        .footer-logo {
+            width: 15%;
+        }
+    }
+
+    .footer-bottom {
+        font-size: 16px;
+        color: black;
+        display: flex;
+        align-self: center;
+    }
+}
