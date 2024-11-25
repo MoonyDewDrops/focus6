@@ -1,18 +1,44 @@
 <?php
 //checking if its a post/get
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $result = $_POST;
+    var_dump($result);
     //setting the things as the posts so we acc got sum to work with   
     $id = $_GET['id'];
-    $kolomType = $_POST['columnType'];
-    $hoeveelsteRow = $_POST['welkeRow'];
 
-    $informatie = $_POST['informatie'];
-    $welkeRow = $_POST['welkeRow'];
-    $hoeveelsteKolom = 1;
-    $image = 0;
-    $backgroundColor =  0;
 
-    //sql command 
+    echo "<br>______<br>";
+
+    foreach ($result as $rows) {
+        echo "<br><br>";
+        var_dump($rows);
+        echo "<br>+++<br>";
+        if (is_array($rows)) {
+            foreach ($rows as $columns) {
+                echo "<br><br>";
+                var_dump($columns);
+
+                $kolomType = $columns['CT'];
+                $hoeveelsteRow = $columns['ROW'];
+
+                // if ($result[1][1]["IMG"] == 'no') {
+                //     $informatie = $_POST['informatie'];
+                // } else {
+                //     $image = 1;
+                // }
+
+                $welkeRow = $columns['ROW'];
+                $hoeveelsteKolom = $columns['COL'];
+                $image = $columns['IMG'];
+                $backgroundColor = $columns['BG'];
+            }
+        }
+        echo "<br>+++<br>";
+    }
+
+    
+
+    //sql command nog niet belangrijk
     $sql = "UPDATE paginagrid SET columnType = ? WHERE pageValue = ? AND rowPosition = ?";
     $updateqry = $con->prepare($sql);
 
@@ -23,13 +49,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         //else it just updates
         $updateqry->bind_param('iii', $kolomType, $id, $hoeveelsteRow);
         if ($updateqry->execute()) {
-            header("Location: editProcess?id=" . urlencode($id));
+            // header("Location: editProcess?id=" . urlencode($id));
         } else {
             echo "Error updating recensie: " . $updateqry->error;
         }
     }
 
     $updateqry->close();
+
+
 
     $id = $_GET['id'];
     $sql = "SELECT informatie FROM paginaInfo WHERE whichRow = ? AND colum = ?";
@@ -45,10 +73,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if (isset($_FILES['photo']) && $_FILES['photo']['error'] === UPLOAD_ERR_OK) {
         $imageNaam = basename($_FILES['photo']['name']);
         $imageTempName = $_FILES['photo']['tmp_name'];
-        $wantedDirectory = 'C:/laragon/www/focus6/assets/fotos/';
+        $wantedDirectory = 'assets/fotos/';
         $wantedPath = $wantedDirectory . $imageNaam;
 
-        if (move_uploaded_file($imageTempName, $wantedPath)) {
+        if (move_uploaded_file($imageTempName, to: $wantedPath)) {
             if (file_exists($oudeInformatie) && strpos($oudeInformatie, $wantedDirectory) !== false) {
                 unlink($oudeInformatie);
             }
@@ -62,6 +90,18 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $informatie = $oudeInformatie;
     }
 
+
+    echo $informatie;
+    echo "<br>";
+    echo $image;
+    echo "<br>";
+    echo $backgroundColor;
+    echo "<br>";
+    $welkeRow = 1;
+    echo $welkeRow;
+    echo "<br>";
+    echo $hoeveelsteKolom;
+
     $sql2 = "UPDATE paginainfo SET informatie = ?, foto = ?, backgroundColor = ? WHERE whichRow = ? AND colum = ?";
     $updateqry2 = $con->prepare($sql2);
     //if there aint a update querry, show an error 
@@ -71,7 +111,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         //else it just updates
         $updateqry2->bind_param('siiii', $informatie, $image, $backgroundColor, $welkeRow, $hoeveelsteKolom);
         if ($updateqry2->execute()) {
-            header("Location: editProcess?id=" . urlencode($id));
+            // header("Location: editProcess?id=" . urlencode($id));
         } else {
             echo "Error updating recensie: " . $updateqry2->error;
         }
@@ -79,4 +119,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 }
 
 $con->close();
+
+
 
