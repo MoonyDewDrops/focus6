@@ -1,0 +1,12 @@
+.footer {
+  background-color: #C6CDE7;
+}
+.footer .footer-top {
+  display: flex;
+}
+.footer .footer-top .footer-link {
+  display: flex;
+  gap: 5px;
+}
+
+/*# sourceMappingURL=footer.css.map */

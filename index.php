@@ -84,9 +84,9 @@ switch ($view) {
         $js = 'functions/editing/editRow.js';
         break;
     case 'customPage':
-            $page = 'customPage.php';
-            $style = 'customPage.css';
-            $js = 'customPage.js';
+        $page = 'customPage.php';
+        $style = 'customPage.css';
+        $js = 'customPage.js';
         break;
     default:
         $page = '404.php';

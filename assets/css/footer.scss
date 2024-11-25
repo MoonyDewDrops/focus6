@@ -1,0 +1,14 @@
+@import "./global";
+
+.footer {
+    background-color: #C6CDE7;
+
+    .footer-top {
+        display: flex;
+
+        .footer-link {
+            display: flex;
+            gap: 5px;
+        }
+    }
+}
