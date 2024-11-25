@@ -45,7 +45,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if (isset($_FILES['photo']) && $_FILES['photo']['error'] === UPLOAD_ERR_OK) {
         $imageNaam = basename($_FILES['photo']['name']);
         $imageTempName = $_FILES['photo']['tmp_name'];
-        $wantedDirectory = 'C:/laragon/www/focus6/assets/fotos/';
+        $wantedDirectory = 'assets/fotos/';
         $wantedPath = $wantedDirectory . $imageNaam;
 
         if (move_uploaded_file($imageTempName, $wantedPath)) {

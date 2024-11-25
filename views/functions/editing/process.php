@@ -57,7 +57,7 @@
                         <p>Row: <br> <?= $rowPosition ?></p>
                         <!-- dit is hoeveel kollomen er zijn -->
                         <?php 
-                        for ($i = 1; $i <= $columnType; $i++) {
+                        for ($i = 1; $i < $columnType; $i++) {
                             ?>
                             
                             
@@ -96,9 +96,9 @@
         <?php
         $rowPosition = isset($rowPosition) ? $rowPosition + 1 : 1;
         ?>
-        <form action="addingRow" method="post" enctype="multipart/form-data">
-            <label for="columnType">How many columns?</label><br>
-            <input type="number" name="columnType" placeholder="1" style="width:10%;" min="1" required>
+        <form action="addingRow?id=<?=$row['pageValue'];?>" method="post" enctype="multipart/form-data">
+            <label for="columnType">What column type?</label><br>
+            <input type="number" name="columnType" placeholder="1" style="width:10%;" min="1" max="4" required>
             <br><br>
             <input type="hidden" value="<?= $rowPosition ?>" name="rowPosition" id="rowPosition">
             <input type="hidden" value="<?= $paginaID ?>" name="pageValue" id="pageValue">
