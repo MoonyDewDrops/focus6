@@ -5,7 +5,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     var_dump($result);
     //setting the things as the posts so we acc got sum to work with   
     $id = $_GET['id'];
+    $sql = "SELECT informatie FROM paginaInfo WHERE whichRow = ? AND colum = ?";
+    $selectqry = $con->prepare($sql);
+    $selectqry->bind_param('ii', $welkeRow, $hoeveelsteKolom);
 
+    $sql2 = "UPDATE paginainfo SET informatie = ?, foto = ?, backgroundColor = ? WHERE whichRow = ? AND colum = ?";
+    $updateqry2 = $con->prepare($sql2);
+    if ($updateqry2 === false) {
+        echo mysqli_error($con);
+    }
+    $updateqry2->bind_param('siiii', $informatie, $image, $backgroundColor, $welkeRow, $hoeveelsteKolom);
 
     echo "<br>______<br>";
 
@@ -31,12 +40,62 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 $hoeveelsteKolom = $columns['COL'];
                 $image = $columns['IMG'];
                 $backgroundColor = $columns['BG'];
+
+
+
+                if ($image == 'Yes') {
+                    if (isset($_FILES[$welkeRow][$hoeveelsteKolom]['file']) && $_FILES[$welkeRow][$hoeveelsteKolom]['file']['error'] === UPLOAD_ERR_OK) {
+                        $imageNaam = basename($_FILES[$welkeRow][$hoeveelsteKolom]['file']['name']);
+                        $imageTempName = $_FILES[$welkeRow][$hoeveelsteKolom]['file']['tmp_name'];
+                        $wantedDirectory = 'assets/img/fotos/';
+                        $wantedPath = $wantedDirectory . $imageNaam;
+
+                        $selectqry->execute();
+                        $selectqry->bind_result($oudeInformatie);
+                        $selectqry->fetch();
+
+                        if (move_uploaded_file($imageTempName, to: $wantedPath)) {
+                            if (file_exists($oudeInformatie) && strpos($oudeInformatie, $wantedDirectory) !== false) {
+                                unlink($oudeInformatie);
+                            }
+                            $informatie = $wantedPath;
+                        } else {
+                            $informatie = $oudeInformatie;
+                        }
+                    } else if (!empty($columns['text'])) {
+                        $informatie = $columns['text'];
+                    } else {
+                        $informatie = " ";
+                    }
+                } else {
+                    $informatie = $columns['text'];
+                }
+
+                echo $informatie;
+                echo "<br>";
+                echo $image;
+                echo "<br>";
+                echo $backgroundColor;
+                echo "<br>";
+                $welkeRow = 1;
+                echo $welkeRow;
+                echo "<br>";
+                echo $hoeveelsteKolom;
+
+                if ($updateqry2->execute()) {
+                    // header("Location: editProcess?id=" . urlencode($id));
+                    echo "gelukt";
+                } else {
+                    echo "Error updating recensie: " . $updateqry2->error;
+                }
+
             }
         }
+
         echo "<br>+++<br>";
     }
 
-    
+
 
     //sql command nog niet belangrijk
     $sql = "UPDATE paginagrid SET columnType = ? WHERE pageValue = ? AND rowPosition = ?";
@@ -54,68 +113,21 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             echo "Error updating recensie: " . $updateqry->error;
         }
     }
-
     $updateqry->close();
-
-
-
-    $id = $_GET['id'];
-    $sql = "SELECT informatie FROM paginaInfo WHERE whichRow = ? AND colum = ?";
-
-    $selectqry = $con->prepare($sql);
-    $selectqry->bind_param('ii', $welkeRow, $hoeveelsteKolom);
-    $selectqry->execute();
-    $selectqry->bind_result($oudeInformatie);
-    $selectqry->fetch();
     $selectqry->close();
 
     // Handle file upload if provided
-    if (isset($_FILES['photo']) && $_FILES['photo']['error'] === UPLOAD_ERR_OK) {
-        $imageNaam = basename($_FILES['photo']['name']);
-        $imageTempName = $_FILES['photo']['tmp_name'];
-        $wantedDirectory = 'assets/fotos/';
-        $wantedPath = $wantedDirectory . $imageNaam;
-
-        if (move_uploaded_file($imageTempName, to: $wantedPath)) {
-            if (file_exists($oudeInformatie) && strpos($oudeInformatie, $wantedDirectory) !== false) {
-                unlink($oudeInformatie);
-            }
-            $informatie = $wantedPath;
-        } else {
-            $informatie = $oudeInformatie;
-        }
-    } else if (!empty($_POST['informatie'])) {
-        $informatie = $_POST['informatie'];
-    } else {
-        $informatie = $oudeInformatie;
-    }
 
 
-    echo $informatie;
-    echo "<br>";
-    echo $image;
-    echo "<br>";
-    echo $backgroundColor;
-    echo "<br>";
-    $welkeRow = 1;
-    echo $welkeRow;
-    echo "<br>";
-    echo $hoeveelsteKolom;
 
-    $sql2 = "UPDATE paginainfo SET informatie = ?, foto = ?, backgroundColor = ? WHERE whichRow = ? AND colum = ?";
-    $updateqry2 = $con->prepare($sql2);
+
+
     //if there aint a update querry, show an error 
-    if ($updateqry2 === false) {
-        echo mysqli_error($con);
-    } else {
-        //else it just updates
-        $updateqry2->bind_param('siiii', $informatie, $image, $backgroundColor, $welkeRow, $hoeveelsteKolom);
-        if ($updateqry2->execute()) {
-            // header("Location: editProcess?id=" . urlencode($id));
-        } else {
-            echo "Error updating recensie: " . $updateqry2->error;
-        }
-    }
+
+    //else it just updates
+
+
+
 }
 
 $con->close();
