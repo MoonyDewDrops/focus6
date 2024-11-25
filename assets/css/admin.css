@@ -146,6 +146,7 @@ input[type=radio] {
 .cmsContainer .gridsquare form {
   display: flex;
   flex-direction: column;
+  grid-template-columns: 1fr;
 }
 .cmsContainer .gridsquare textarea {
   resize: none;
