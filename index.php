@@ -73,6 +73,11 @@ switch ($view) {
         $style = 'functions/editing/addingRow.css';
         $js = 'functions/editing/addingRow.js';
         break;
+    case 'baseData':
+        $page = 'functions/editing/baseDataRow.php';
+        $style = 'functions/editing/baseDataRow.css';
+        $js = 'functions/editing/baseDataRow.js';
+        break;
     case 'editProcess':
         $page = 'functions/editing/process.php';
         $style = 'functions/editing/process.css';
@@ -84,9 +89,9 @@ switch ($view) {
         $js = 'functions/editing/editRow.js';
         break;
     case 'customPage':
-            $page = 'customPage.php';
-            $style = 'customPage.css';
-            $js = 'customPage.js';
+        $page = 'customPage.php';
+        $style = 'customPage.css';
+        $js = 'customPage.js';
         break;
     default:
         $page = '404.php';
