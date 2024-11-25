@@ -73,11 +73,20 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
                 echo $informatie;
                 echo "<br>";
+                if ($image == 'Yes') {
+                    $image = 1;
+                } else {
+                    $image = 0;
+                }
                 echo $image;
                 echo "<br>";
+                if ($backgroundColor == 'Yes') {
+                    $backgroundColor = 1;
+                } else {
+                    $backgroundColor = 0;
+                }
                 echo $backgroundColor;
                 echo "<br>";
-                $welkeRow = 1;
                 echo $welkeRow;
                 echo "<br>";
                 echo $hoeveelsteKolom;

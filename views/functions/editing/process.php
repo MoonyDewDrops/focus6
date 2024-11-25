@@ -37,6 +37,9 @@
             $stmt->fetch();
             $stmt->close();
 
+            $columnqry = $con->prepare("SELECT informatie, colum, foto, backgroundColor FROM paginainfo WHERE WhichRow = ?");
+            $columnqry->bind_param('i', $rowID);
+            $columnqry->bind_result( $col_info, $colum, $col_foto, $col_bg);
             $existing = 0;
             ?>
             <form action="editRow?id=<?= $paginaID ?>" method="post" enctype="multipart/form-data" class="gridsquare">
@@ -49,9 +52,18 @@
                         if ($paginaID == $row['pageValue']) {
                             $existing = 1;
                             $rowPosition = $row['rowPosition'];
+                            $rowID = $row['id'];
                             $columnType = $row['columnType'];
                             //9
                             $pageValue = $row['pageValue']; //9
+
+                            $columnqry->execute();
+                            $columnqry->store_result();
+                            $columnqry->fetch();
+                            var_dump($col_info);
+                            var_dump($colum);
+                            var_dump($col_foto);
+                            var_dump($col_bg);
                             ?>
                             <!-- Display grid data -->
                             <p>Row: <?= $rowPosition ?></p>
@@ -74,35 +86,81 @@
                                 for ($i = 1; $i <= $columnAmount; $i++) {
                                     ?>
                                     <div class="columnSettings">
-                                        <textarea name="<?= $rowPosition ?>[<?= $i ?>][text]">fuck<?= $i ?></textarea> 
+                                        <?php 
+                                        if ($col_foto == '0') {
+                                            ?>
+                                            <textarea name="<?= $rowID ?>[<?= $i ?>][text]"><?= $col_info ?></textarea>
+                                            <?php
+                                        } else {
+                                            ?>
+                                            <textarea name="<?= $rowID ?>[<?= $i ?>][text]"></textarea>
+                                            <?php
+                                        }
+                                         ?>
                                         <div>
-                                            <label for="<?= $rowPosition ?>[<?= $i ?>][BG]">Background</label>
-                                            <div>
-                                                <span>No</span>
-                                                <input type="radio" name="<?= $rowPosition ?>[<?= $i ?>][BG]" value="No" checked>
-                                            </div>
-                                            <div>
-                                                <span>Yes</span>
-                                                <input type="radio" name="<?= $rowPosition ?>[<?= $i ?>][BG]" value="Yes">
-                                            </div>
+                                            <?php
+                                            if ($col_bg == '0') {
+                                                ?>
+                                                <label for="<?= $rowID ?>[<?= $i ?>][BG]">Background</label>
+                                                <div>
+                                                    <span>No</span>
+                                                    <input type="radio" name="<?= $rowID ?>[<?= $i ?>][BG]" value="No" checked>
+                                                </div>
+                                                <div>
+                                                    <span>Yes</span>
+                                                    <input type="radio" name="<?= $rowID ?>[<?= $i ?>][BG]" value="Yes">
+                                                </div>
+                                                <?php
+                                            } else {
+                                                ?>
+                                                <label for="<?= $rowID ?>[<?= $i ?>][BG]">Background</label>
+                                                <div>
+                                                    <span>No</span>
+                                                    <input type="radio" name="<?= $rowID ?>[<?= $i ?>][BG]" value="No">
+                                                </div>
+                                                <div>
+                                                    <span>Yes</span>
+                                                    <input type="radio" name="<?= $rowID ?>[<?= $i ?>][BG]" value="Yes" checked>
+                                                </div>
+                                                <?php
+                                            }
+                                            ?>
                                         </div>
                                         <div>
-                                            <label for="<?= $rowPosition ?>[<?= $i ?>][IMG]">Image</label>
-                                            <div>
-                                                <span>No</span>
-                                                <input type="radio" name="<?= $rowPosition ?>[<?= $i ?>][IMG]" value="No" checked>
-                                            </div>
-                                            <div>
-                                                <span>Yes</span>
-                                                <input type="radio" name="<?= $rowPosition ?>[<?= $i ?>][IMG]" value="Yes">
-                                            </div>
+                                            <?php
+                                            if ($col_foto == '0'){
+                                                ?>
+                                                <label for="<?= $rowID ?>[<?= $i ?>][IMG]">Image</label>
+                                                <div>
+                                                    <span>No</span>
+                                                    <input type="radio" name="<?= $rowID ?>[<?= $i ?>][IMG]" value="No" checked>
+                                                </div>
+                                                <div>
+                                                    <span>Yes</span>
+                                                    <input type="radio" name="<?= $rowID ?>[<?= $i ?>][IMG]" value="Yes">
+                                                </div>
+                                                <?php
+                                            } else {
+                                                ?>
+                                                <label for="<?= $rowID ?>[<?= $i ?>][IMG]">Image</label>
+                                                <div>
+                                                    <span>No</span>
+                                                    <input type="radio" name="<?= $rowID ?>[<?= $i ?>][IMG]" value="No">
+                                                </div>
+                                                <div>
+                                                    <span>Yes</span>
+                                                    <input type="radio" name="<?= $rowID ?>[<?= $i ?>][IMG]" value="Yes" checked>
+                                                </div>
+                                                <?php
+                                            }
+                                            ?>
                                         </div>
-                                        <input type="file" name="<?= $rowPosition ?>[<?= $i ?>]['file']">
-                                        <input type="hidden" value="<?= $columnType ?>" name="<?= $rowPosition ?>[<?= $i ?>][CT]"
+                                        <input type="file" name="<?= $rowID ?>[<?= $i ?>]['file']">
+                                        <input type="hidden" value="<?= $columnType ?>" name="<?= $rowID ?>[<?= $i ?>][CT]"
                                             id="columnType">
-                                        <input type="hidden" value="<?= $rowPosition ?>" name="<?= $rowPosition ?>[<?= $i ?>][ROW]"
+                                        <input type="hidden" value="<?= $rowID ?>" name="<?= $rowID ?>[<?= $i ?>][ROW]"
                                             id="welkeRow">
-                                        <input type="hidden" value="<?= $i ?>" name="<?= $rowPosition ?>[<?= $i ?>][COL]"
+                                        <input type="hidden" value="<?= $i ?>" name="<?= $rowID ?>[<?= $i ?>][COL]"
                                             id="hoeveelsteKolom">
                                     </div>
                                     <?php
