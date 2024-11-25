@@ -1,12 +1,11 @@
 <?php
 //checking if its a post 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    if (isset($_POST['pageValue'])) {
-        //checking if it isn't empty
-        $columnType = $_POST['columnType'];
+    if (isset($_POST['pageValue']) && isset($_GET['id'])) {
+        $id = $_GET['id'];
+        $columnType = (int)$_POST['columnType'];
         $rowPosition = $_POST['rowPosition'];
-        $pageValue = $_POST['pageValue'];     
-
+        $pageValue = $_POST['pageValue'];
 
         $sql = "INSERT INTO paginagrid (rowPosition, columnType, pageValue) VALUES (?, ?, ?)";
         $insertqry = $con->prepare($sql);
@@ -16,9 +15,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         } else {
             $insertqry->bind_param('iii', $rowPosition, $columnType, $pageValue);
             if ($insertqry->execute()) {
-                //if it succesfully adds the thing
-                header("Location: editProcess?id=" . urlencode($pageValue));
-            } else {
+                header("Location: baseData?id=" . urlencode($id) . "&rowPosition=" . urlencode($rowPosition) . "&columnType=" . urlencode($columnType));
+                exit;
+                            } else {
                 //if it fails
                 echo "Error adding row: " . $insertqry->error;
             }
