@@ -37,9 +37,9 @@
             $stmt->fetch();
             $stmt->close();
 
-            $columnqry = $con->prepare("SELECT informatie, colum, foto, backgroundColor FROM paginainfo WHERE WhichRow = ?");
-            $columnqry->bind_param('i', $rowID);
-            $columnqry->bind_result( $col_info, $colum, $col_foto, $col_bg);
+            $columnqry = $con->prepare("SELECT id, informatie, colum, foto, backgroundColor FROM paginainfo WHERE WhichRow = ? AND colum = ?");
+            $columnqry->bind_param('ii', $rowID, $columnID);
+            $columnqry->bind_result($col_id, $col_info, $colum, $col_foto, $col_bg);
             $existing = 0;
             ?>
             <form action="editRow?id=<?= $paginaID ?>" method="post" enctype="multipart/form-data" class="gridsquare">
@@ -56,14 +56,8 @@
                             $columnType = $row['columnType'];
                             //9
                             $pageValue = $row['pageValue']; //9
+            
 
-                            $columnqry->execute();
-                            $columnqry->store_result();
-                            $columnqry->fetch();
-                            var_dump($col_info);
-                            var_dump($colum);
-                            var_dump($col_foto);
-                            var_dump($col_bg);
                             ?>
                             <!-- Display grid data -->
                             <p>Row: <?= $rowPosition ?></p>
@@ -84,9 +78,13 @@
                                         break;
                                 }
                                 for ($i = 1; $i <= $columnAmount; $i++) {
+                                    $columnID = $i;
+                                    $columnqry->execute();
+                                    $columnqry->store_result();
+                                    $columnqry->fetch();
                                     ?>
                                     <div class="columnSettings">
-                                        <?php 
+                                        <?php
                                         if ($col_foto == '0') {
                                             ?>
                                             <textarea name="<?= $rowID ?>[<?= $i ?>][text]"><?= $col_info ?></textarea>
@@ -96,7 +94,7 @@
                                             <textarea name="<?= $rowID ?>[<?= $i ?>][text]"></textarea>
                                             <?php
                                         }
-                                         ?>
+                                        ?>
                                         <div>
                                             <?php
                                             if ($col_bg == '0') {
@@ -128,7 +126,7 @@
                                         </div>
                                         <div>
                                             <?php
-                                            if ($col_foto == '0'){
+                                            if ($col_foto == '0') {
                                                 ?>
                                                 <label for="<?= $rowID ?>[<?= $i ?>][IMG]">Image</label>
                                                 <div>
@@ -155,13 +153,10 @@
                                             }
                                             ?>
                                         </div>
-                                        <input type="file" name="<?= $rowID ?>[<?= $i ?>]['file']">
-                                        <input type="hidden" value="<?= $columnType ?>" name="<?= $rowID ?>[<?= $i ?>][CT]"
-                                            id="columnType">
-                                        <input type="hidden" value="<?= $rowID ?>" name="<?= $rowID ?>[<?= $i ?>][ROW]"
-                                            id="welkeRow">
-                                        <input type="hidden" value="<?= $i ?>" name="<?= $rowID ?>[<?= $i ?>][COL]"
-                                            id="hoeveelsteKolom">
+                                        <input type="file" name="<?=$col_id?>">
+                                        <input type="hidden" value="<?= $columnType ?>" name="<?= $rowID ?>[<?= $i ?>][CT]" id="columnType">
+                                        <input type="hidden" value="<?= $rowID ?>" name="<?= $rowID ?>[<?= $i ?>][ROW]" id="welkeRow">
+                                        <input type="hidden" value="<?= $i ?>" name="<?= $rowID ?>[<?= $i ?>][COL]" id="hoeveelsteKolom">
                                     </div>
                                     <?php
                                 }
@@ -187,7 +182,7 @@
         $rowPosition = isset($rowPosition) ? $rowPosition + 1 : 1;
         ?>
 
-        <form action="addingRow?id=<?=$paginaID;?>" method="post" enctype="multipart/form-data">
+        <form action="addingRow?id=<?= $paginaID; ?>" method="post" enctype="multipart/form-data">
             <label for="columnType">Which column-type?</label><br>
             <label class="columnPicker" for="columnType">
                 <input type="radio" name="columnType" value="1" checked>
