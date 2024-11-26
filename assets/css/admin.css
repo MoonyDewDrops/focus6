@@ -239,4 +239,105 @@ input[type=radio] {
   background-color: #d5d8e2;
   box-shadow: 0px 0px 10px 0px #9196a8 inset;
   color: black;
+}
+
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
+.modal-content {
+  background-color: white;
+  margin: 15% auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%;
+  border-radius: 20px;
+  box-shadow: 0px 0px 10px 0px #9196a8;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+}
+.modal-content .close {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+  justify-self: end;
+}
+.modal-content .close:hover,
+.modal-content .close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+.modal-content form {
+  grid-column: 1/span 3;
+  display: grid;
+  grid-template-columns: 1fr 3fr;
+  grid-gap: 1rem;
+  margin-top: 1rem;
+}
+.modal-content form p {
+  font-size: 2rem;
+  font-style: italic;
+  margin: 0;
+  grid-column: 1/span 2;
+}
+.modal-content form label {
+  font-size: 1.5rem;
+  font-weight: lighter;
+}
+.modal-content form input, .modal-content form textarea {
+  font-size: 1.4rem;
+  font-style: italic;
+  padding: 5px;
+  border: none;
+  border-bottom: 2px solid #9196a8;
+}
+.modal-content form input[type=submit] {
+  font-size: 1.5rem;
+  font-style: italic;
+  padding: 5px;
+  border: 1px solid #9196a8;
+  border-radius: 20px;
+  background-color: #9196a8;
+  box-shadow: 0px 0px 10px 0px #5b5d69 inset;
+  color: white;
+  grid-column: 2;
+}
+.modal-content form input[type=submit]:hover {
+  background-color: #d5d8e2;
+  box-shadow: 0px 0px 10px 0px #9196a8 inset;
+  color: black;
+}
+.modal-content .modalTitle {
+  font-size: 2rem;
+  font-style: italic;
+  margin-bottom: 1rem;
+  margin-top: 0;
+  grid-column: 1/span 3;
+}
+.modal-content .deleteYes, .modal-content .deleteNo {
+  font-size: 1.5rem;
+  text-decoration: none;
+  color: black;
+  cursor: pointer;
+  align-self: center;
+  justify-self: center;
+}
+.modal-content .deleteYes:hover, .modal-content .deleteNo:hover {
+  color: #00ADEE;
+}
+.modal-content .deleteYes {
+  grid-column: 1/span 2;
+}
+.modal-content .deleteNo {
+  grid-column: 3/span 2;
 }/*# sourceMappingURL=admin.css.map */

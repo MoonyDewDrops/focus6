@@ -1,6 +1,6 @@
 <?php include_once 'core/admin_header.php'; ?>
 <div class="cmsContainer">
-    <p class="cmsTitle">Overview existing rows</p>
+    <p class="cmsTitle">Overzicht bestaande rijen.</p>
     <div class="gridsquare">
 
         <?php
@@ -61,6 +61,7 @@
                             ?>
                             <!-- Display grid data -->
                             <p>Row: <?= $rowPosition ?></p>
+
                             <a href="deleteRow?id=<?=$rowID?>&pageValue=<?=$pageValue?>">bwapbwapbwap</a>
                             <div class="row<?= $columnType ?>">
                                 <?php
