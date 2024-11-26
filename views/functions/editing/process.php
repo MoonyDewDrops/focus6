@@ -1,6 +1,6 @@
 <?php include_once 'core/admin_header.php'; ?>
 <div class="cmsContainer">
-    <p class="cmsTitle">Overview existing rows</p>
+    <p class="cmsTitle">Overzicht bestaande rijen.</p>
     <div class="gridsquare">
 
         <?php
