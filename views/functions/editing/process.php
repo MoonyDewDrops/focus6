@@ -61,7 +61,7 @@
                             ?>
                             <!-- Display grid data -->
                             <p>Row: <?= $rowPosition ?></p>
-                            <div class="row<?= $columnType ?>">
+                            <div class="row<?= $columnType ?>" id="<?= $rowID?>">
                                 <?php
                                 switch ($columnType) {
                                     case 1:
