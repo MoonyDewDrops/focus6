@@ -58,10 +58,10 @@ switch ($view) {
         $style = 'functions/creating/create.css';
         $js = 'functions/creating/create.js';
         break;
-    case 'deleteProcess':
-        $page = 'functions/deleting/process.php';
-        $style = 'functions/deleting/process.css';
-        $js = 'functions/deleting/process.js';
+    case 'deletePageProcess':
+        $page = 'functions/deleting/deletePage.php';
+        $style = 'functions/deleting/deletePage.css';
+        $js = 'functions/deleting/deletePage.js';
         break;
     case 'deleting':
         $page = 'functions/deleting/delete.php';

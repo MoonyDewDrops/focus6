@@ -1,0 +1,39 @@
+@import "./global";
+
+.header {
+    background-color: white;
+    display: flex;
+    justify-content: space-between;
+    padding-inline: 50px;
+    align-items: center;
+    filter: drop-shadow(0px 2px 4px black);
+
+    .logo {
+         width: 20%;
+    
+        .logo-img {
+            width: 100%;
+        }
+    }
+
+    .header-links {
+        display: flex;
+        gap: 30px;
+
+        .header-link {
+            font-size: 22px;
+            color: black;
+            border-bottom: 2px solid transparent;
+            transition: 0.2s;
+        }
+
+        .header-link:hover {
+            border-bottom: 2px solid black;
+        }
+    }
+}
+
+
+
+
+
