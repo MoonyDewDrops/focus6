@@ -63,7 +63,7 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
         }
 
         if ($allSuccess) {
-            header("Location: editProcess?id=" . $id);
+            header("Location: ?view=editProcess&id=" . $id);
             exit;
         }
     } else {
@@ -72,4 +72,3 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
 } else {
     echo "Invalid request method. Only GET is allowed.";
 }
-?>

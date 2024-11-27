@@ -20,7 +20,15 @@ if (isset($_SESSION['gebruikersnaam'])) {
     if ($contactqry === false) {
         echo mysqli_error($con);
     }
-    ?>
+
+
+    $sqlSocials = "SELECT id, naam, link, image FROM socials ORDER BY id";
+    $socialsQry = $con->prepare($sqlSocials);
+    $socialsQry->bind_result($socialsID, $socialsNaam, $link, $image);
+    if ($socialsQry === false) {
+        echo mysqli_error($con);
+    }
+?>
 
     <?php include 'core/admin_header.php'; ?>
     <div class="container">
@@ -34,16 +42,17 @@ if (isset($_SESSION['gebruikersnaam'])) {
                 <?php
                 if (isset($paginas)) {
                     foreach ($paginas as $pagina) {
-                        ?>
+                ?>
                         <tr>
                             <td><?= $pagina['paginaNaam']; ?></td>
                             <td>
-                                <a href='editProcess?id=<?= $pagina['id']; ?>'>Edit</a>
+                                <a href='?view=editProcess&id=<?= $pagina['id']; ?>'>Edit</a>
                             </td>
                             <td>
                                 <p onclick="document.getElementById('del<?= $pagina['id']; ?>').style.display='grid'">Delete</p>
                             </td>
                         </tr>
+
                         <div id="del<?= $pagina['id']; ?>" class="modal">
                             <div class="modal-content">
                                 <p class="modalTitle">Weet je zeker dat je deze pagina (<?= $pagina['paginaNaam']; ?>) wilt
@@ -54,11 +63,13 @@ if (isset($_SESSION['gebruikersnaam'])) {
                                 <p class="deleteNo"
                                     onclick="document.getElementById('del<?= $pagina['id']; ?>').style.display='none'">Nee</p>
                             </div>
+
                         </div>
                             <?php
+
                     }
                 }
-                ?>
+                    ?>
             </table>
             <a class="add" href="?view=createProcess"> Pagina toevoegen </a>
         </div>
@@ -70,25 +81,34 @@ if (isset($_SESSION['gebruikersnaam'])) {
                     <th colspan="2">Opties</th>
                 </tr>
                 <tr>
-                    <td>Social media?</td>
-                    <td>Edit</td>
-                    <td>Delete</td>
+                    <?php
+                    if ($socialsQry->execute()) {
+                        while ($socialsQry->fetch()) {
+                    ?>
+                            <td><a href="<?=$link?>"><?=$socialsNaam?></a><img src="<?=$image?>" style="height:50px;width:auto;"></td>
+                            <td>Edit</td>
+                            <td><a href="deleteSocial?id=<?=$socialsID?>">Delete</a></td>
+                    <?php
+                        }
+                    }
+                    $socialsQry->close();
+                    ?>
                 </tr>
             </table>
-            <a class="add" href="?view=createSocial">Social toevoegen</a>
+            <a class="add" href="?view=formCreationSocial">Social toevoegen</a>
         </div>
         <div id="contactberichten" class="cmsOptions">
             <p class="optionTitle">Berichten</p>
             <?php
             if ($contactqry->execute()) {
                 while ($contactqry->fetch()) {
-                    ?>
+            ?>
                     <div class="berichtcontainer">
                         <p><?= $name ?></p>
                         <p><?= $email ?></p>
                         <p><?= $message ?></p>
                     </div>
-                    <?php
+            <?php
                 }
             }
             $contactqry->close();
@@ -112,12 +132,16 @@ if (isset($_SESSION['gebruikersnaam'])) {
                 </div>
             </div>
         </div>
-        <?php
+    </div>
+<?php
+
 } else if (!isset($_SESSION['gebruikersnaam'])) {
     header("Location: ?view=login");
 }
 $con->close();
-?>
+
+    ?>
+
     </body>
 
     </html>

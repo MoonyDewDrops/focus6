@@ -27,6 +27,13 @@
   opacity: 0.5;
 }
 
+.top-content {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  align-items: center;
+}
+
 .middle-content {
   display: flex;
   align-items: center;
