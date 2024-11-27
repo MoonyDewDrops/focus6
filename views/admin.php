@@ -20,7 +20,7 @@ if (isset($_SESSION['gebruikersnaam'])) {
     if ($contactqry === false) {
         echo mysqli_error($con);
     }
-    ?>
+?>
 
     <?php include 'core/admin_header.php'; ?>
     <div class="container">
@@ -34,16 +34,17 @@ if (isset($_SESSION['gebruikersnaam'])) {
                 <?php
                 if (isset($paginas)) {
                     foreach ($paginas as $pagina) {
-                        ?>
+                ?>
                         <tr>
                             <td><?= $pagina['paginaNaam']; ?></td>
                             <td>
-                                <a href='editProcess?id=<?= $pagina['id']; ?>'>Edit</a>
+                                <a href='?view=editProcess&id=<?= $pagina['id']; ?>'>Edit</a>
                             </td>
                             <td>
                                 <p onclick="document.getElementById('del<?= $pagina['id']; ?>').style.display='grid'">Delete</p>
                             </td>
                         </tr>
+
                         <div id="del<?= $pagina['id']; ?>" class="modal">
                             <div class="modal-content">
                                 <p class="modalTitle">Weet je zeker dat je deze pagina (<?= $pagina['paginaNaam']; ?>) wilt verwijderen?</p>
@@ -78,13 +79,13 @@ if (isset($_SESSION['gebruikersnaam'])) {
             <?php
             if ($contactqry->execute()) {
                 while ($contactqry->fetch()) {
-                    ?>
+            ?>
                     <div class="berichtcontainer">
                         <p><?= $name ?></p>
                         <p><?= $email ?></p>
                         <p><?= $message ?></p>
                     </div>
-                    <?php
+            <?php
                 }
             }
             $contactqry->close();
@@ -109,7 +110,7 @@ if (isset($_SESSION['gebruikersnaam'])) {
                 </div>
         </div>
     </div>
-    <?php
+<?php
 } else if (!isset($_SESSION['gebruikersnaam'])) {
     header("Location: ?view=login");
 }
