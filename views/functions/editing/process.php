@@ -20,7 +20,7 @@
             //noemt de paginaGrid als de data, en anders een lege array.
             $paginaGrid = $result->fetch_all(MYSQLI_ASSOC) ?: [];
             //VOLGENDEEEE
-        
+
             //sql stmt
             $sql = "SELECT id, paginaNaam FROM paginas WHERE id = ?";
             $stmt = $con->prepare($sql);
@@ -41,8 +41,8 @@
             $columnqry->bind_param('ii', $rowID, $columnID);
             $columnqry->bind_result($col_id, $col_info, $colum, $col_foto, $col_bg);
             $existing = 0;
-            ?>
-            <form action="editRow?id=<?= $paginaID ?>" method="post" enctype="multipart/form-data" class="gridsquare">
+        ?>
+            <form action="?view=editRow&id=<?= $paginaID ?>" method="post" enctype="multipart/form-data" class="gridsquare">
                 <p class="squareTitle">Pagina: <?= $paginaNaam ?></p>
                 <?php
                 if (!empty($paginaGrid)) {
@@ -56,9 +56,9 @@
                             $columnType = $row['columnType'];
                             //9
                             $pageValue = $row['pageValue']; //9
-            
 
-                            ?>
+
+                ?>
                             <!-- Display grid data -->
                             <p>Row: <?= $rowPosition ?></p>
                             <div class="row<?= $columnType ?>">
@@ -82,23 +82,23 @@
                                     $columnqry->execute();
                                     $columnqry->store_result();
                                     $columnqry->fetch();
-                                    ?>
+                                ?>
                                     <div class="columnSettings">
                                         <?php
                                         if ($col_foto == '0') {
-                                            ?>
+                                        ?>
                                             <textarea name="<?= $rowID ?>[<?= $i ?>][text]"><?= $col_info ?></textarea>
-                                            <?php
+                                        <?php
                                         } else {
-                                            ?>
+                                        ?>
                                             <textarea name="<?= $rowID ?>[<?= $i ?>][text]"></textarea>
-                                            <?php
+                                        <?php
                                         }
                                         ?>
                                         <div>
                                             <?php
                                             if ($col_bg == '0') {
-                                                ?>
+                                            ?>
                                                 <label for="<?= $rowID ?>[<?= $i ?>][BG]">Background</label>
                                                 <div>
                                                     <span>No</span>
@@ -108,9 +108,9 @@
                                                     <span>Yes</span>
                                                     <input type="radio" name="<?= $rowID ?>[<?= $i ?>][BG]" value="Yes">
                                                 </div>
-                                                <?php
+                                            <?php
                                             } else {
-                                                ?>
+                                            ?>
                                                 <label for="<?= $rowID ?>[<?= $i ?>][BG]">Background</label>
                                                 <div>
                                                     <span>No</span>
@@ -120,14 +120,14 @@
                                                     <span>Yes</span>
                                                     <input type="radio" name="<?= $rowID ?>[<?= $i ?>][BG]" value="Yes" checked>
                                                 </div>
-                                                <?php
+                                            <?php
                                             }
                                             ?>
                                         </div>
                                         <div>
                                             <?php
                                             if ($col_foto == '0') {
-                                                ?>
+                                            ?>
                                                 <label for="<?= $rowID ?>[<?= $i ?>][IMG]">Image</label>
                                                 <div>
                                                     <span>No</span>
@@ -137,9 +137,9 @@
                                                     <span>Yes</span>
                                                     <input type="radio" name="<?= $rowID ?>[<?= $i ?>][IMG]" value="Yes">
                                                 </div>
-                                                <?php
+                                            <?php
                                             } else {
-                                                ?>
+                                            ?>
                                                 <label for="<?= $rowID ?>[<?= $i ?>][IMG]">Image</label>
                                                 <div>
                                                     <span>No</span>
@@ -149,20 +149,20 @@
                                                     <span>Yes</span>
                                                     <input type="radio" name="<?= $rowID ?>[<?= $i ?>][IMG]" value="Yes" checked>
                                                 </div>
-                                                <?php
+                                            <?php
                                             }
                                             ?>
                                         </div>
-                                        <input type="file" name="<?=$col_id?>">
+                                        <input type="file" name="<?= $col_id ?>">
                                         <input type="hidden" value="<?= $columnType ?>" name="<?= $rowID ?>[<?= $i ?>][CT]" id="columnType">
                                         <input type="hidden" value="<?= $rowID ?>" name="<?= $rowID ?>[<?= $i ?>][ROW]" id="welkeRow">
                                         <input type="hidden" value="<?= $i ?>" name="<?= $rowID ?>[<?= $i ?>][COL]" id="hoeveelsteKolom">
                                     </div>
-                                    <?php
+                                <?php
                                 }
                                 ?>
                             </div>
-                            <?php
+                <?php
                         }
                     }
                 }
@@ -176,43 +176,43 @@
                 <input type="submit" value="Edit row" style="grid-column: 1;">
 
             </form>
-        </div>
-        <p>Add a row</p>
-        <?php
-        $rowPosition = isset($rowPosition) ? $rowPosition + 1 : 1;
-        ?>
+    </div>
+    <p>Add a row</p>
+    <?php
+            $rowPosition = isset($rowPosition) ? $rowPosition + 1 : 1;
+    ?>
 
-        <form action="addingRow?id=<?= $paginaID; ?>" method="post" enctype="multipart/form-data">
-            <label for="columnType">Which column-type?</label><br>
-            <label class="columnPicker" for="columnType">
-                <input type="radio" name="columnType" value="1" checked>
-                <img src="assets/img/cms-style/columntype1.png" alt="placeholder">
-            </label>
-            <label class="columnPicker" for="columnType">
-                <input type="radio" name="columnType" value="2">
-                <img src="assets/img/cms-style/columntype2.png" alt="placeholder">
-            </label>
-            <label class="columnPicker" for="columnType">
-                <input type="radio" name="columnType" value="3">
-                <img src="assets/img/cms-style/columntype3.png" alt="placeholder">
-            </label>
-            <label class="columnPicker" for="columnType">
-                <input type="radio" name="columnType" value="4">
-                <img src="assets/img/cms-style/columntype4.png" alt="placeholder">
-            </label>
+    <form action="?view=addingRow&id=<?= $paginaID; ?>" method="post" enctype="multipart/form-data">
+        <label for="columnType">Which column-type?</label><br>
+        <label class="columnPicker" for="columnType">
+            <input type="radio" name="columnType" value="1" checked>
+            <img src="assets/img/cms-style/columntype1.png" alt="placeholder">
+        </label>
+        <label class="columnPicker" for="columnType">
+            <input type="radio" name="columnType" value="2">
+            <img src="assets/img/cms-style/columntype2.png" alt="placeholder">
+        </label>
+        <label class="columnPicker" for="columnType">
+            <input type="radio" name="columnType" value="3">
+            <img src="assets/img/cms-style/columntype3.png" alt="placeholder">
+        </label>
+        <label class="columnPicker" for="columnType">
+            <input type="radio" name="columnType" value="4">
+            <img src="assets/img/cms-style/columntype4.png" alt="placeholder">
+        </label>
 
-            <input type="hidden" value="<?= $rowPosition ?>" name="rowPosition" id="rowPosition">
-            <input type="hidden" value="<?= $paginaID ?>" name="pageValue" id="pageValue">
-            <input type="submit" value="Add a row">
-        </form>
+        <input type="hidden" value="<?= $rowPosition ?>" name="rowPosition" id="rowPosition">
+        <input type="hidden" value="<?= $paginaID ?>" name="pageValue" id="pageValue">
+        <input type="submit" value="Add a row">
+    </form>
 
-        <?php
+<?php
         } else {
             echo 'Pagina ID is missend, probeer opnieuw!';
         }
 
         $con->close();
-        ?>
+?>
 
 </div>
 </body>
