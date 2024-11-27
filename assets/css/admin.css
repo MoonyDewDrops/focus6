@@ -343,11 +343,72 @@ input[type=radio] {
 }
 
 .berichtcontainer {
-  border: 1px solid red;
+  margin-top: -1rem;
+  padding: 1rem;
+  background-color: rgba(213, 216, 226, 0.462745098);
+  box-shadow: 0px 0px 5px 0px #9196a8 inset;
 }
 .berichtcontainer .bericht {
-  border: 1px solid blue;
+  background-color: white;
+  margin: 1rem;
+  padding: 1rem;
+  box-shadow: 0px 0px 5px 0px #9196a8;
+}
+.berichtcontainer .bericht:hover {
+  box-shadow: 0px 0px 5px 0px rgb(74, 74, 74);
+}
+.berichtcontainer .bericht .verwijderen {
+  grid-column: 2;
+  justify-self: end;
+  color: red;
+}
+.berichtcontainer .bericht .berichtinfo {
+  display: grid;
+  border-bottom: 1px solid #9196a8;
+}
+.berichtcontainer .bericht .berichtinfo .bericht_id {
+  font-weight: lighter;
+}
+.berichtcontainer .bericht .berichtinfo .bericht_titel {
+  grid-column: 1/span 2;
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+  margin-top: 0;
+}
+.berichtcontainer .bericht .berichtinfo .bericht_titel :nth-child(1) {
+  font-weight: bold;
+}
+.berichtcontainer .bericht .berichtinfo .bericht_titel :nth-child(2) {
+  font-style: italic;
+}
+.berichtcontainer .bericht .berichtinfo .berichtTekst {
+  grid-column: 1/span 2;
+  font-size: 1.2rem;
+  margin-bottom: 1rem;
+  margin-top: 0;
+  padding-left: 1rem;
 }
 .berichtcontainer .bericht .berichtNotitie {
-  border: 1px solid green;
+  margin: 1rem;
+  padding: 1rem;
+  box-shadow: 1px 1px 5px 0px #9196a8;
+  display: grid;
+}
+.berichtcontainer .bericht .berichtNotitie:hover {
+  box-shadow: 1px 1px 5px 0px rgb(74, 74, 74);
+}
+.berichtcontainer .bericht .berichtNotitie .notitieNummer {
+  font-weight: bold;
+}
+.berichtcontainer .bericht .berichtNotitie .notitieTekst {
+  font-size: 1.1rem;
+  font-weight: lighter;
+  grid-column: 1/span 2;
+}
+.berichtcontainer .aanpassen {
+  color: #015c7c;
+  transition-duration: 0.4s;
+}
+.berichtcontainer .aanpassen:hover {
+  color: #00ADEE;
 }/*# sourceMappingURL=admin.css.map */

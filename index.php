@@ -108,6 +108,21 @@ switch ($view) {
         $style = 'functions/contact/deleteContact.css';
         $js = 'functions/contact/deleteContact.js';
         break;
+    case 'deleteNotitieProcess':
+        $page = 'functions/contact/notitieDelete.php';
+        $style = 'functions/contact/notitieDelete.css';
+        $js = 'functions/contact/notitieDelete.js';
+        break;
+    case 'editNotitieProcess':
+        $page = 'functions/contact/notitieEdit.php';
+        $style = 'functions/contact/notitieEdit.css';
+        $js = 'functions/contact/notitieEdit.js';
+        break;
+    case 'addNotitieProcess':
+        $page = 'functions/contact/notitieAdd.php';
+        $style = 'functions/contact/notitieAdd.css';
+        $js = 'functions/contact/notitieAdd.js';
+        break;
     default:
         $page = '404.php';
         $style = '404.css';
