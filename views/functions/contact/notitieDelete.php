@@ -1,0 +1,13 @@
+<?php
+
+if (isset($_GET['id'])) {
+    $id = $_GET['id'];
+    $sql = "DELETE FROM notities WHERE id = ?";
+    $stmt = $con->prepare($sql);
+    $stmt->bind_param('i', $id);
+    if ($stmt->execute()) {
+        header('Location: contactProcess');
+    } else {
+        echo mysqli_error($con);
+    }
+}
