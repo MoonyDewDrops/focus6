@@ -5,7 +5,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     var_dump($result);
     //setting the things as the posts so we acc got sum to work with   
     $id = $_GET['id'];
-    $sql = "SELECT id, informatie FROM paginaInfo WHERE whichRow = ? AND colum = ?";
+    $sql = "SELECT id, informatie FROM paginainfo WHERE whichRow = ? AND colum = ?";
     $selectqry = $con->prepare($sql);
     $selectqry->bind_param('ii', $welkeRow, $hoeveelsteKolom);
 
@@ -80,7 +80,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 } else {
                     echo "Error updating recensie: " . $updateqry2->error;
                 }
-
             }
         }
     }
@@ -96,7 +95,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         //else it just updates
         $updateqry->bind_param('iii', $kolomType, $id, $hoeveelsteRow);
         if ($updateqry->execute()) {
-            header("Location: editProcess?id=" . urlencode($id));
+            header("Location: ?view=editProcess&id=" . urlencode($id));
         } else {
             echo "Error updating recensie: " . $updateqry->error;
         }
@@ -107,6 +106,3 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 }
 
 $con->close();
-
-
-

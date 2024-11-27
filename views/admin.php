@@ -21,6 +21,7 @@ if (isset($_SESSION['gebruikersnaam'])) {
         echo mysqli_error($con);
     }
 
+
     $sqlSocials = "SELECT id, naam, link, image FROM socials ORDER BY id";
     $socialsQry = $con->prepare($sqlSocials);
     $socialsQry->bind_result($socialsID, $socialsNaam, $link, $image);
@@ -45,12 +46,13 @@ if (isset($_SESSION['gebruikersnaam'])) {
                         <tr>
                             <td><?= $pagina['paginaNaam']; ?></td>
                             <td>
-                                <a href='editProcess?id=<?= $pagina['id']; ?>'>Edit</a>
+                                <a href='?view=editProcess&id=<?= $pagina['id']; ?>'>Edit</a>
                             </td>
                             <td>
                                 <p onclick="document.getElementById('del<?= $pagina['id']; ?>').style.display='grid'">Delete</p>
                             </td>
                         </tr>
+
                         <div id="del<?= $pagina['id']; ?>" class="modal">
                             <div class="modal-content">
                                 <p class="modalTitle">Weet je zeker dat je deze pagina (<?= $pagina['paginaNaam']; ?>) wilt verwijderen?</p>
@@ -125,7 +127,8 @@ if (isset($_SESSION['gebruikersnaam'])) {
                 </div>
             </div>
         </div>
-    <?php
+    </div>
+<?php
 } else if (!isset($_SESSION['gebruikersnaam'])) {
     header("Location: ?view=login");
 }
