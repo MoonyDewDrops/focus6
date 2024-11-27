@@ -63,10 +63,10 @@ switch ($view) {
         $style = 'functions/deleting/deletePage.css';
         $js = 'functions/deleting/deletePage.js';
         break;
-    case 'deleting':
-        $page = 'functions/deleting/delete.php';
-        $style = 'functions/deleting/delete.css';
-        $js = 'functions/deleting/delete.js';
+    case 'deleteRow':
+        $page = 'functions/deleting/deleteRow.php';
+        $style = 'functions/deleting/deleteRow.css';
+        $js = 'functions/deleting/deleteRow.js';
         break;
     case 'addingRow':
         $page = 'functions/editing/addingRow.php';
@@ -92,6 +92,16 @@ switch ($view) {
         $page = 'customPage.php';
         $style = 'customPage.css';
         $js = 'customPage.js';
+        break;
+    case 'contactAdd':
+        $page = 'functions/contact/contactAdd.php';
+        $style = 'functions/contact/contactAdd.css';
+        $js = 'functions/contact/contactAdd.js';
+        break;
+    case 'contactProcess':
+        $page = 'functions/contact/Process.php';
+        $style = 'functions/contact/Process.css';
+        $js = 'functions/contact/Process.js';
         break;
     default:
         $page = '404.php';

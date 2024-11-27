@@ -41,10 +41,18 @@ if (isset($_SESSION['gebruikersnaam'])) {
                                 <a href='?view=editProcess&id=<?= $pagina['id']; ?>'>Edit</a>
                             </td>
                             <td>
-                                <a href='deletePageProcess?id=<?= $pagina['id']; ?>'>Delete</a>
+                                <p onclick="document.getElementById('del<?= $pagina['id']; ?>').style.display='grid'">Delete</p>
                             </td>
                         </tr>
-                <?php
+
+                        <div id="del<?= $pagina['id']; ?>" class="modal">
+                            <div class="modal-content">
+                                <p class="modalTitle">Weet je zeker dat je deze pagina (<?= $pagina['paginaNaam']; ?>) wilt verwijderen?</p>
+                                <span class="close" onclick="document.getElementById('del<?= $pagina['id']; ?>').style.display='none'">&times;</span>
+                                <a class="deleteYes" href='deletePageProcess?id=<?= $pagina['id']; ?>'>Ja</a>
+                                <p class="deleteNo" onclick="document.getElementById('del<?= $pagina['id']; ?>').style.display='none'">Nee</p>
+                            </div>
+                            <?php
                     }
                 }
                 ?>
@@ -82,7 +90,24 @@ if (isset($_SESSION['gebruikersnaam'])) {
             }
             $contactqry->close();
             ?>
-            <a class="add" href="?view=contact">Alle berichten</a>
+            <!-- Link klop nog niet! -->
+            <a class="add" href="contactProcess">Alle berichten</a>
+            <p class="add" onclick="document.getElementById('newMessage').style.display='grid'">Bericht toevoegen</p>
+            <div id="newMessage" class="modal">
+                <div class="modal-content">
+                    
+                    <form action="contactAdd" method="post">
+                        <p>Bericht toevoegen</p>
+                        <label for="name">Naam:</label>
+                        <input type="text" name="name" required>
+                        <label for="email">Email:</label>
+                        <input type="email" name="email" required>
+                        <label for="message">Bericht:</label>
+                        <textarea name="message" required></textarea>
+                        <input type="submit" value="Toevoegen">
+                    </form>
+                    <span class="close" onclick="document.getElementById('newMessage').style.display='none'">&times;</>
+                </div>
         </div>
     </div>
 <?php
