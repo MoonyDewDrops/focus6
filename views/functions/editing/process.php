@@ -61,7 +61,9 @@
                             ?>
                             <!-- Display grid data -->
                             <p>Row: <?= $rowPosition ?></p>
-                            <div class="row<?= $columnType ?>" id="<?= $rowID?>">
+
+                            <a href="deleteRow?id=<?=$rowID?>&pageValue=<?=$pageValue?>">bwapbwapbwap</a>
+                            <div class="row<?= $columnType ?>">
                                 <?php
                                 switch ($columnType) {
                                     case 1:

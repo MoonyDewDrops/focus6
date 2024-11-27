@@ -6,60 +6,48 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
         $good2 = false;
         $good3 = false;
 
+        $sql1 = "DELETE FROM paginagrid WHERE pageValue = ?";
+        $stmt1 = $con->prepare($sql1);
+        $stmt1->bind_param("i", $paginaID);
+        if ($stmt1->execute()) {
+            $good1 = true;
+        } else {
+            echo "Error deleting from paginagrid: " . $con->error;
+        }
 
-        // $sql = "DELETE FROM paginas WHERE id = ?";
+        $sql2 = "DELETE FROM paginainfo WHERE whichRow = (SELECT id FROM paginagrid WHERE pageValue = ?)";
+        $stmt2 = $con->prepare($sql2);
+        $stmt2->bind_param("i", $paginaID);
+        if ($stmt2->execute()) {
+            $good2 = true;
+        } else {
+            echo "Error deleting from paginainfo: " . $con->error;
+        }
 
-        // $stmt = $con->prepare($sql);
-        // $stmt->bind_param("i", $id);
-        // if ($stmt->execute()) {
-        //     //to see if there was any of the things affected, and if it isnt, it'll display an error  
-        //     if ($stmt->affected_rows > 0) {
-        //         $good1 = true;
-        //     } else {
-        //       echo "Error";
-        //     }
-        // } else {
-        //     echo "Error deleting page: " . $con->error;
-        // }
-
-        // $sql2 = "SELECT id FROM paginagrid";
-
-        // $stmt = $con->prepare($sql);
-        // $stmt->bind_param("i", $id);
-        // if ($stmt->execute()) {
-        //     //to see if there was any of the things affected, and if it isnt, it'll display an error  
-        //     if ($stmt->affected_rows > 0) {
-        //         $good1 = true;
-        //     } else {
-        //       echo "Error";
-        //     }
-        // } else {
-        //     echo "Error deleting page: " . $con->error;
-        // }
-
-        // $sql3 = "DELETE FROM paginagrid WHERE id = ?";
-
-        // $stmt = $con->prepare($sql);
-        // $stmt->bind_param("i", $id);
-        // if ($stmt->execute()) {
-        //     //to see if there was any of the things affected, and if it isnt, it'll display an error  
-        //     if ($stmt->affected_rows > 0) {
-        //         $good1 = true;
-        //     } else {
-        //       echo "Error";
-        //     }
-        // } else {
-        //     echo "Error deleting page: " . $con->error;
-        // }
+        $sql3 = "DELETE FROM paginas WHERE id = ?";
+        $stmt3 = $con->prepare($sql3);
+        $stmt3->bind_param("i", $paginaID);
+        if ($stmt3->execute()) {
+            $good3 = true;
+        } else {
+            echo "Error deleting from paginas: " . $con->error;
+        }
 
 
+        if ($good1 && $good2 && $good3){
+            header("Location: admin");
+            exit;
+        }
 
+        // Close connections
+        $stmt1->close();
+        $stmt2->close();
+        $stmt3->close();
+        $con->close();
     } else {
-        echo "Missing required GET parameters: id.";
+        echo "Missing required GET parameter: id.";
     }
 } else {
     echo "Invalid request method. Only GET is allowed.";
 }
-
-
-$con->close();
+?>
