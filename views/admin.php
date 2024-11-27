@@ -46,11 +46,15 @@ if (isset($_SESSION['gebruikersnaam'])) {
                         </tr>
                         <div id="del<?= $pagina['id']; ?>" class="modal">
                             <div class="modal-content">
-                                <p class="modalTitle">Weet je zeker dat je deze pagina (<?= $pagina['paginaNaam']; ?>) wilt verwijderen?</p>
-                                <span class="close" onclick="document.getElementById('del<?= $pagina['id']; ?>').style.display='none'">&times;</span>
+                                <p class="modalTitle">Weet je zeker dat je deze pagina (<?= $pagina['paginaNaam']; ?>) wilt
+                                    verwijderen?</p>
+                                <span class="close"
+                                    onclick="document.getElementById('del<?= $pagina['id']; ?>').style.display='none'">&times;</span>
                                 <a class="deleteYes" href='deletePageProcess?id=<?= $pagina['id']; ?>'>Ja</a>
-                                <p class="deleteNo" onclick="document.getElementById('del<?= $pagina['id']; ?>').style.display='none'">Nee</p>
+                                <p class="deleteNo"
+                                    onclick="document.getElementById('del<?= $pagina['id']; ?>').style.display='none'">Nee</p>
                             </div>
+                        </div>
                             <?php
                     }
                 }
@@ -89,12 +93,11 @@ if (isset($_SESSION['gebruikersnaam'])) {
             }
             $contactqry->close();
             ?>
-            <!-- Link klop nog niet! -->
             <a class="add" href="contactProcess">Alle berichten</a>
             <p class="add" onclick="document.getElementById('newMessage').style.display='grid'">Bericht toevoegen</p>
             <div id="newMessage" class="modal">
                 <div class="modal-content">
-                    
+
                     <form action="contactAdd" method="post">
                         <p>Bericht toevoegen</p>
                         <label for="name">Naam:</label>
@@ -107,14 +110,14 @@ if (isset($_SESSION['gebruikersnaam'])) {
                     </form>
                     <span class="close" onclick="document.getElementById('newMessage').style.display='none'">&times;</>
                 </div>
+            </div>
         </div>
-    </div>
-    <?php
+        <?php
 } else if (!isset($_SESSION['gebruikersnaam'])) {
     header("Location: ?view=login");
 }
 $con->close();
 ?>
-</body>
+    </body>
 
-</html>
+    </html>

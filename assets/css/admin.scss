@@ -397,3 +397,15 @@ input[type="radio"] {
     grid-column: 3 / span 2;
   }
 }
+
+.berichtcontainer{
+  border: 1px solid red;
+
+  .bericht{
+    border: 1px solid blue;
+
+    .berichtNotitie{
+      border: 1px solid green;
+    }
+  }
+}

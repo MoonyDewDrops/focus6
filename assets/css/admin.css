@@ -340,4 +340,14 @@ input[type=radio] {
 }
 .modal-content .deleteNo {
   grid-column: 3/span 2;
+}
+
+.berichtcontainer {
+  border: 1px solid red;
+}
+.berichtcontainer .bericht {
+  border: 1px solid blue;
+}
+.berichtcontainer .bericht .berichtNotitie {
+  border: 1px solid green;
 }/*# sourceMappingURL=admin.css.map */

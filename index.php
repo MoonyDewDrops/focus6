@@ -103,6 +103,11 @@ switch ($view) {
         $style = 'functions/contact/Process.css';
         $js = 'functions/contact/Process.js';
         break;
+    case 'deleteContactProcess':
+        $page = 'functions/contact/contactDelete.php';
+        $style = 'functions/contact/deleteContact.css';
+        $js = 'functions/contact/deleteContact.js';
+        break;
     default:
         $page = '404.php';
         $style = '404.css';
