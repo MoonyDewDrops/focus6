@@ -103,6 +103,21 @@ switch ($view) {
         $style = 'functions/contact/Process.css';
         $js = 'functions/contact/Process.js';
         break;
+    case 'createSocial':
+        $page = 'functions/socials/createSocial.php';
+        $style = 'functions/socials/createSocial.css';
+        $js = 'functions/socials/createSocial.js';
+        break;
+    case 'deleteSocial':
+        $page = 'functions/socials/deleteSocial.php';
+        $style = 'functions/socials/deleteSocial.css';
+        $js = 'functions/socials/deleteSocial.js';
+        break;
+    case 'formCreationSocial':
+        $page = 'functions/socials/formCreationSocial.php';
+        $style = 'functions/socials/formCreationSocial.css';
+        $js = 'functions/socials/formCreationSocial.js';
+        break;
     default:
         $page = '404.php';
         $style = '404.css';
