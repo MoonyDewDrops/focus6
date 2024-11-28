@@ -12,7 +12,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 $insertqry->bind_param('s', $naam); 
                 if ($insertqry->execute()) {
                     //if it succesfully adds the thing
-                    header("Location: admin");
+                    header("Location: ?view=admin");
                 } else {
                     //if it fails
                     echo "Error bij pagina toevoegen: " . $insertqry->error;

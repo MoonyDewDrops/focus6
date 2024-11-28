@@ -45,7 +45,7 @@ switch ($view) {
         break;
     case 'registreren':
         $page = 'registreren.php';
-        $style = 'registreren.css';
+        $style = 'login.css';
         $js = 'registreren.js';
         break;
     case 'createProcess':
