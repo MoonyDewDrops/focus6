@@ -35,7 +35,7 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
 
 
         if ($good1 && $good2 && $good3){
-            header("Location: admin");
+            header("Location: ?view=admin");
             exit;
         }
 

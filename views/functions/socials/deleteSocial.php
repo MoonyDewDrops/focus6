@@ -14,7 +14,7 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
         }
 
         if ($good1){
-            header("Location: admin");
+            header("Location: ?view=admin");
         }
     }
 }
