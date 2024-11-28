@@ -13,7 +13,7 @@
                 <p class="link-text">info@focus6.nl</p>
             </a>
 
-            <img class="footer-logo" src="assets/images/logo.svg" alt="focus 6 logo">
+            <img class="footer-logo" src="assets/images/logo.png" alt="focus 6 logo">
 
             <a class="footer-link" href="tel: 0621937222">
                 <img class="link-logo" src="assets/images/phone.svg" alt="phone logo">

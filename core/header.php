@@ -28,7 +28,7 @@
 <body>
     <header class="header">
         <a class="logo" href="?view">
-            <img class="logo-img" src="assets/images/logo.svg" alt="focus 6 logo">
+            <img class="logo-img" src="assets/images/logo.png" alt="focus 6 logo">
         </a>
 
         <nav class="header-links">
