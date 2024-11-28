@@ -1,27 +1,14 @@
 <?php
-echo "hallo";
 ini_set('display_errors', '1');
 ini_set('display_startup_errors', '1');
 error_reporting(E_ALL);
 
-
-
-// Start de sessie
-session_start();
-
-
-// Maak verbinding met de database
-$con = new mysqli('localhost', 'root', 'root', 'focus6');
-if ($con->connect_error) {
-    die("Verbinding mislukt: " . $con->connect_error);
-}
-
 // Controleer of het formulier is verzonden
 if ($_SERVER['REQUEST_METHOD'] == "POST") {
     // Verkrijg en trim de formuliergegevens
-    $naam = trim($_POST['naam']);
-    $email = trim($_POST['email']);
-    $bericht = trim($_POST['bericht']);
+    $naam = testInput($_POST['naam']);
+    $email = testInput($_POST['email']);
+    $bericht = testInput($_POST['bericht']);
 
     // Foutmeldingen array
     $errors = [];
@@ -63,6 +50,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
         exit;  // Stop verdere uitvoering
     }
 }
+
 
 // Sluit de databaseverbinding
 $con->close();

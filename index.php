@@ -8,6 +8,8 @@ include_once 'core/db_connect.php';
 //Set the default view
 $view = '';
 
+// print_r($_GET);
+
 //Check if the view is set in the URL and not empty
 if (!empty($_GET['view'])) {
     $view = htmlspecialchars($_GET['view']);
@@ -138,10 +140,10 @@ switch ($view) {
         $style = 'functions/socials/formCreationSocial.css';
         $js = 'functions/socials/formCreationSocial.js';
         break;
- case 'contact_process':
-            $page = 'contact_process.php';
-            $style = 'bedankt.css';
-            // $js = 'customPage.js';
+    case 'contact_process.php':
+        $page = 'contact_process.php';
+        $style = 'bedankt.css';
+        $js = 'contact.js';
         break;
     default:
         $page = '404.php';
