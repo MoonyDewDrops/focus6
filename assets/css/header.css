@@ -1,5 +1,5 @@
 .header {
-  background-color: white;
+  background-color: #DCBD7F;
   display: flex;
   justify-content: space-between;
   padding-inline: 50px;
@@ -24,4 +24,6 @@
 }
 .header .header-links .header-link:hover {
   border-bottom: 2px solid black;
-}/*# sourceMappingURL=header.css.map */
+}
+
+/*# sourceMappingURL=header.css.map */
