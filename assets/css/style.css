@@ -1,3 +1,17 @@
+@font-face {
+  font-family: "Calibri";
+  src: url("../fonts/Calibri.ttf") format("truetype");
+}
+* {
+  margin: 0;
+  padding: 0;
+  text-decoration: none;
+  overscroll-behavior: none;
+}
+
 body {
-  font-family: calibri;
-}/*# sourceMappingURL=style.css.map */
+  font-family: "Calibri", sans-serif;
+  background-color: #FFFCF5;
+}
+
+/*# sourceMappingURL=style.css.map */

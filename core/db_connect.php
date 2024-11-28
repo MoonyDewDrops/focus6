@@ -1,5 +1,5 @@
 <?php
-include_once "core/db_credentials.php";
+include_once __DIR__ . '/db_credentials.php';
 ?>
 
 <?php

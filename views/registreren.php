@@ -66,7 +66,7 @@
                 </div>
                 <br>
                 <div class="link">
-                    Heb je al een account? <a href="login">Log hier in.</a>
+                    Heb je al een account? <a href="?view=login">Log hier in.</a>
                 </div>
             </form>
         </div>
