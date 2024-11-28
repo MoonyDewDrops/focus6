@@ -26,16 +26,18 @@
 </head>
 
 <body>
-    <header class="header">
-        <a class="logo" href="?view">
-            <img class="logo-img" src="assets/images/logo.png" alt="focus 6 logo">
-        </a>
+    <header class="header container">
+        <div class="header-content">
+            <a class="logo" href="?view">
+                <img class="logo-img" src="assets/images/logo.png" alt="focus 6 logo">
+            </a>
 
-        <nav class="header-links">
-            <a class="header-link" href="">Spiegelconcept</a>
-            <a class="header-link" href="">Dienstverlening</a>
-            <a class="header-link" href="?view=contact">Contact</a>
-        </nav>
+            <nav class="header-links">
+                <a class="header-link" href="">Spiegelconcept</a>
+                <a class="header-link" href="">Dienstverlening</a>
+                <a class="header-link" href="?view=contact">Contact</a>
+            </nav>
+        </div>
     </header>
 
 </body>
