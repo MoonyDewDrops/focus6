@@ -1,10 +1,14 @@
 <?php
+echo "hallo";
 ini_set('display_errors', '1');
 ini_set('display_startup_errors', '1');
 error_reporting(E_ALL);
 
+
+
 // Start de sessie
 session_start();
+
 
 // Maak verbinding met de database
 $con = new mysqli('localhost', 'root', 'root', 'focus6');
