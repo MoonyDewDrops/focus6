@@ -1,5 +1,5 @@
 .footer {
-  background-color: #C6CDE7;
+  background-color: #DCBD7F;
   padding-inline: 50px;
   padding-block: 20px;
   display: flex;
@@ -38,4 +38,6 @@
   color: black;
   display: flex;
   align-self: center;
-}/*# sourceMappingURL=footer.css.map */
+}
+
+/*# sourceMappingURL=footer.css.map */
