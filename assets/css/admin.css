@@ -62,9 +62,13 @@ header .adminlink a:hover {
   text-decoration: none;
   color: black;
 }
-.cmsOptions tr {
+.cmsOptions .pagesRow {
   display: grid;
   grid-template-columns: 8fr 1fr 1fr;
+}
+.cmsOptions .socialsRow {
+  display: grid;
+  grid-template-columns: 1fr 1fr 7fr 1fr;
 }
 .cmsOptions .optionTitle {
   font-size: 1.5rem;

@@ -72,9 +72,14 @@ header {
     color: black;
   }
 
-  tr {
+  .pagesRow {
     display: grid;
     grid-template-columns: 8fr 1fr 1fr;
+  }
+
+  .socialsRow{
+    display: grid;
+    grid-template-columns: 1fr 1fr 7fr 1fr;
   }
 
   .optionTitle {

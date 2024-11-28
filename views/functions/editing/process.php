@@ -181,7 +181,6 @@
 
             </form>
     </div>
-    <p>Add a row</p>
     <?php
             $rowPosition = isset($rowPosition) ? $rowPosition + 1 : 1;
     ?>

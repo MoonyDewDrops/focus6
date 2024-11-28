@@ -122,6 +122,7 @@ switch ($view) {
         $page = 'functions/contact/notitieAdd.php';
         $style = 'functions/contact/notitieAdd.css';
         $js = 'functions/contact/notitieAdd.js';
+        break;
     case 'createSocial':
         $page = 'functions/socials/createSocial.php';
         $style = 'functions/socials/createSocial.css';
