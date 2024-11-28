@@ -33,7 +33,7 @@
 
                     if (password_verify($wachtwoord, $hash_pass)) {
                         $_SESSION['gebruikersnaam'] = $gebruikersnaam;
-                        header("Location: admin");
+                        header("Location: ?view=admin");
                         exit();
                     } else {
             ?>
