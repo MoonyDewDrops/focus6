@@ -12,7 +12,7 @@ if($_SERVER['REQUEST_METHOD'] == "POST") {
         echo mysqli_error($con);
     }
     if($stmt->execute()) {
-        header("Location: admin");
+        header("Location: ?view=admin");
     } else {
         echo "Er is iets fout gegaan!";
     }

@@ -6,7 +6,7 @@
     <title>Document</title>
 </head>
 <body>
-    <form action="createSocial" method="post" enctype="multipart/form-data">
+    <form action="?view=createSocial" method="post" enctype="multipart/form-data">
 
     <label for="photo">Photo:</label><br>
     <input type="file" id="photo" name="photo"><br>
