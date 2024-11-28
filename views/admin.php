@@ -121,7 +121,7 @@ if (isset($_SESSION['gebruikersnaam'])) {
                 if ($contactqry->execute()) {
                     while ($contactqry->fetch()) {
                         ?>
-                        <div class="berichtcontainer">
+                        <div class="berichtencontainer">
                             <p><?= $name ?></p>
                             <p><?= $email ?></p>
                             <p><?= $message ?></p>
