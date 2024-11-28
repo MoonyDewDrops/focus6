@@ -14,46 +14,137 @@ if (isset($_SESSION['gebruikersnaam'])) {
         echo "No paginas found";
     }
 
-    $con->close();
-    ?>
+    $sqlc = "SELECT naam, email, bericht FROM contactinfo ORDER BY id DESC LIMIT 3;";
+    $contactqry = $con->prepare($sqlc);
+    $contactqry->bind_result($name, $email, $message);
+    if ($contactqry === false) {
+        echo mysqli_error($con);
+    }
+
+
+    $sqlSocials = "SELECT id, naam, link, image FROM socials ORDER BY id";
+    $socialsQry = $con->prepare($sqlSocials);
+    $socialsQry->bind_result($socialsID, $socialsNaam, $link, $image);
+    if ($socialsQry === false) {
+        echo mysqli_error($con);
+    }
+?>
 
     <?php include 'core/admin_header.php'; ?>
-        <div class="container">
-            <div id="paginas" class="cmsOptions">
-                <p class="optionTitle">Pagina's</p>
-            <?php
-            if (isset($paginas)) {
-                foreach ($paginas as $pagina) {
+    <div class="container">
+        <div id="paginas" class="cmsOptions">
+            <p class="optionTitle">Pagina's</p>
+            <table>
+                <tr class="pagesRow">
+                    <th>Naam</th>
+                    <th colspan="2">Opties</th>
+                </tr>
+                <?php
+                if (isset($paginas)) {
+                    foreach ($paginas as $pagina) {
+                ?>
+                        <tr class="pagesRow">
+                            <td><?= $pagina['paginaNaam']; ?></td>
+                            <td>
+                                <a href='?view=editProcess&id=<?= $pagina['id']; ?>'>Edit</a>
+                            </td>
+                            <td>
+                                <p onclick="document.getElementById('del<?= $pagina['id']; ?>').style.display='grid'">Delete</p>
+                            </td>
+                        </tr>
+
+                        <div id="del<?= $pagina['id']; ?>" class="modal">
+                            <div class="modal-content">
+                                <p class="modalTitle">Weet je zeker dat je deze pagina (<?= $pagina['paginaNaam']; ?>) wilt
+                                    verwijderen?</p>
+                                <span class="close"
+                                    onclick="document.getElementById('del<?= $pagina['id']; ?>').style.display='none'">&times;</span>
+                                <a class="deleteYes" href='deletePageProcess?id=<?= $pagina['id']; ?>'>Ja</a>
+                                <p class="deleteNo"
+                                    onclick="document.getElementById('del<?= $pagina['id']; ?>').style.display='none'">Nee</p>
+                            </div>
+
+                        </div>
+                            <?php
+
+                    }
+                }
                     ?>
-                    <div>
-                        <p><?= $pagina['paginaNaam']; ?></p>
-                        <a href='editProcess?id=<?= $pagina['id']; ?>' style="text-decoration:none;color:black;">Edit</a>
-                        <a href='deleteProcess?id=<?= $pagina['id']; ?>' style="text-decoration:none;color:black;">Delete</a>
-                    </div>
+            </table>
+            <a class="add" href="?view=createProcess"> Pagina toevoegen </a>
+        </div>
+        <div id="socials" class="cmsOptions">
+            <p class="optionTitle">Socials</p>
+            <table>
+                <tr class="socialsRow">
+                    <th>Naam</th>
+                    <th>Link</th>
+                    <th>Image</th>
+                    <th></th>
+                </tr>
+                <tr class="socialsRow">
                     <?php
+                    if ($socialsQry->execute()) {
+                        while ($socialsQry->fetch()) {
+                    ?>
+                            <td><a href="<?=$link?>"><?=$socialsNaam?></a> </td>
+                            <td><?=$link?></td>
+                            <td><img src="<?=$image?>" style="height:50px;width:auto;"></td>
+                            <td><a href="deleteSocial?id=<?=$socialsID?>">Delete</a></td>
+                    <?php
+                        }
+                    }
+                    $socialsQry->close();
+                    ?>
+                </tr>
+            </table>
+            <a class="add" href="?view=formCreationSocial">Social toevoegen</a>
+        </div>
+        <div id="contactberichten" class="cmsOptions">
+            <p class="optionTitle">Berichten</p>
+            <?php
+            if ($contactqry->execute()) {
+                while ($contactqry->fetch()) {
+            ?>
+                    <div class="berichtcontainer">
+                        <p><?= $name ?></p>
+                        <p><?= $email ?></p>
+                        <p><?= $message ?></p>
+                    </div>
+            <?php
                 }
             }
+            $contactqry->close();
             ?>
-            <a href="create" style="text-decoration:none;color:black;"> Pagina toevoegen </a>
-            </div>
-            <div id="socials" class="cmsOptions">
-                <p class="optionTitle">Socials</p>
-                <a href="createSocial" style="text-decoration:none;color:black;">Social toevoegen</a>
-            </div>
-            <div id="contactberichten" class="cmsOptions">
-                <p class="optionTitle">Contacten</p>
-                <a href="contact" style="text-decoration:none;color:black;">Contacten bekijken</a>
+            <a class="add" href="contactProcess">Alle berichten</a>
+            <p class="add" onclick="document.getElementById('newMessage').style.display='grid'">Bericht toevoegen</p>
+            <div id="newMessage" class="modal">
+                <div class="modal-content">
+
+                    <form action="contactAdd" method="post">
+                        <p>Bericht toevoegen</p>
+                        <label for="name">Naam:</label>
+                        <input type="text" name="name" required>
+                        <label for="email">Email:</label>
+                        <input type="email" name="email" required>
+                        <label for="message">Bericht:</label>
+                        <textarea name="message" required></textarea>
+                        <input type="submit" value="Toevoegen">
+                    </form>
+                    <span class="close" onclick="document.getElementById('newMessage').style.display='none'">&times;</>
+                </div>
             </div>
         </div>
-        <?php
-} else if (!isset($_SESSION['gebruikersnaam'])) {
-    ?>
-            <script>
-                location.replace("http://localhost/focus6/login");
-            </script>
-        <?php
-}
-?>
-</body>
+    </div>
+<?php
 
-</html>
+} else if (!isset($_SESSION['gebruikersnaam'])) {
+    header("Location: ?view=login");
+}
+$con->close();
+
+    ?>
+
+    </body>
+
+    </html>

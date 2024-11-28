@@ -45,7 +45,7 @@ switch ($view) {
         break;
     case 'registreren':
         $page = 'registreren.php';
-        $style = 'registreren.css';
+        $style = 'login.css';
         $js = 'registreren.js';
         break;
     case 'createProcess':
@@ -58,30 +58,90 @@ switch ($view) {
         $style = 'functions/creating/create.css';
         $js = 'functions/creating/create.js';
         break;
-    case 'deleteProcess':
-        $page = 'functions/deleting/process.php';
-        $style = 'functions/deleting/process.css';
-        $js = 'functions/deleting/process.js';
+    case 'deletePageProcess':
+        $page = 'functions/deleting/deletePage.php';
+        $style = 'functions/deleting/deletePage.css';
+        $js = 'functions/deleting/deletePage.js';
         break;
-    case 'deleting':
-        $page = 'functions/deleting/delete.php';
-        $style = 'functions/deleting/delete.css';
-        $js = 'functions/deleting/delete.js';
+    case 'deleteRow':
+        $page = 'functions/deleting/deleteRow.php';
+        $style = 'functions/deleting/deleteRow.css';
+        $js = 'functions/deleting/deleteRow.js';
+        break;
+    case 'addingRow':
+        $page = 'functions/editing/addingRow.php';
+        $style = 'functions/editing/addingRow.css';
+        $js = 'functions/editing/addingRow.js';
+        break;
+    case 'baseData':
+        $page = 'functions/editing/baseDataRow.php';
+        $style = 'functions/editing/baseDataRow.css';
+        $js = 'functions/editing/baseDataRow.js';
         break;
     case 'editProcess':
         $page = 'functions/editing/process.php';
         $style = 'functions/editing/process.css';
         $js = 'functions/editing/process.js';
         break;
-    case 'editing':
-        $page = 'functions/editing/editing.php';
-        $style = 'functions/editing/editing.css';
-        $js = 'functions/editing/editing.js';
+    case 'editRow':
+        $page = 'functions/editing/editRow.php';
+        $style = 'functions/editing/editRow.css';
+        $js = 'functions/editing/editRow.js';
         break;
     case 'customPage':
-            $page = 'customPage.php';
-            $style = 'customPage.css';
-            $js = 'customPage.js';
+        $page = 'customPage.php';
+        $style = 'customPage.css';
+        $js = 'customPage.js';
+        break;
+    case 'contactAdd':
+        $page = 'functions/contact/contactAdd.php';
+        $style = 'functions/contact/contactAdd.css';
+        $js = 'functions/contact/contactAdd.js';
+        break;
+    case 'contactProcess':
+        $page = 'functions/contact/Process.php';
+        $style = 'functions/contact/Process.css';
+        $js = 'functions/contact/Process.js';
+        break;
+    case 'deleteContactProcess':
+        $page = 'functions/contact/contactDelete.php';
+        $style = 'functions/contact/deleteContact.css';
+        $js = 'functions/contact/deleteContact.js';
+        break;
+    case 'deleteNotitieProcess':
+        $page = 'functions/contact/notitieDelete.php';
+        $style = 'functions/contact/notitieDelete.css';
+        $js = 'functions/contact/notitieDelete.js';
+        break;
+    case 'editNotitieProcess':
+        $page = 'functions/contact/notitieEdit.php';
+        $style = 'functions/contact/notitieEdit.css';
+        $js = 'functions/contact/notitieEdit.js';
+        break;
+    case 'addNotitieProcess':
+        $page = 'functions/contact/notitieAdd.php';
+        $style = 'functions/contact/notitieAdd.css';
+        $js = 'functions/contact/notitieAdd.js';
+        break;
+    case 'createSocial':
+        $page = 'functions/socials/createSocial.php';
+        $style = 'functions/socials/createSocial.css';
+        $js = 'functions/socials/createSocial.js';
+        break;
+    case 'deleteSocial':
+        $page = 'functions/socials/deleteSocial.php';
+        $style = 'functions/socials/deleteSocial.css';
+        $js = 'functions/socials/deleteSocial.js';
+        break;
+    case 'formCreationSocial':
+        $page = 'functions/socials/formCreationSocial.php';
+        $style = 'functions/socials/formCreationSocial.css';
+        $js = 'functions/socials/formCreationSocial.js';
+        break;
+ case 'contact_process':
+            $page = 'contact_process.php';
+            $style = 'bedankt.css';
+            // $js = 'customPage.js';
         break;
     default:
         $page = '404.php';

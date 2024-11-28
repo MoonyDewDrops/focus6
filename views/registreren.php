@@ -3,11 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="<?= 'assets/css/style.css' ?>">
+    <link rel="stylesheet" href="<?= 'assets/css/login.css' ?>">
     <title>Registratie pagina</title>
 </head>
 <body>
     <div class="container">
-        <div class="registryForm">
+        <div class="loginForm">
 
         <?php  
 
@@ -66,7 +68,7 @@
                 </div>
                 <br>
                 <div class="link">
-                    Heb je al een account? <a href="login">Log hier in.</a>
+                    Heb je al een account? <a href="?view=login">Log hier in.</a>
                 </div>
             </form>
         </div>

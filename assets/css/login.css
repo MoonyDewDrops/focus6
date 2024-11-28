@@ -72,4 +72,7 @@ form .inputField input[type=submit] {
 }
 form .inputField input[type=submit]:hover {
   background-color: #9196a8;
+}
+form .link {
+  margin-bottom: 10px;
 }/*# sourceMappingURL=login.css.map */

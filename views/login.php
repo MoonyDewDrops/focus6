@@ -33,7 +33,7 @@
 
                     if (password_verify($wachtwoord, $hash_pass)) {
                         $_SESSION['gebruikersnaam'] = $gebruikersnaam;
-                        header("Location: admin");
+                        header("Location: ?view=admin");
                         exit();
                     } else {
             ?>
@@ -70,7 +70,7 @@
 
 
                     <div class="link">
-                        Heb je nog niet een account? <a href="registreren">Registreer jezelf hier!</a>
+                        Heb je nog niet een account? <a href="?view=registreren">Registreer jezelf hier!</a>
                     </div>
                 </form>
         </div>
