@@ -12,4 +12,64 @@
 body {
   font-family: "Calibri", sans-serif;
   background-color: #FFFCF5;
-}/*# sourceMappingURL=style.css.map */
+
+}
+
+.container {
+  padding-inline: 50px;
+}
+
+@media screen and (max-width: 700px) {
+  .container {
+    padding-inline: 5px;
+  }
+  .header {
+    width: 100%;
+  }
+  .header .header-content {
+    flex-direction: column;
+  }
+  .header .header-content .header-link {
+    font-size: 16px;
+  }
+  .homepage {
+    gap: 40px;
+  }
+  .homepage .top-image {
+    height: 150px;
+    width: 100%;
+  }
+  .homepage .top-image .team-image {
+    height: 150px;
+    width: 100%;
+  }
+  .homepage .home-text {
+    width: 80%;
+    font-size: 16px;
+  }
+  .homepage .heading {
+    font-size: 24px;
+  }
+  .homepage .middle-content {
+    flex-direction: column;
+    width: 100%;
+    gap: 20px;
+  }
+  .homepage .middle-content .middle-text {
+    font-size: 16px;
+    width: 80%;
+  }
+  .homepage .middle-content .middle-img {
+    width: 50%;
+  }
+  .homepage .bottom-content {
+    margin-bottom: 40px;
+    gap: 20px;
+  }
+  .footer-top {
+    flex-direction: column;
+  }
+}
+
+/*# sourceMappingURL=style.css.map */
+
