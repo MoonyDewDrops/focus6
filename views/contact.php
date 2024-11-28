@@ -1,41 +1,46 @@
-<?php include "core/header.php"?>
+<?php include "core/header.php"; ?>
 
-<div class="contact_grid">
+<div class="container_grid">
+  <div class="row">
+    <div class="col-6 offset-3">
+      <div class="form_box text-center">
+        <h4>Contact</h4>
+        <h5>Neem contact met ons op!</h5>
+      </div>
+      <div id="error" style="color: red;"></div>
 
- <div class="contact_tekst">
-    <h1>Contact</h1>
-    <h3>Neem contact met ons op!</h3>
- </div>
-    
-<form class="contact_form" action="connect.php" method="post"> 
-  <!-- <form action="/action_page.php" target="_blank"></form> -->
-  <label for="naam">Naam:</label><br>
-  <input type="text" id="naam" name="Vnaam" value="Volledige Naam"><br>
-  <label for="email">Emailadres:</label><br>
-  <input type="text" id="email" name="email" value=""><br><br>
-  <label for="bericht">Bericht:</label><br>
-  <input type="text" id="bericht" name="bericht" value="...."><br>
+      <?php
+      // Foutmeldingen uit de sessie halen en weergeven
+      if (isset($_SESSION['errors'])) {
+        foreach ($_SESSION['errors'] as $error) {
+          echo "<p style='color: red;'>$error</p>";
+        }
+        unset($_SESSION['errors']); // Verwijder de fouten na het tonen
+      }
+      ?>
 
-  <input type="submit" value="Submit" target=" ">
-</form> 
+      <form id="form" method="POST" action="contact_process.php" novalidate>
+        <div class="row">
+          <div class="input_box col-6">
+            <input type="text" id="naam" name="naam" class="form-control" placeholder="Naam" required>
+            <label for="naam">Naam</label>
+            <span id="naamError" style="color: red;"></span>
+          </div>
+          <div class="input_box col-6">
+            <input type="text" id="email" name="email" class="form-control" placeholder="Email" required>
+            <label for="email">Email</label>
+            <span id="emailError" style="color: red;"></span>
+          </div>
+          <div class="input_box col-6">
+            <input type="text" id="bericht" name="bericht" class="form-control" placeholder="Bericht" required minlength="10">
+            <label for="bericht">Bericht</label>
+            <span id="berichtError" style="color: red;"></span>
+          </div>
+          <input type="submit" value="Verzenden">
+        </div>
+      </form>
+    </div>
+  </div>
 </div>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<?php include "core/footer.php" ?>
+<?php include "core/footer.php"; ?>

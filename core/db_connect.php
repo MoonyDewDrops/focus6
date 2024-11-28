@@ -7,10 +7,6 @@ if (session_status() !== PHP_SESSION_ACTIVE) {
     session_start();
 }
 
-
-$dbhost = "localhost";
-$dbname = "focus6";
-
 $con = new mysqli($dbhost, $dbusername, $dbpassword, $dbname);
 
 if ($con->connect_errno) {

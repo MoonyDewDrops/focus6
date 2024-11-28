@@ -83,6 +83,11 @@ switch ($view) {
             $style = 'customPage.css';
             $js = 'customPage.js';
         break;
+ case 'contact_process':
+            $page = 'contact_process.php';
+            $style = 'bedankt.css';
+            // $js = 'customPage.js';
+        break;
     default:
         $page = '404.php';
         $style = '404.css';
