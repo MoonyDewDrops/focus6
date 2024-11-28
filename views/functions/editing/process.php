@@ -42,7 +42,7 @@
             $columnqry->bind_result($col_id, $col_info, $colum, $col_foto, $col_bg);
             $existing = 0;
         ?>
-            <form action="?view=editRow&id=<?= $paginaID ?>" method="post" enctype="multipart/form-data" class="gridsquare">
+            <form action="?view=editRow&id=<?= $paginaID ?>" method="post" enctype="multipart/form-data">
                 <p class="squareTitle">Pagina: <?= $paginaNaam ?></p>
                 <?php
                 if (!empty($paginaGrid)) {
@@ -60,9 +60,10 @@
 
                 ?>
                             <!-- Display grid data -->
+                             <div class="rowLayout">
                             <p>Row: <?= $rowPosition ?></p>
 
-                            <a href="deleteRow?id=<?=$rowID?>&pageValue=<?=$pageValue?>">bwapbwapbwap</a>
+                            <a class="verwijderen" href="deleteRow?id=<?=$rowID?>&pageValue=<?=$pageValue?>">verwijderen</a>
                             <div class="row<?= $columnType ?>">
                                 <?php
                                 switch ($columnType) {
@@ -164,6 +165,7 @@
                                 }
                                 ?>
                             </div>
+                            </div>
                 <?php
                         }
                     }
@@ -179,7 +181,6 @@
 
             </form>
     </div>
-    <p>Add a row</p>
     <?php
             $rowPosition = isset($rowPosition) ? $rowPosition + 1 : 1;
     ?>

@@ -45,7 +45,7 @@ switch ($view) {
         break;
     case 'registreren':
         $page = 'registreren.php';
-        $style = 'registreren.css';
+        $style = 'login.css';
         $js = 'registreren.js';
         break;
     case 'createProcess':
@@ -122,6 +122,7 @@ switch ($view) {
         $page = 'functions/contact/notitieAdd.php';
         $style = 'functions/contact/notitieAdd.css';
         $js = 'functions/contact/notitieAdd.js';
+        break;
     case 'createSocial':
         $page = 'functions/socials/createSocial.php';
         $style = 'functions/socials/createSocial.css';
@@ -136,6 +137,11 @@ switch ($view) {
         $page = 'functions/socials/formCreationSocial.php';
         $style = 'functions/socials/formCreationSocial.css';
         $js = 'functions/socials/formCreationSocial.js';
+        break;
+ case 'contact_process':
+            $page = 'contact_process.php';
+            $style = 'bedankt.css';
+            // $js = 'customPage.js';
         break;
     default:
         $page = '404.php';

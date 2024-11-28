@@ -35,7 +35,7 @@ if (isset($_SESSION['gebruikersnaam'])) {
         <div id="paginas" class="cmsOptions">
             <p class="optionTitle">Pagina's</p>
             <table>
-                <tr>
+                <tr class="pagesRow">
                     <th>Naam</th>
                     <th colspan="2">Opties</th>
                 </tr>
@@ -43,7 +43,7 @@ if (isset($_SESSION['gebruikersnaam'])) {
                 if (isset($paginas)) {
                     foreach ($paginas as $pagina) {
                 ?>
-                        <tr>
+                        <tr class="pagesRow">
                             <td><?= $pagina['paginaNaam']; ?></td>
                             <td>
                                 <a href='?view=editProcess&id=<?= $pagina['id']; ?>'>Edit</a>
@@ -76,17 +76,20 @@ if (isset($_SESSION['gebruikersnaam'])) {
         <div id="socials" class="cmsOptions">
             <p class="optionTitle">Socials</p>
             <table>
-                <tr>
+                <tr class="socialsRow">
                     <th>Naam</th>
-                    <th colspan="2">Opties</th>
+                    <th>Link</th>
+                    <th>Image</th>
+                    <th></th>
                 </tr>
-                <tr>
+                <tr class="socialsRow">
                     <?php
                     if ($socialsQry->execute()) {
                         while ($socialsQry->fetch()) {
                     ?>
-                            <td><a href="<?=$link?>"><?=$socialsNaam?></a><img src="<?=$image?>" style="height:50px;width:auto;"></td>
-                            <td>Edit</td>
+                            <td><a href="<?=$link?>"><?=$socialsNaam?></a> </td>
+                            <td><?=$link?></td>
+                            <td><img src="<?=$image?>" style="height:50px;width:auto;"></td>
                             <td><a href="deleteSocial?id=<?=$socialsID?>">Delete</a></td>
                     <?php
                         }
