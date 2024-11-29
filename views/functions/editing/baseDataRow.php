@@ -1,7 +1,16 @@
 <?php
 if ($_SERVER["REQUEST_METHOD"] == "GET") {
     if (isset($_GET['id']) && isset($_GET['rowPosition']) && isset($_GET['columnType'])) {
+        $selectqry = "SELECT id FROM paginagrid WHERE pagevalue = ?";
         $id = $_GET['id'];
+        $stmt = $con->prepare($selectqry);
+        $stmt->bind_param('i', $id);
+        $stmt->execute();
+        $stmt->store_result();
+        $stmt->bind_result($row_id);
+        $stmt->fetch();
+        $stmt->close();
+
         $informatie = 'Edit de kolom en zet hier iets leuks neer!';
         $whichRow = (int)$_GET['rowPosition'];
         $columnType = (int)$_GET['columnType'];
@@ -52,7 +61,7 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
                 $allSuccess = false;
                 break;
             } else {
-                $insertqry2->bind_param('siiii', $informatie, $whichRow, $i, $foto, $backgroundColor);
+                $insertqry2->bind_param('siiii', $informatie, $row_id, $i, $foto, $backgroundColor);
                 if (!$insertqry2->execute()) {
                     echo "Error adding row: " . $insertqry2->error;
                     $allSuccess = false;
