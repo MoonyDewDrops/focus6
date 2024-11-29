@@ -1,4 +1,4 @@
-<?php include "core/header.php"; 
+<?php include "core/header.php";
 
 // Genereer twee willekeurige getallen voor de captcha
 $num1 = rand(1, 10);
@@ -60,4 +60,3 @@ $_SESSION['captcha_answer'] = $num1 + $num2;
 </div>
 
 <?php include __DIR__ . '/../core/footer.php'; ?>
-
