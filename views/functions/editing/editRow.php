@@ -9,9 +9,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $selectqry = $con->prepare($sql);
     $selectqry->bind_param('ii', $welkeRow, $hoeveelsteKolom);
 
-    $sql2 = "UPDATE paginainfo SET informatie = ?, foto = ?, backgroundColor = ? WHERE whichRow = ? AND colum = ?";
+    $sql2 = "UPDATE paginainfo SET informatie = ?, foto = ?, backgroundColor = ?, bold = ?, italic = ?, opacity = ?, kleur = ? WHERE whichRow = ? AND colum = ?";
     $updateqry2 = $con->prepare($sql2);
-    $updateqry2->bind_param('siiii', $informatie, $image, $backgroundColor, $welkeRow, $hoeveelsteKolom);
+    $updateqry2->bind_param('siiiiisii', $informatie, $image, $backgroundColor, $bolded, $italic, $opacity, $color, $welkeRow, $hoeveelsteKolom );
     if ($updateqry2 === false) {
         echo mysqli_error($con);
     }
@@ -26,6 +26,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 $hoeveelsteKolom = $columns['COL'];
                 $image = $columns['IMG'];
                 $backgroundColor = $columns['BG'];
+                $bolded = $columns['BOLD'];
+                $italic = $columns['ITALIC'];
+                $opacity = $columns['OPACITY'];
+                echo $opacity;
+                $color = $columns['KLEUR'];
 
                 if ($image == 'Yes') {
                     $selectqry->execute();
@@ -73,6 +78,20 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     $backgroundColor = 1;
                 } else {
                     $backgroundColor = 0;
+                }
+
+                
+                if ($bolded == 'Yes') {
+                    $bolded = 1;
+                } else {
+                    $bolded = 0;
+                }
+
+
+                if ($italic == 'Yes') {
+                    $italic = 1;
+                } else {
+                    $italic = 0;
                 }
 
                 if ($updateqry2->execute()) {
