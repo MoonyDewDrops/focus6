@@ -1,4 +1,3 @@
-@import url("https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css");
 .form_box {
   background-color: #ffffff;
   padding: 30px;
@@ -23,12 +22,6 @@
   background-color: #ededed;
 }
 
-.input_box input::-moz-placeholder {
-  visibility: hidden;
-  font-weight: 400;
-  font-size: 13px;
-}
-
 .input_box input::placeholder {
   visibility: hidden;
   font-weight: 400;
@@ -42,4 +35,6 @@
   position: absolute;
   font-weight: normal;
   color: #555;
-}/*# sourceMappingURL=contact.css.map */
+}
+
+/*# sourceMappingURL=contact.css.map */
