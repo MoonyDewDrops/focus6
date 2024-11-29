@@ -14,4 +14,74 @@
 
 body{
     font-family: 'Calibri', sans-serif;
+    background-color: #FFFCF5;
+}
+
+.container {
+    padding-inline: 50px;
+}
+
+@media screen and (max-width: 700px){
+    .container {
+        padding-inline: 5px;
+    }
+
+    .header {
+        width: 100%;
+
+        .header-content {
+                flex-direction: column;
+
+                .header-link {
+                    font-size: 16px;
+                }
+            }
+    }
+
+    .homepage {
+        gap: 40px;
+
+        .top-image {
+                height: 150px;
+                width: 100%;
+        
+                .team-image {
+                    height: 150px;
+                    width: 100%;
+                }
+            }
+        
+            .home-text {
+                width: 80%;
+                font-size: 16px;
+            }
+
+            .heading {
+                font-size: 24px;
+            }
+        
+            .middle-content {
+                flex-direction: column;
+                width: 100%;
+                gap: 20px;
+        
+                .middle-text {
+                    font-size: 16px;
+                    width: 80%;
+                }
+        
+                .middle-img {
+                    width: 50%;
+                }
+            }
+        
+            .bottom-content {
+                margin-bottom: 40px;
+                gap: 20px;
+            }
+    }
+
+    .footer-top {
+        flex-direction: column;
+    }
 }

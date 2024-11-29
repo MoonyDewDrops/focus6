@@ -1,38 +1,141 @@
-<!DOCTYPE html>
-<html lang="en">
+<?php include __DIR__ . '/../core/header.php'; ?>
+<?php
+$page = 1;
+$sql1 = "SELECT id, columnType FROM paginagrid WHERE pageValue = ? ORDER BY rowPosition ASC;";
+$stmt1 = $con->prepare($sql1);
+if ($stmt1 === false) {
+  echo mysqli_error($con);
+}
+$stmt1->bind_param('i', $page);
+$stmt1->execute();
+$result = $stmt1->get_result();
+$paginaGrid = $result->fetch_all(MYSQLI_ASSOC) ?: [];
+$stmt1->close();
 
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Homepagina</title>
-</head>
+$sql2 = "SELECT informatie, foto, backgroundColor, bold, italic, opacity, kleur FROM paginainfo WHERE whichRow = ? AND colum = ?;";
+$stmt2 = $con->prepare($sql2);
+if ($stmt2 === false) {
+  echo mysqli_error($con);
+}
+$stmt2->bind_param('ii', $rowId, $columnID);
+$stmt2->bind_result($informatie, $foto, $backgroundColor, $bolded, $italic, $opacity, $kleur);
 
-<body>
-  <?php include __DIR__ . '/../core/header.php'; ?>
+
+
+?>
 
   <main class="homepage">
-    <div class="top-image">
+    <?php
+    if (!empty($paginaGrid)){
+      foreach ($paginaGrid as $row){
+        $rowId = $row['id'];
+        $columnType = $row['columnType'];
+        ?>
+        <div class="rowContainer">
+          <?php
+          switch ($columnType){
+            case 1:
+              $columnAmount = 1;
+              break;
+            case 2:
+              $columnAmount = 2;
+              break;
+            case 3:
+              $columnAmount = 2;
+              break;
+            case 4:
+              $columnAmount = 3;
+              break;
+            default:
+              $columnAmount = 1;
+              break;
+          }
+          ?>
+          <div class="row<?= $columnType?>">
+          <?php
+          for ($i = 1; $i < $columnAmount + 1; $i++){
+            $columnID = $i;
+            $stmt2->execute();
+            $stmt2->store_result();
+            $stmt2->fetch();
+            $opacity = $opacity / 10;
+            if ($backgroundColor == 1 && $bolded == 1 && $italic == 1){
+              ?>
+              <div class="coloredColumn bold italic">
+                <?php
+            } else if ($backgroundColor == 1 && $bolded == 1){
+              ?>
+              <div class="coloredColumn bold">
+                <?php
+            } else if ($backgroundColor == 1 && $italic == 1){
+              ?>
+              <div class="coloredColumn italic">
+                <?php
+            } else if ($backgroundColor == 1){
+              ?>
+              <div class="coloredColumn">
+                <?php
+            } else if ($bolded == 1 && $italic == 1){
+              ?>
+              <div class="bold italic">
+                <?php
+            } else if ($bolded == 1){
+              ?>
+              <div class="bold">
+                <?php
+            } else if ($italic == 1){
+              ?>
+              <div class="italic">
+                <?php
+            } else {
+              ?>
+              <div>
+              <?php
+            }
+            
+            if ($foto == 0){
+              ?>
+              <p style="opacity:<?=$opacity?>; color:<?=$kleur?>"><?= $informatie ?></p>
+              <?php
+            } else {
+              ?>
+              <img src="assets/img/fotos/<?= $informatie ?>" style="opacity:<?=$opacity?>; color:<?=$kleur?>" alt="foto">
+              <?php
+            }
+            ?>
+            </div>
+            <?php
+            
+          }
+          ?>
+        </div>
+        <?php
+      }
+
+    }
+    ?>
+    <!-- <div class="top-image">
       <img class="team-image" src="assets/images/IMG_9579.jpeg" alt="focus 6 team picture">
     </div>
 
-    <div class="top-content">
-      <h1>Wat doet Focus6</h1>
+    <div class="top-content container">
+      <h1 class="heading">Wat doet Focus6</h1>
       <p class="home-text">Focus6 biedt met haar Spiegelconcept een inspirerende en doeltreffende aanpak voor de ontwikkeling van een lerende organisatie. Ons Spiegelconcept combineert reflectie, actie en groei om teams en organisaties naar een hoger niveau te tillen. Dit innovatieve concept kan eenvoudig worden ingezet op teamniveau, waardoor de focus ligt op directe samenwerking en resultaten. Tegelijkertijd biedt het de flexibiliteit om snel op te schalen naar organisatieniveau, zodat de gehele organisatie kan profiteren van de geleerde inzichten en verbeterde dynamiek.</p>
     </div>
 
-    <div class="middle-content">
+    <div class="middle-content container">
       <h3 class="middle-text">Wat Focus6 uniek maakt, is dat het Spiegelconcept volledig in de praktijk is ontwikkeld en getest. Het is geen theoretisch model, maar een aanpak die zijn waarde heeft bewezen in echte organisatiesituaties. We geloven sterk in de kracht van teams: een goed functionerend team is de motor van innovatie, samenwerking en groei. In onze visie onderscheidt een team zich wanneer het in staat is om effectief samen te werken, continu te leren van ervaringen, en vernieuwend te zijn om steeds betere prestaties te leveren.</h3>
 
       <img class="middle-img" src="assets/images/image1.png" alt="">
     </div>
 
-    <div class="bottom-content">
+    <div class="bottom-content container">
       <p class="home-text">
         Met het Spiegelconcept geven we teams niet alleen de tools om succesvoller te worden, maar ook om als inspiratie te dienen voor de rest van de organisatie. Samen bouwen we aan een cultuur van leren, verbeteren en presteren.
       </p>
 
       <h3 class="bottom-text">Kortom: focus op succes!</h3>
-    </div>
+    </div> -->
   </main>
 
   <?php include __DIR__ . '/../core/footer.php'; ?>

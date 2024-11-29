@@ -1,0 +1,128 @@
+.cmsContainer {
+  background-color: white;
+  padding: 1rem;
+  margin: 1rem;
+  box-shadow: 0px 0px 10px 0px #9196a8 inset;
+  border-radius: 20px;
+}
+.cmsContainer .cmsTitle {
+  font-size: 2rem;
+  font-style: italic;
+  margin-bottom: 1rem;
+  margin-top: 0;
+  border-bottom: 1px solid #9196a8;
+}
+.cmsContainer .gridsquare .squareTitle {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+  margin-top: 0;
+}
+.cmsContainer .gridsquare form {
+  display: flex;
+  flex-direction: column;
+}
+.cmsContainer .gridsquare .rowLayout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 1rem;
+}
+.cmsContainer .gridsquare .verwijderen {
+  color: red;
+  justify-self: end;
+}
+.cmsContainer .gridsquare textarea {
+  resize: none;
+}
+.cmsContainer .gridsquare .columnSettings {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  height: auto;
+  width: 100%;
+}
+.cmsContainer .gridsquare .columnSettings input {
+  font-size: 1rem;
+  border: none;
+}
+.cmsContainer .gridsquare .columnSettings label {
+  font-size: 1rem;
+  font-weight: bold;
+}
+.cmsContainer .gridsquare .columnSettings :nth-child(1) {
+  grid-column: 1/span 2;
+}
+.cmsContainer .gridsquare .columnSettings :nth-child(2) {
+  grid-column: 1;
+}
+.cmsContainer .gridsquare .columnSettings :nth-child(3) {
+  grid-column: 2;
+}
+.cmsContainer .gridsquare .columnSettings :nth-child(4) {
+  grid-column: 1/span 2;
+  grid-row: 3;
+}
+.cmsContainer .gridsquare .row1 {
+  grid-column: 1/span 2;
+  display: grid;
+  grid-template-columns: 1fr;
+  height: auto;
+  width: 100%;
+}
+.cmsContainer .gridsquare .row2 {
+  grid-column: 1/span 2;
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  height: auto;
+  width: 100%;
+}
+.cmsContainer .gridsquare .row3 {
+  grid-column: 1/span 2;
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  height: auto;
+  width: 100%;
+}
+.cmsContainer .gridsquare .row4 {
+  grid-column: 1/span 2;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  height: auto;
+  width: 100%;
+}
+.cmsContainer form {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 1rem;
+  margin-top: 1rem;
+}
+.cmsContainer form label {
+  font-size: 1.5rem;
+  font-weight: lighter;
+}
+.cmsContainer form input {
+  font-size: 1.4rem;
+  font-style: italic;
+  padding: 5px;
+  border: none;
+  border-bottom: 2px solid #9196a8;
+}
+.cmsContainer form textarea {
+  font-size: 1.5rem;
+  font-style: italic;
+  padding: 5px;
+}
+.cmsContainer form input[type=submit] {
+  font-size: 1.5rem;
+  font-style: italic;
+  padding: 5px;
+  border: 1px solid #9196a8;
+  border-radius: 20px;
+  background-color: #9196a8;
+  box-shadow: 0px 0px 10px 0px #5b5d69 inset;
+  color: white;
+  grid-column: 2;
+}
+.cmsContainer form input[type=submit]:hover {
+  background-color: #d5d8e2;
+  box-shadow: 0px 0px 10px 0px #9196a8 inset;
+  color: black;
+}/*# sourceMappingURL=cms.css.map */

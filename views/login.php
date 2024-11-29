@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="<?= 'assets/css/style.css' ?>">
-    <link rel="stylesheet" href="<?= 'assets/css/login.css' ?>">
+    <link rel="stylesheet" href="<?= 'assets/css/'. $style ?>">
     <title>Login pagina</title>
 </head>
 
@@ -33,7 +33,7 @@
 
                     if (password_verify($wachtwoord, $hash_pass)) {
                         $_SESSION['gebruikersnaam'] = $gebruikersnaam;
-                        header("Location: admin");
+                        header("Location: ?view=admin");
                         exit();
                     } else {
             ?>
