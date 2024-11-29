@@ -16,7 +16,7 @@ if ($con->connect_errno) {
 
 function testInput($data) {
     $data = trim($data);
-    $data = stripsLashes($data);
+    $data = stripslashes($data);
     $data = htmlspecialchars($data);
     return $data;
 }

@@ -5,7 +5,7 @@ error_reporting(E_ALL);
 
 // Controleer of het formulier is verzonden
 if ($_SERVER['REQUEST_METHOD'] == "POST") {
-    // Verkrijg en trim de formuliergegevens
+    // Verkrijg en trim  (/) de formuliergegevens
     $naam = testInput($_POST['naam']);
     $email = testInput($_POST['email']);
     $bericht = testInput($_POST['bericht']);
