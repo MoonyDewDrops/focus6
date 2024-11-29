@@ -63,7 +63,7 @@
                              <div class="rowLayout">
                             <p>Row: <?= $rowPosition ?></p>
 
-                            <a class="verwijderen" href="deleteRow?id=<?=$rowID?>&pageValue=<?=$pageValue?>">verwijderen</a>
+                            <a class="verwijderen" href="?view=deleteRow&id=<?=$rowID?>&pageValue=<?=$pageValue?>">verwijderen</a>
                             <div class="row<?= $columnType ?>">
                                 <?php
                                 switch ($columnType) {

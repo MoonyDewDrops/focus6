@@ -100,7 +100,7 @@
                         </div>
                         <div id="newNote<?= $contactId; ?>" class="modal">
                             <div class="modal-content">
-                                <form action="addNotitieProcess" method="post">
+                                <form action="?view=addNotitieProcess" method="post">
                                     <p>Notitie toevoegen</p>
                                     <input type="hidden" name="id" value="<?= $contactId; ?>">
                                     <label for="notitie">Notitie:</label>
@@ -124,7 +124,7 @@
             <div id="newMessage" class="modal">
                 <div class="modal-content">
 
-                    <form action="contactAdd" method="post">
+                    <form action="?view=contactAdd" method="post">
                         <p>Bericht toevoegen</p>
                         <label for="name">Naam:</label>
                         <input type="text" name="name" required>

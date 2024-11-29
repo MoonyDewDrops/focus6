@@ -1,0 +1,153 @@
+@import "./global";
+
+.cmsContainer {
+  background-color: white;
+  padding: 1rem;
+  margin: 1rem;
+  box-shadow: 0px 0px 10px 0px $cms-light-grey inset;
+  border-radius: 20px;
+
+  .cmsTitle {
+    font-size: 2rem;
+    font-style: italic;
+    margin-bottom: 1rem;
+    margin-top: 0;
+    border-bottom: 1px solid $cms-light-grey;
+  }
+
+  .gridsquare {
+    .squareTitle {
+      font-size: 1.5rem;
+      margin-bottom: 1rem;
+      margin-top: 0;
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .rowLayout {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      grid-gap: 1rem;
+    }
+
+    .verwijderen {
+      color: red;
+      justify-self: end;
+    }
+
+    textarea {
+      resize: none;
+    }
+
+    .columnSettings {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      height: auto;
+      width: 100%;
+
+      input {
+        font-size: 1rem;
+        border: none;
+      }
+
+      label {
+        font-size: 1rem;
+        font-weight: bold;
+      }
+
+      :nth-child(1) {
+        grid-column: 1 / span 2;
+      }
+
+      :nth-child(2) {
+        grid-column: 1;
+      }
+
+      :nth-child(3) {
+        grid-column: 2;
+      }
+
+      :nth-child(4) {
+        grid-column: 1 / span 2;
+        grid-row: 3;
+      }
+    }
+
+    .row1 {
+      grid-column: 1 / span 2;
+      display: grid;
+      grid-template-columns: 1fr;
+      height: auto;
+      width: 100%;
+    }
+
+    .row2 {
+      grid-column: 1 / span 2;
+      display: grid;
+      grid-template-columns: 2fr 1fr;
+      height: auto;
+      width: 100%;
+    }
+
+    .row3 {
+      grid-column: 1 / span 2;
+      display: grid;
+      grid-template-columns: 1fr 2fr;
+      height: auto;
+      width: 100%;
+    }
+
+    .row4 {
+      grid-column: 1 / span 2;
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      height: auto;
+      width: 100%;
+    }
+  }
+
+  form {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 1rem;
+    margin-top: 1rem;
+
+    label {
+      font-size: 1.5rem;
+      font-weight: lighter;
+    }
+
+    input {
+      font-size: 1.4rem;
+      font-style: italic;
+      padding: 5px;
+      border: none;
+      border-bottom: 2px solid $cms-light-grey;
+    }
+    textarea {
+      font-size: 1.5rem;
+      font-style: italic;
+      padding: 5px;
+    }
+
+    input[type="submit"] {
+      font-size: 1.5rem;
+      font-style: italic;
+      padding: 5px;
+      border: 1px solid $cms-light-grey;
+      border-radius: 20px;
+      background-color: $cms-light-grey;
+      box-shadow: 0px 0px 10px 0px #5b5d69 inset;
+      color: white;
+      grid-column: 2;
+      &:hover {
+        background-color: #d5d8e2;
+        box-shadow: 0px 0px 10px 0px $cms-light-grey inset;
+        color: black;
+      }
+    }
+  }
+}

@@ -7,7 +7,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $qry = $con->prepare($stmt);
     $qry->bind_param('si', $notitie, $id);
     if ($qry->execute()) {
-        header('Location: contactProcess');
+        header('Location: ?view=contactProcess');
     } else {
         echo mysqli_error($con);
     }

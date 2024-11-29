@@ -37,7 +37,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         }
 
         if ($bow1){
-            header("Location: admin");
+            header("Location: ?view=admin");
         }
     } else {
         echo "Error uploading file.";
