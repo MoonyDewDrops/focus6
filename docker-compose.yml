@@ -11,7 +11,7 @@ services:
       - "3306:3306"                       # Expose port 3306 (MySQL default)
     volumes:
       - db_data:/var/lib/mysql            # Persistent storage for data
-      - ./assets/sql/focus6.sql:/docker-entrypoint-initdb.d/focus6.sql
+      - ./assets/sql/focus6plushomepage.sql:/docker-entrypoint-initdb.d/focus6plushomepage.sql
     restart: unless-stopped
 
 volumes:

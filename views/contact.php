@@ -8,10 +8,10 @@ $num2 = rand(1, 10);
 $_SESSION['captcha_answer'] = $num1 + $num2;
 ?>
 
-<div class="container_grid">
-  <div class="row">
-    <div class="col-6 offset-3">
-      <div class="form_box text-center">
+<div class="">
+  <div class="">
+    <div class="">
+      <div class="form_box">
         <h4>Contact</h4>
         <h5>Neem contact met ons op!</h5>
       </div>
@@ -28,20 +28,22 @@ $_SESSION['captcha_answer'] = $num1 + $num2;
       ?>
 
       <form id="form" method="POST" action="contact_process.php" novalidate>
-        <div class="row">
-          <div class="input_box col-6">
-            <input type="text" id="naam" name="naam" class="form-control" placeholder="Naam" required>
+        <div class="">
+          <div class="input_box">
+            <input type="text" id="naam" name="naam" class="" placeholder="Naam" required>
             <label for="naam">Naam</label>
             <span id="naamError" style="color: red;"></span>
           </div>
-          <div class="input_box col-6">
-            <input type="text" id="email" name="email" class="form-control" placeholder="Email" required>
+          <div class="input_box">
+            <input type="text" id="email" name="email" class="" placeholder="Email" required>
             <label for="email">Email</label>
             <span id="emailError" style="color: red;"></span>
           </div>
+
           <div class="input_box col-6">
             <input type="text" id="bericht" name="bericht" class="form-control" placeholder="Bericht" required
               minlength="10">
+
             <label for="bericht">Bericht</label>
             <span id="berichtError" style="color: red;"></span>
           </div>
@@ -57,4 +59,5 @@ $_SESSION['captcha_answer'] = $num1 + $num2;
   </div>
 </div>
 
-<?php include "core/footer.php"; ?>
+<?php include __DIR__ . '/../core/footer.php'; ?>
+
