@@ -25,6 +25,11 @@ switch ($view) {
         $style = 'home.css';
         $js = 'home.js';
         break;
+    case 'Home':
+        $page = 'home.php';
+        $style = 'home.css';
+        $js = 'home.js';
+        break;
     case 'pages':
         $page = 'pages.php';
         $style = 'pages.css';

@@ -1,11 +1,4 @@
-<html>
 
-<head>
-    <link rel="stylesheet" href="<?= 'assets/css/footer.css' ?>">
-    <link rel="stylesheet" href="<?= 'assets/css/style.css' ?>">
-</head>
-
-<body>
     <footer class="footer">
         <nav class="footer-top container">
             <a class="footer-link" href="mailto: info@focus6.nl">
