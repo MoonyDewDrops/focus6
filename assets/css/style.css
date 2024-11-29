@@ -12,7 +12,8 @@
 body {
   font-family: "Calibri", sans-serif;
   background-color: #FFFCF5;
-  height: 100vh;
+  height: 100%;
+  min-height: 100vh;
 }
 
 .container {
@@ -69,6 +70,5 @@ body {
   .footer-top {
     flex-direction: column;
   }
-
-}/*# sourceMappingURL=style.css.map */
-
+}
+/*# sourceMappingURL=style.css.map */
