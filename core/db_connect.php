@@ -13,3 +13,10 @@ if ($con->connect_errno) {
     echo "Failed to connect to MySQL: " . $con->connect_error;
     exit();
 }
+
+function testInput($data) {
+    $data = trim($data);
+    $data = stripslashes($data);
+    $data = htmlspecialchars($data);
+    return $data;
+}

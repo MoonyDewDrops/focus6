@@ -53,4 +53,6 @@
                 <a class="header-link" href="?view=contact">Contact</a>
             </nav>
         </div>
+
     </header>
+
