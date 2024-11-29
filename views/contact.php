@@ -1,4 +1,12 @@
-<?php include __DIR__ . '/../core/header.php'; ?>
+<?php include "core/header.php"; 
+
+// Genereer twee willekeurige getallen voor de captcha
+$num1 = rand(1, 10);
+$num2 = rand(1, 10);
+
+// Sla het juiste antwoord op in de sessie
+$_SESSION['captcha_answer'] = $num1 + $num2;
+?>
 
 <div class="">
   <div class="">
@@ -31,12 +39,20 @@
             <label for="email">Email</label>
             <span id="emailError" style="color: red;"></span>
           </div>
-          <div class="input_box">
-            <input type="text" id="bericht" name="bericht" class="" placeholder="Bericht" required minlength="10">
+
+          <div class="input_box col-6">
+            <input type="text" id="bericht" name="bericht" class="form-control" placeholder="Bericht" required
+              minlength="10">
+
             <label for="bericht">Bericht</label>
             <span id="berichtError" style="color: red;"></span>
           </div>
           <input type="submit" value="Verzenden">
+        </div>
+        <div class="input_box col-6">
+          <label for="captcha">Los deze som op: <?php echo "$num1 + $num2"; ?></label>
+          <input type="text" id="captcha" name="captcha" class="form-control" placeholder="Antwoord" required>
+          <span id="captchaError" style="color: red;"></span>
         </div>
       </form>
     </div>
@@ -44,3 +60,4 @@
 </div>
 
 <?php include __DIR__ . '/../core/footer.php'; ?>
+
