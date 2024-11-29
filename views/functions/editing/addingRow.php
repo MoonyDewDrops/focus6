@@ -15,7 +15,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         } else {
             $insertqry->bind_param('iii', $rowPosition, $columnType, $pageValue);
             if ($insertqry->execute()) {
-                header("Location: baseData?id=" . urlencode($id) . "&rowPosition=" . urlencode($rowPosition) . "&columnType=" . urlencode($columnType));
+                header("Location: ?view=baseData&id=" . urlencode($id) . "&rowPosition=" . urlencode($rowPosition) . "&columnType=" . urlencode($columnType));
                 exit;
                             } else {
                 //if it fails

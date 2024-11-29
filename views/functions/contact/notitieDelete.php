@@ -6,7 +6,7 @@ if (isset($_GET['id'])) {
     $stmt = $con->prepare($sql);
     $stmt->bind_param('i', $id);
     if ($stmt->execute()) {
-        header('Location: contactProcess');
+        header('Location: ?view=contactProcess');
     } else {
         echo mysqli_error($con);
     }

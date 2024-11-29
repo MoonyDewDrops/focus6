@@ -28,7 +28,7 @@ if (isset($_SESSION['gebruikersnaam'])) {
     if ($socialsQry === false) {
         echo mysqli_error($con);
     }
-?>
+    ?>
 
     <?php include 'core/admin_header.php'; ?>
     <div class="container">
@@ -42,7 +42,7 @@ if (isset($_SESSION['gebruikersnaam'])) {
                 <?php
                 if (isset($paginas)) {
                     foreach ($paginas as $pagina) {
-                ?>
+                        ?>
                         <tr class="pagesRow">
                             <td><?= $pagina['paginaNaam']; ?></td>
                             <td>
@@ -59,17 +59,17 @@ if (isset($_SESSION['gebruikersnaam'])) {
                                     verwijderen?</p>
                                 <span class="close"
                                     onclick="document.getElementById('del<?= $pagina['id']; ?>').style.display='none'">&times;</span>
-                                <a class="deleteYes" href='deletePageProcess?id=<?= $pagina['id']; ?>'>Ja</a>
+                                <a class="deleteYes" href='?view=deletePageProcess&id=<?= $pagina['id']; ?>'>Ja</a>
                                 <p class="deleteNo"
                                     onclick="document.getElementById('del<?= $pagina['id']; ?>').style.display='none'">Nee</p>
                             </div>
 
                         </div>
-                            <?php
+                        <?php
 
                     }
                 }
-                    ?>
+                ?>
             </table>
             <a class="add" href="?view=createProcess"> Pagina toevoegen </a>
         </div>
@@ -86,64 +86,79 @@ if (isset($_SESSION['gebruikersnaam'])) {
                     <?php
                     if ($socialsQry->execute()) {
                         while ($socialsQry->fetch()) {
-                    ?>
-                            <td><a href="<?=$link?>"><?=$socialsNaam?></a> </td>
-                            <td><?=$link?></td>
-                            <td><img src="<?=$image?>" style="height:50px;width:auto;"></td>
-                            <td><a href="deleteSocial?id=<?=$socialsID?>">Delete</a></td>
-                    <?php
+                            ?>
+                            <td><a href="<?= $link ?>"><?= $socialsNaam ?></a> </td>
+                            <td><?= $link ?></td>
+                            <td><img src="<?= $image ?>" style="height:50px;width:auto;"></td>
+                            <td><a href="?view=deleteSocial?id=<?= $socialsID ?>">Delete</a></td>
+                            <?php
                         }
                     }
                     $socialsQry->close();
                     ?>
                 </tr>
             </table>
-            <a class="add" href="?view=formCreationSocial">Social toevoegen</a>
-        </div>
-        <div id="contactberichten" class="cmsOptions">
-            <p class="optionTitle">Berichten</p>
-            <?php
-            if ($contactqry->execute()) {
-                while ($contactqry->fetch()) {
-            ?>
-                    <div class="berichtcontainer">
-                        <p><?= $name ?></p>
-                        <p><?= $email ?></p>
-                        <p><?= $message ?></p>
-                    </div>
-            <?php
-                }
-            }
-            $contactqry->close();
-            ?>
-            <a class="add" href="contactProcess">Alle berichten</a>
-            <p class="add" onclick="document.getElementById('newMessage').style.display='grid'">Bericht toevoegen</p>
-            <div id="newMessage" class="modal">
+            <a class="add" onclick="document.getElementById('newSocial').style.display='grid'">Social toevoegen</a>
+            <div id="newSocial" class="modal">
                 <div class="modal-content">
-
-                    <form action="contactAdd" method="post">
-                        <p>Bericht toevoegen</p>
-                        <label for="name">Naam:</label>
-                        <input type="text" name="name" required>
-                        <label for="email">Email:</label>
-                        <input type="email" name="email" required>
-                        <label for="message">Bericht:</label>
-                        <textarea name="message" required></textarea>
-                        <input type="submit" value="Toevoegen">
+                    <form action="?view=createSocial" method="post" enctype="multipart/form-data">
+                        <p>Social toevoegen</p>
+                        <label for="photo">Photo:</label>
+                        <input type="file" id="photo" name="photo">
+                        <label for="media">Social media:</label>
+                        <input type="text" id="media" name="media" required>
+                        <label for="Link">Link:</label>
+                        <textarea type="text" id="Link" name="Link" required></textarea>
+                        <input type="submit" value="Social toevoegen">
                     </form>
-                    <span class="close" onclick="document.getElementById('newMessage').style.display='none'">&times;</>
+                    <span class="close" onclick="document.getElementById('newSocial').style.display='none'">&times;</>
                 </div>
             </div>
         </div>
-    </div>
-<?php
+            <div id="contactberichten" class="cmsOptions">
+                <p class="optionTitle">Berichten</p>
+                <?php
+                if ($contactqry->execute()) {
+                    while ($contactqry->fetch()) {
+                        ?>
+                        <div class="berichtencontainer">
+                            <p><?= $name ?></p>
+                            <p><?= $email ?></p>
+                            <p><?= $message ?></p>
+                        </div>
+                        <?php
+                    }
+                }
+                $contactqry->close();
+                ?>
+                <a class="add" href="contactProcess">Alle berichten</a>
+                <p class="add" onclick="document.getElementById('newMessage').style.display='grid'">Bericht toevoegen</p>
+                <div id="newMessage" class="modal">
+                    <div class="modal-content">
+
+                        <form action="?view=contactAdd" method="post">
+                            <p>Bericht toevoegen</p>
+                            <label for="name">Naam:</label>
+                            <input type="text" name="name" required>
+                            <label for="email">Email:</label>
+                            <input type="email" name="email" required>
+                            <label for="message">Bericht:</label>
+                            <textarea name="message" required></textarea>
+                            <input type="submit" value="Toevoegen">
+                        </form>
+                        <span class="close" onclick="document.getElementById('newMessage').style.display='none'">&times;</>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <?php
 
 } else if (!isset($_SESSION['gebruikersnaam'])) {
     header("Location: ?view=login");
 }
 $con->close();
 
-    ?>
+?>
 
     </body>
 

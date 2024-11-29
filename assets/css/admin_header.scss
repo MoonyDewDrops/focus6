@@ -1,0 +1,161 @@
+@import "./global";
+
+body {
+  background-color: $accent-cms;
+  display: grid;
+  grid-template-columns: 1fr 4fr;
+  padding: 1vh;
+}
+
+header {
+  background-color: white;
+  height: 97vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-size: 2rem;
+  font-style: italic;
+  box-shadow: 0px 0px 10px 0px $cms-light-grey inset;
+  border-radius: 20px;
+  position: sticky;
+  top: 1vh;
+
+  .adminlink {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    a {
+      color: black;
+      text-decoration: none;
+      font-size: 1.5rem;
+      margin-top: 1rem;
+      font-style: normal;
+
+      &:hover {
+        color: $accent-cms;
+      }
+    }
+  }
+}
+
+input[type="radio"] {
+    margin-right: 5px;
+    accent-color: $cms-light-grey;
+  }
+  
+  .modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.8);
+  }
+  
+  .modal-content {
+    background-color: white;
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+    border-radius: 20px;
+    box-shadow: 0px 0px 10px 0px $cms-light-grey;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+  
+    .close {
+      color: #aaa;
+      float: right;
+      font-size: 28px;
+      font-weight: bold;
+      justify-self: end;
+    }
+  
+    .close:hover,
+    .close:focus {
+      color: black;
+      text-decoration: none;
+      cursor: pointer;
+    }
+  
+    form {
+      grid-column: 1 / span 3;
+      display: grid;
+      grid-template-columns: 1fr 3fr;
+      grid-gap: 1rem;
+      margin-top: 1rem;
+  
+      p{
+        font-size: 2rem;
+        font-style: italic;
+        margin: 0;
+        grid-column: 1 / span 2;
+      }
+  
+      label {
+        font-size: 1.5rem;
+        font-weight: lighter;
+      }
+  
+      input, textarea {
+        font-size: 1.4rem;
+        font-style: italic;
+        padding: 5px;
+        border: none;
+        border-bottom: 2px solid $cms-light-grey;
+      }
+  
+      input[type="submit"] {
+        font-size: 1.5rem;
+        font-style: italic;
+        padding: 5px;
+        border: 1px solid $cms-light-grey;
+        border-radius: 20px;
+        background-color: $cms-light-grey;
+        box-shadow: 0px 0px 10px 0px #5b5d69 inset;
+        color: white;
+        grid-column: 2;
+  
+        &:hover {
+          background-color: #d5d8e2;
+          box-shadow: 0px 0px 10px 0px $cms-light-grey inset;
+          color: black;
+        }
+      }
+    }
+  
+    .modalTitle {
+      font-size: 2rem;
+      font-style: italic;
+      margin-bottom: 1rem;
+      margin-top: 0;
+      grid-column: 1 / span 3;
+    }
+  
+    .deleteYes, .deleteNo {
+      font-size: 1.5rem;
+      text-decoration: none;
+      color: black;
+      cursor: pointer;
+      align-self: center;
+      justify-self: center;
+  
+      &:hover {
+        color: $accent-cms;
+      }
+    }
+  
+    .deleteYes {
+      grid-column: 1 / span 2;
+    }
+  
+    .deleteNo {
+      grid-column: 3 / span 2;
+    }
+  }
