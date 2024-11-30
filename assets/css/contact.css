@@ -1,9 +1,8 @@
 .contact {
   display: flex;
   flex-direction: column;
-  flex-grow: 1;
   gap: 10px;
-  padding-block: 50px;
+  justify-content: center;
 }
 
 .contact-text {
@@ -46,12 +45,15 @@
   width: fit-content;
   padding-inline: 20px;
   padding-block: 5px;
-  background-color: red;
+  background-color: #DCBD7F;
+  border: 1px solid black;
   display: flex;
   align-self: center;
+  border-radius: 20px;
+  transition: 0.2s;
 }
-.button .button:hover {
-  background-color: green;
+.button:hover {
+  background-color: #bba06a;
 }
 
 /*# sourceMappingURL=contact.css.map */
