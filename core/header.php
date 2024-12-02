@@ -26,6 +26,11 @@
 </head>
 
 <body>
+    <?php
+    $headsql = "SELECT id, paginaNaam FROM paginas";
+    $headstmt = $con->prepare($headsql);
+    $headstmt->bind_result($paginaId, $paginaNaam);
+    ?>
     <header class="header container">
         <div class="header-content">
             <a class="logo" href="?view">
@@ -33,10 +38,21 @@
             </a>
 
             <nav class="header-links">
-                <a class="header-link" href="">Spiegelconcept</a>
-                <a class="header-link" href="">Dienstverlening</a>
+                <?php
+                if ($headstmt->execute()) {
+                    while ($headstmt->fetch()) {
+                        if ($paginaNaam != 'Home') {
+                        ?>
+                        <a class="header-link" href="?view=pages&id=<?= $paginaId ?>"><?= $paginaNaam ?></a>
+                <?php
+                        }
+                    }
+                }
+                $headstmt->close();
+                ?>
                 <a class="header-link" href="?view=contact">Contact</a>
             </nav>
         </div>
+
     </header>
 
