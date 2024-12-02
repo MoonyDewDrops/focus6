@@ -30,7 +30,7 @@ $stmt2->bind_result($informatie, $foto, $backgroundColor, $bolded, $italic, $opa
     foreach ($paginaGrid as $row) {
       $rowId = $row['id'];
       $columnType = $row['columnType'];
-  ?>
+      ?>
       <div class="rowContainer">
         <?php
         switch ($columnType) {
@@ -50,70 +50,72 @@ $stmt2->bind_result($informatie, $foto, $backgroundColor, $bolded, $italic, $opa
             $columnAmount = 1;
             break;
         }
-        ?>
-        <div class="row<?= $columnType ?>">
-          <?php
-          for ($i = 1; $i < $columnAmount + 1; $i++) {
-            $columnID = $i;
-            $stmt2->execute();
-            $stmt2->store_result();
-            $stmt2->fetch();
-            $opacity = $opacity / 10;
-            if ($backgroundColor == 1 && $bolded == 1 && $italic == 1) {
+        if ($columnType == 1) {
           ?>
-              <div class="coloredColumn bold italic">
+          <div class="top-content">
+            <?php
+        } else if ($columnType == 2) {
+          ?>
+            <div class="middle-content">
+          <?php
+        } else{
+          ?>
+            <div class="row<?= $columnType ?>">
               <?php
-            } else if ($backgroundColor == 1 && $bolded == 1) {
+        }
+        for ($i = 1; $i < $columnAmount + 1; $i++) {
+          $columnID = $i;
+          $stmt2->execute();
+          $stmt2->store_result();
+          $stmt2->fetch();
+          $opacity = $opacity / 10;
+
+          if ($foto == 0) {
+            if ($italic == 1 && $bolded == 1) {
               ?>
-                <div class="coloredColumn bold">
+                <p class="home-text italic bold" style="opacity:<?= $opacity ?>; color:<?= $kleur ?>"><?= $informatie ?></p>
                 <?php
-              } else if ($backgroundColor == 1 && $italic == 1) {
-                ?>
-                  <div class="coloredColumn italic">
+            } else if ($italic == 1) {
+              ?>
+                <p class="home-text italic" style="opacity:<?= $opacity ?>; color:<?= $kleur ?>"><?= $informatie ?></p>
+                <?php
+            } else if ($bolded == 1) {
+              ?>
+                <p class="home-text bold" style="opacity:<?= $opacity ?>; color:<?= $kleur ?>"><?= $informatie ?></p>
+                <?php
+            } else {
+              ?>
+                <p class="home-text" style="opacity:<?= $opacity ?>; color:<?= $kleur ?>"><?= $informatie ?></p>
+                <?php
+            }
+          } else {
+            if ($columnType == 1) {
+              ?>
+                  <div class="top-image">
+                    <img class="team-image" src="assets/img/fotos/<?= $informatie ?>"
+                      style="opacity:<?= $opacity ?>; color:<?= $kleur ?>" alt="foto">
+                  </div>
                   <?php
-                } else if ($backgroundColor == 1) {
-                  ?>
-                    <div class="coloredColumn">
-                    <?php
-                  } else if ($bolded == 1 && $italic == 1) {
-                    ?>
-                      <div class="bold italic">
-                      <?php
-                    } else if ($bolded == 1) {
-                      ?>
-                        <div class="bold">
-                        <?php
-                      } else if ($italic == 1) {
-                        ?>
-                          <div class="italic">
-                          <?php
-                        } else {
-                          ?>
-                            <div>
-                            <?php
-                          }
+            } else {
+              ?>
+                  <img src="assets/img/fotos/<?= $informatie ?>" style="opacity:<?= $opacity ?>; color:<?= $kleur ?>" alt="foto">
+                  <?php
+            }
+          }
+          ?>
+            
+            <?php
 
-                          if ($foto == 0) {
-                            ?>
-                              <p style="opacity:<?= $opacity ?>; color:<?= $kleur ?>"><?= $informatie ?></p>
-                            <?php
-                          } else {
-                            ?>
-                              <img src="assets/img/fotos/<?= $informatie ?>" style="opacity:<?= $opacity ?>; color:<?= $kleur ?>" alt="foto">
-                            <?php
-                          }
-                            ?>
-                            </div>
-                          <?php
+        }
+        ?>
 
-                        }
-                          ?>
-                          </div>
-                      <?php
-                    }
-                  }
-                      ?>
-                      <!-- <div class="top-image">
+        </div>
+      </div>
+      <?php
+    }
+  }
+  ?>
+  <!-- <div class="top-image">
       <img class="team-image" src="assets/images/IMG_9579.jpeg" alt="focus 6 team picture">
     </div>
 
@@ -149,17 +151,17 @@ $stmt2->bind_result($informatie, $foto, $backgroundColor, $bolded, $italic, $opa
 
 
 <!-- <?php
-      $sql = "SELECT id, naam, email, bericht FROM contactinfo;";
-      include_once __DIR__ . '/../core/db_connect.php';
-      include __DIR__ . '/../core/header.php';
+$sql = "SELECT id, naam, email, bericht FROM contactinfo;";
+include_once __DIR__ . '/../core/db_connect.php';
+include __DIR__ . '/../core/header.php';
 
-      $qry = $con->prepare($sql);
-      if ($qry === false) {
-        echo mysqli_error($con);
-      } else {
-        if ($qry->execute()) {
-          $qry->bind_result($id, $name, $email, $message);
-          while ($qry->fetch()) {
+$qry = $con->prepare($sql);
+if ($qry === false) {
+  echo mysqli_error($con);
+} else {
+  if ($qry->execute()) {
+    $qry->bind_result($id, $name, $email, $message);
+    while ($qry->fetch()) {
       ?>
         <div class="container">
           <p>Dit is een test, verwijder als u begint met werken.</p>
@@ -168,11 +170,11 @@ $stmt2->bind_result($informatie, $foto, $backgroundColor, $bolded, $italic, $opa
           <p>Bericht: <?= $message ?></p>
         </div>
   <?php
-          }
-        }
-        $qry->close();
-      }
-  ?> -->
+    }
+  }
+  $qry->close();
+}
+?> -->
 </body>
 
 </html>
