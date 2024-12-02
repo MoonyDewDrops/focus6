@@ -1,10 +1,10 @@
 <?php
 if ($_SERVER["REQUEST_METHOD"] == "GET") {
     if (isset($_GET['id']) && isset($_GET['rowPosition']) && isset($_GET['columnType'])) {
-        $selectqry = "SELECT id FROM paginagrid WHERE pagevalue = ?";
+        $selectqry = "SELECT id FROM paginagrid WHERE pagevalue = ? AND rowPosition = ?;";
         $id = $_GET['id'];
         $stmt = $con->prepare($selectqry);
-        $stmt->bind_param('i', $id);
+        $stmt->bind_param('ii', $id, $_GET['rowPosition']);
         $stmt->execute();
         $stmt->store_result();
         $stmt->bind_result($row_id);
@@ -18,7 +18,7 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
         // Validating
         $checkRowSql = "SELECT id FROM paginagrid WHERE id = ?";
         $checkStmt = $con->prepare($checkRowSql);
-        $checkStmt->bind_param('i', $whichRow);
+        $checkStmt->bind_param('i', $id);
         $checkStmt->execute();
         $checkStmt->store_result();
 

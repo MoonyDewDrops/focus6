@@ -38,7 +38,7 @@ if (isset($_GET["id"])) {
     $stmt3->close();
 }
 ?>
-<div class="container">
+<div class="page-container">
     <h1><?= $paginaNaam ?></h1>
 <?php
     if (!empty($paginaGrid)){
@@ -73,7 +73,7 @@ if (isset($_GET["id"])) {
             $stmt2->execute();
             $stmt2->store_result();
             $stmt2->fetch();
-            $opacity = $opacity / 10;
+            $newOpacity = $opacity / 10;
             if ($backgroundColor == 1 && $bolded == 1 && $italic == 1){
               ?>
               <div class="coloredColumn bold italic">
@@ -92,29 +92,29 @@ if (isset($_GET["id"])) {
                 <?php
             } else if ($bolded == 1 && $italic == 1){
               ?>
-              <div class="bold italic">
+              <div class="normalColumn bold italic">
                 <?php
             } else if ($bolded == 1){
               ?>
-              <div class="bold">
+              <div class="normalColumn bold">
                 <?php
             } else if ($italic == 1){
               ?>
-              <div class="italic">
+              <div class="normalColumn italic">
                 <?php
             } else {
               ?>
-              <div>
+              <div class="normalColumn">
               <?php
             }
             
             if ($foto == 0){
               ?>
-              <p style="opacity:<?=$opacity?>; color:<?=$kleur?>"><?= $informatie ?></p>
+              <p style="opacity:<?=$newOpacity?>; color:<?=$kleur?>"><?= $informatie ?></p>
               <?php
             } else {
               ?>
-              <img src="assets/img/fotos/<?= $informatie ?>" style="opacity:<?=$opacity?>; color:<?=$kleur?>" alt="foto">
+              <img src="assets/img/fotos/<?= $informatie ?>" style="opacity:<?=$newOpacity?>; color:<?=$kleur?>" alt="foto">
               <?php
             }
             ?>
@@ -122,6 +122,10 @@ if (isset($_GET["id"])) {
             <?php
             
           }
+            ?>
+            </div>
+            </div>
+            <?php
       }
     }
           ?>
