@@ -1,4 +1,4 @@
-
+<body>
     <footer class="footer">
         <nav class="footer-top container">
             <a class="footer-link" href="mailto: info@focus6.nl">
@@ -17,5 +17,3 @@
         <p class="footer-bottom">Copyright © Alle rechten voorbehouden</p>
     </footer>
 </body>
-
-</html>
