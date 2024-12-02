@@ -59,6 +59,13 @@ p {
 .row3 {
   grid-template-columns: 1fr 2fr;
 }
+.row3 img {
+  width: 80%;
+}
+.row3 p {
+  width: 70%;
+  justify-self: center;
+}
 
 .row4 {
   grid-template-columns: 1fr 1fr 1fr;

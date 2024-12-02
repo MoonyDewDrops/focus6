@@ -2,7 +2,6 @@
 //checking if its a post/get
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $result = $_POST;
-    var_dump($result);
     //setting the things as the posts so we acc got sum to work with   
     $id = $_GET['id'];
     $sql = "SELECT id, informatie FROM paginainfo WHERE whichRow = ? AND colum = ?";
