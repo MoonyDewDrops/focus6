@@ -1,40 +1,59 @@
-.form_box {
-  background-color: #ffffff;
-  padding: 30px;
-  margin-top: 20vh;
+.contact {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  justify-content: center;
 }
 
-.input_box {
-  padding: 5px;
-  margin-bottom: 5px;
-  position: relative;
+.contact-text {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
-.input_box input {
+#form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.input {
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+.input .text-fields {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.input .input_box input {
   font-size: 15px;
-  padding: 0px 10px;
   display: block;
   width: 100%;
+  padding-inline: 5px;
   height: 40px;
-  border-radius: 0%;
   border: 1px solid #000000;
-  box-shadow: 2px #474444;
-  background-color: #ededed;
+}
+.input .input-text {
+  display: flex;
+  gap: 10px;
 }
 
-.input_box input::placeholder {
-  visibility: hidden;
-  font-weight: 400;
-  font-size: 13px;
+.button {
+  width: fit-content;
+  padding-inline: 20px;
+  padding-block: 5px;
+  background-color: #DCBD7F;
+  border: 1px solid black;
+  display: flex;
+  align-self: center;
+  border-radius: 20px;
+  transition: 0.2s;
 }
-
-.input_box label {
-  top: 10px;
-  left: 15px;
-  pointer-events: none;
-  position: absolute;
-  font-weight: normal;
-  color: #555;
+.button:hover {
+  background-color: #bba06a;
 }
 
 /*# sourceMappingURL=contact.css.map */
