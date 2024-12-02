@@ -85,7 +85,6 @@
                                         $columnqry->execute();
                                         $columnqry->store_result();
                                         $columnqry->fetch();
-                                        echo "col info:" . $col_info;
                                         ?>
                                         <div class="columnSettings">
                                             <textarea name="<?= $rowID ?>[<?= $i ?>][text]"><?= $col_info ?></textarea>
