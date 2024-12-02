@@ -4,7 +4,7 @@
     display: flex;
     align-items: center;
     flex-direction: column;
-    gap: 80px;
+    gap: 60px;
 }
 
 .rowContainer{
@@ -12,10 +12,10 @@
     text-align: center;
 }
 
-p{
-    font-size: 1.5rem;
-    color: black;
-}
+// p{
+//     font-size: 1.5rem;
+//     color: black;
+// }
 
 .row1, .row2, .row3, .row4{
     display: grid;
@@ -42,12 +42,12 @@ p{
         width: 100%;
     }
 
-    p {
-        padding: 2rem;
-        width: 60%;
-        justify-self: center;
+    // p {
+    //     padding: 2rem;
+    //     width: 60%;
+    //     justify-self: center;
 
-    }
+    // }
 }
 
 .row2{
@@ -55,10 +55,10 @@ p{
     img{
         width: 80%;
     }
-    p{
-        width: 70%;
-        justify-self: center;
-    }
+    // p{
+    //     width: 70%;
+    //     justify-self: center;
+    // }
 }
 
 .row3{
@@ -67,10 +67,10 @@ p{
         width: 80%;
     }
 
-    p {
-        width: 70%;
-        justify-self: center;
-    }
+    // p {
+    //     width: 70%;
+    //     justify-self: center;
+    // }
 
 }
 
@@ -80,10 +80,11 @@ p{
 
 .home-text {
     font-size: 20px;
-    color: black;
-    width: 50%;
+    // color: black;
+    width: 70%;
     display: flex;
     text-align: center;
+    justify-content: center;
 }
 
 .top-image {
@@ -95,7 +96,7 @@ p{
         height: 200px;
         object-fit: cover;
         object-position: 0 35%;
-        opacity: 0.5;
+        // opacity: 0.5;
     }
 }
 
@@ -114,17 +115,19 @@ p{
     padding-block: 20px;
     gap: 150px;
 
-    .middle-img {
+    .middle-img, img {
         width: 20%;
         height: auto;
     }
 
-    .middle-text {
+    
+
+    .middle-text, p {
         text-align: center;
-        font-family: 'calibrib', sans-serif;
+        font-family: 'calibri', sans-serif;
         width: 35%;
-        font-style: italic;
-        font-weight: bold;
+        // font-style: italic;
+        // font-weight: bold;
     }
 }
 

@@ -2,17 +2,12 @@
   display: flex;
   align-items: center;
   flex-direction: column;
-  gap: 80px;
+  gap: 60px;
 }
 
 .rowContainer {
   width: 100%;
   text-align: center;
-}
-
-p {
-  font-size: 1.5rem;
-  color: black;
 }
 
 .row1, .row2, .row3, .row4 {
@@ -39,21 +34,12 @@ p {
 .row1 img {
   width: 100%;
 }
-.row1 p {
-  padding: 2rem;
-  width: 60%;
-  justify-self: center;
-}
 
 .row2 {
   grid-template-columns: 2fr 1fr;
 }
 .row2 img {
   width: 80%;
-}
-.row2 p {
-  width: 70%;
-  justify-self: center;
 }
 
 .row3 {
@@ -62,10 +48,6 @@ p {
 .row3 img {
   width: 80%;
 }
-.row3 p {
-  width: 70%;
-  justify-self: center;
-}
 
 .row4 {
   grid-template-columns: 1fr 1fr 1fr;
@@ -73,10 +55,10 @@ p {
 
 .home-text {
   font-size: 20px;
-  color: black;
-  width: 50%;
+  width: 70%;
   display: flex;
   text-align: center;
+  justify-content: center;
 }
 
 .top-image {
@@ -90,7 +72,6 @@ p {
      object-fit: cover;
   -o-object-position: 0 35%;
      object-position: 0 35%;
-  opacity: 0.5;
 }
 
 .top-content {
@@ -108,16 +89,14 @@ p {
   padding-block: 20px;
   gap: 150px;
 }
-.middle-content .middle-img {
+.middle-content .middle-img, .middle-content img {
   width: 20%;
   height: auto;
 }
-.middle-content .middle-text {
+.middle-content .middle-text, .middle-content p {
   text-align: center;
-  font-family: "calibrib", sans-serif;
+  font-family: "calibri", sans-serif;
   width: 35%;
-  font-style: italic;
-  font-weight: bold;
 }
 
 .bottom-content {
