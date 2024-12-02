@@ -9,7 +9,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
     $naam = testInput($_POST['naam']);
     $email = testInput($_POST['email']);
     $bericht = testInput($_POST['bericht']);
-    $captcha = isset($_POST['captcha']) ? (int)testInput($_POST['captcha']) : null;
+    $captcha = isset($_POST['captcha']) ? (int) testInput($_POST['captcha']) : null;
 
     // Controleer de captcha
     if (!isset($_SESSION['captcha_answer']) || $captcha !== $_SESSION['captcha_answer']) {
@@ -36,9 +36,32 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 
     // Verwerk formulier als er geen fouten zijn
     if (empty($errors)) {
+        // Geheime sleutel en encryptie methode
+        $encryptionKey = "If6q[n93WDc',c>(!EIsRc/_lnrCz&l*"; // Gebruik een veilige sleutel
+        $cipherMethod = "aes-256-cbc"; // Encryptiemethode
+        $ivLength = openssl_cipher_iv_length($cipherMethod); // Lengte van IV
+        $iv = openssl_random_pseudo_bytes($ivLength); // Genereer een willekeurige IV
+
+        // Versleutel de naam, email en bericht
+        $encryptedNaam = openssl_encrypt($naam, $cipherMethod, $encryptionKey, 0, $iv);
+        $encryptedEmail = openssl_encrypt($email, $cipherMethod, $encryptionKey, 0, $iv);
+        $encryptedBericht = openssl_encrypt($bericht, $cipherMethod, $encryptionKey, 0, $iv);
+
+        // Combineer IV met de versleutelde gegevens en encodeer in base64
+        $encryptedNaam = base64_encode($iv . $encryptedNaam);
+        $encryptedEmail = base64_encode($iv . $encryptedEmail);
+        $encryptedBericht = base64_encode($iv . $encryptedBericht);
+
+        // Decryption 
+        $plaintext = 'Dalysha';
+        $ciphertext = openssl_encrypt ($plaintext, $cipherMethod, $encryptionKey, 0, $iv);
+        echo "Original string: $plaintext\n";
+        echo "Encrypted string; $ciphertext\n";
+        $decrypted = openssl_decrypt($ciphertext, $cipherMethod, $encryptionKey, 0, $iv);
+        echo "Decrypted string: $decrypted\n";
+
         // Databaseconnectie 
         $con = new mysqli('localhost', 'root', 'root', 'focus6');
-
         if ($con->connect_error) {
             die("Verbinding mislukt: " . $con->connect_error);
         }
@@ -46,19 +69,15 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
         // prepared statement om gegevens veilig in de database op te slaan
         $stmt = $con->prepare("INSERT INTO contactinfo (naam, email, bericht) VALUES (?, ?, ?)");
         if ($stmt) {
-            $stmt->bind_param('sss', $naam, $email, $bericht);
+            $stmt->bind_param('sss', $encryptedNaam, $encryptedEmail, $encryptedBericht);
             if ($stmt->execute()) {
                 echo "<h1>Bedankt!</h1><h3>We nemen zo snel mogelijk contact met u op</h3>";
             } else {
                 echo "<p style='color: red;'>Er is een fout opgetreden tijdens het verzenden van het formulier.</p>";
             }
-            $stmt->close();
         } else {
             echo "<p style='color: red;'>Fout in prepared statement: " . $con->error . "</p>";
         }
-
-        // Sluit de databaseverbinding
-        $con->close();
     } else {
         // Sla de foutmeldingen op in de sessie en verwijs terug naar de formulierpagina
         $_SESSION['errors'] = $errors;
