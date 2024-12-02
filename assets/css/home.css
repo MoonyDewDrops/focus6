@@ -18,6 +18,15 @@
 .coloredColumn {
   background-color: #BB9851;
   padding: 2rem;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.normalColumn {
+  width: 100%;
+  display: flex;
+  justify-content: center;
 }
 
 .bold {
@@ -96,7 +105,7 @@
 .middle-content .middle-text, .middle-content p {
   text-align: center;
   font-family: "calibri", sans-serif;
-  width: 35%;
+  width: 70%;
 }
 
 .bottom-content {
