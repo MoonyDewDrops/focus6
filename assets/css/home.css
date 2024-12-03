@@ -1,8 +1,16 @@
-.homepage {
+.homepage, .page-container {
   display: flex;
   align-items: center;
   flex-direction: column;
   gap: 60px;
+}
+
+.page-title {
+  font-size: 2.5rem;
+  color: black;
+  font-style: italic;
+  margin-top: 2rem;
+  font-weight: lighter;
 }
 
 .rowContainer {
@@ -18,6 +26,23 @@
 .coloredColumn {
   background-color: #BB9851;
   padding: 2rem;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.colorColumn {
+  background-color: #BB9851;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.normalColumn {
+  width: 100%;
+  display: flex;
+  justify-content: center;
 }
 
 .bold {
@@ -92,11 +117,12 @@
 .middle-content .middle-img, .middle-content img {
   width: 20%;
   height: auto;
+  padding: 20px;
 }
 .middle-content .middle-text, .middle-content p {
   text-align: center;
   font-family: "calibri", sans-serif;
-  width: 35%;
+  width: 70%;
 }
 
 .bottom-content {
