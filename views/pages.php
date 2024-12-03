@@ -1,5 +1,5 @@
 <?php
-include 'core/header.php';
+include __DIR__ . '/../core/header.php';
 ?>
 
 <?php
@@ -39,7 +39,7 @@ if (isset($_GET["id"])) {
 }
 ?>
 <div class="page-container">
-    <h1><?= $paginaNaam ?></h1>
+    <h1 class="page-title"><?= $paginaNaam ?></h1>
 <?php
     if (!empty($paginaGrid)){
       foreach ($paginaGrid as $row){
@@ -65,73 +65,110 @@ if (isset($_GET["id"])) {
               $columnAmount = 1;
               break;
           }
+          if ($columnType == 1){
+            ?>
+            <div class="top-content">
+            <?php
+          } else if ($columnType == 2 || $columnType == 3){
+            ?>
+            <div class="middle-content">
+            <?php
+          } else {
           ?>
           <div class="row<?= $columnType?>">
           <?php
+          }
           for ($i = 1; $i < $columnAmount + 1; $i++){
             $columnID = $i;
             $stmt2->execute();
             $stmt2->store_result();
             $stmt2->fetch();
             $newOpacity = $opacity / 10;
-            if ($backgroundColor == 1 && $bolded == 1 && $italic == 1){
-              ?>
-              <div class="coloredColumn bold italic">
-                <?php
-            } else if ($backgroundColor == 1 && $bolded == 1){
-              ?>
-              <div class="coloredColumn bold">
-                <?php
-            } else if ($backgroundColor == 1 && $italic == 1){
-              ?>
-              <div class="coloredColumn italic">
-                <?php
-            } else if ($backgroundColor == 1){
-              ?>
-              <div class="coloredColumn">
-                <?php
-            } else if ($bolded == 1 && $italic == 1){
-              ?>
-              <div class="normalColumn bold italic">
-                <?php
-            } else if ($bolded == 1){
-              ?>
-              <div class="normalColumn bold">
-                <?php
-            } else if ($italic == 1){
-              ?>
-              <div class="normalColumn italic">
-                <?php
-            } else {
-              ?>
-              <div class="normalColumn">
-              <?php
-            }
-            
             if ($foto == 0){
-              ?>
-              <p style="opacity:<?=$newOpacity?>; color:<?=$kleur?>"><?= $informatie ?></p>
-              <?php
+              if ($italic == 1 && $bolded == 1){
+                if ($backgroundColor == 1){
+                  ?>
+                  <div class="coloredColumn">
+                  <?php
+                } else {
+                  ?>
+                  <div class="normalColumn">
+                  <?php
+                }
+                ?>
+
+                <p class="home-text italic bold" style="opacity:<?=$newOpacity?>; color:<?=$kleur?>"><?= $informatie ?></p>
+                </div>
+                <?php
+              } else if ($italic == 1){
+                if ($backgroundColor == 1){
+                  ?>
+                  <div class="coloredColumn">
+                  <?php
+                } else {
+                  ?>
+                  <div class="normalColumn">
+                  <?php
+                }
+                ?>
+
+                <p class="home-text italic" style="opacity:<?=$newOpacity?>; color:<?=$kleur?>"><?= $informatie ?></p>
+                </div>
+                <?php
+              } else if ($bolded == 1){
+                if ($backgroundColor == 1){
+                  ?>
+                  <div class="coloredColumn">
+                  <?php
+                } else {
+                  ?>
+                  <div class="normalColumn">
+                  <?php
+                }
+                ?>
+
+                <p class="home-text bold" style="opacity:<?=$newOpacity?>; color:<?=$kleur?>"><?= $informatie ?></p>
+                </div>
+                <?php
+              } else {
+                if ($backgroundColor == 1){
+                  ?>
+                  <div class="coloredColumn">
+                  <?php
+                } else {
+                  ?>
+                  <div class="normalColumn">
+                  <?php
+                }
+                ?>
+
+                <p class="home-text" style="opacity:<?=$newOpacity?>; color:<?=$kleur?>"><?= $informatie ?></p>
+                </div>
+                <?php
+              }
+            } else {
+              if ($columnType == 1){
+                ?>
+                <div class="top-image">
+                  <img class="team-image" src="assets/img/fotos/<?= $informatie ?>" style="opacity:<?=$newOpacity?>; color:<?=$kleur?>" alt="foto">
+                </div>
+                <?php
             } else {
               ?>
               <img src="assets/img/fotos/<?= $informatie ?>" style="opacity:<?=$newOpacity?>; color:<?=$kleur?>" alt="foto">
               <?php
             }
-            ?>
-            </div>
-            <?php
-            
           }
-            ?>
+          }
+          ?>
             </div>
             </div>
+           
             <?php
       }
     }
           ?>
-          </div>
-          </div>
 </div>
 <?php
-include 'core/footer.php';
+include __DIR__ . '/../core/footer.php';
 ?>

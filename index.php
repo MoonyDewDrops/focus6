@@ -32,7 +32,7 @@ switch ($view) {
         break;
     case 'pages':
         $page = 'pages.php';
-        $style = 'pages.css';
+        $style = 'home.css';
         $js = 'pages.js';
         break;
     case 'contact':

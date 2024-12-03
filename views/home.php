@@ -69,7 +69,6 @@ $stmt2->bind_result($informatie, $foto, $backgroundColor, $bolded, $italic, $opa
           $stmt2->store_result();
           $stmt2->fetch();
           $opacity = $opacity / 10;
-
           if ($foto == 0) {
             if ($italic == 1 && $bolded == 1) {
               if ($backgroundColor == 1) {
@@ -143,10 +142,6 @@ $stmt2->bind_result($informatie, $foto, $backgroundColor, $bolded, $italic, $opa
                   <?php
             }
           }
-          ?>
-            
-            <?php
-
         }
         ?>
 
