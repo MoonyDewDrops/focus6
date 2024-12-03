@@ -58,14 +58,20 @@ main {
         width: 100%;
       }
     }
+    
 
     .home-text {
       width: 80%;
       font-size: 16px;
     }
 
-    .heading {
-      font-size: 24px;
+    .input {
+        width: 100%;
+    }
+
+    .footer-top {
+        flex-direction: column;
+        gap: 20px;
     }
 
     .middle-content {
