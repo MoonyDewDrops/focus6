@@ -90,7 +90,7 @@ if (isset($_SESSION['gebruikersnaam'])) {
                             <td><a href="<?= $link ?>"><?= $socialsNaam ?></a> </td>
                             <td><?= $link ?></td>
                             <td><img src="<?= $image ?>" style="height:50px;width:auto;"></td>
-                            <td><a href="?view=deleteSocial?id=<?= $socialsID ?>">Delete</a></td>
+                            <td><a href="deleteSocial?id=<?= $socialsID ?>">Delete</a></td>
                             <?php
                         }
                     }
@@ -104,7 +104,7 @@ if (isset($_SESSION['gebruikersnaam'])) {
                     <form action="?view=createSocial" method="post" enctype="multipart/form-data">
                         <p>Social toevoegen</p>
                         <label for="photo">Photo:</label>
-                        <input type="file" id="photo" name="photo">
+                        <input type="file" id="photo" name="photo" required>
                         <label for="media">Social media:</label>
                         <input type="text" id="media" name="media" required>
                         <label for="Link">Link:</label>

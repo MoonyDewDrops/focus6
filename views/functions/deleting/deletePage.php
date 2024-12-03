@@ -6,22 +6,22 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
         $good2 = false;
         $good3 = false;
 
-        $sql1 = "DELETE FROM paginagrid WHERE pageValue = ?";
+        $sql1 = "DELETE FROM paginainfo WHERE whichRow IN (SELECT id FROM paginagrid WHERE pageValue = ?)";
         $stmt1 = $con->prepare($sql1);
         $stmt1->bind_param("i", $paginaID);
         if ($stmt1->execute()) {
             $good1 = true;
         } else {
-            echo "Error deleting from paginagrid: " . $con->error;
+            echo "Error deleting from paginainfo: " . $con->error;
         }
 
-        $sql2 = "DELETE FROM paginainfo WHERE whichRow = (SELECT id FROM paginagrid WHERE pageValue = ?)";
+        $sql2 = "DELETE FROM paginagrid WHERE pageValue = ?";
         $stmt2 = $con->prepare($sql2);
         $stmt2->bind_param("i", $paginaID);
         if ($stmt2->execute()) {
             $good2 = true;
         } else {
-            echo "Error deleting from paginainfo: " . $con->error;
+            echo "Error deleting from paginagrid: " . $con->error;
         }
 
         $sql3 = "DELETE FROM paginas WHERE id = ?";
