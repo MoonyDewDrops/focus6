@@ -119,12 +119,18 @@ if (isset($_SESSION['gebruikersnaam'])) {
                 <p class="optionTitle">Berichten</p>
                 <?php
                 if ($contactqry->execute()) {
+                    $encryptionKey = "If6q[n93WDc',c>(!EIsRc/_lnrCz&l*"; // Gebruik een veilige sleutel
+                    $cipherMethod = "aes-256-cbc"; // Encryptiemethode
+            
                     while ($contactqry->fetch()) {
+                        $name_decrypt = openssl_decrypt($name, $cipherMethod, $encryptionKey, 0);
+                        $email_decrypt = openssl_decrypt($email, $cipherMethod, $encryptionKey, 0);
+                        $message_decrypt = openssl_decrypt($message, $cipherMethod, $encryptionKey, 0);
                         ?>
                         <div class="berichtencontainer">
-                            <p><?= $name ?></p>
-                            <p><?= $email ?></p>
-                            <p><?= $message ?></p>
+                            <p><?= $name_decrypt ?></p>
+                            <p><?= $email_decrypt ?></p>
+                            <p><?= $message_decrypt ?></p>
                         </div>
                         <?php
                     }
