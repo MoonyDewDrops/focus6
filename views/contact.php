@@ -1,4 +1,8 @@
-<?php include "core/header.php"; 
+<?php include "core/header.php";
+
+if ($_SERVER['REQUEST_METHOD'] = $_GET) {
+  var_dump($_GET);
+}
 
 // Genereer twee willekeurige getallen voor de captcha
 $num1 = rand(1, 10);
@@ -27,7 +31,8 @@ $_SESSION['captcha_answer'] = $num1 + $num2;
       }
       ?>
 
-      <form id="form" method="POST" action="contact_process.php" novalidate>
+
+      <form id="form" method="POST" action="messageProcess" novalidate onsubmit="return showConfirmation()">
         <div class="row">
           <div class="input_box col-6">
             <input type="text" id="naam" name="naam" class="form-control" placeholder="Naam" required>
@@ -45,7 +50,7 @@ $_SESSION['captcha_answer'] = $num1 + $num2;
             <label for="bericht">Bericht</label>
             <span id="berichtError" style="color: red;"></span>
           </div>
-          <input type="submit" value="Verzenden">
+          <button input type="submit" value="verzenden" onclick="myFunction()">Verzenden</button>
         </div>
         <div class="input_box col-6">
           <label for="captcha">Los deze som op: <?php echo "$num1 + $num2"; ?></label>

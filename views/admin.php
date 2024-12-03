@@ -128,7 +128,7 @@ if (isset($_SESSION['gebruikersnaam'])) {
                         $message_decrypt = openssl_decrypt($message, $cipherMethod, $encryptionKey, 0);
                         ?>
                         <div class="berichtencontainer">
-                            <p><?= $message ?></p>
+                            <p><?= $name_decrypt ?></p>
                             <p><?= $email_decrypt ?></p>
                             <p><?= $message_decrypt ?></p>
                         </div>

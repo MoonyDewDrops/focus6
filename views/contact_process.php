@@ -18,7 +18,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 
     // Foutmeldingen array
     $errors = [];
-
+    
     // Server-side validatie
     if (empty($naam)) {
         $errors['naam'] = "Naam is verplicht";
@@ -45,42 +45,30 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
         $encryptedEmail = openssl_encrypt($email, $cipherMethod, $encryptionKey, 0);
         $encryptedBericht = openssl_encrypt($bericht, $cipherMethod, $encryptionKey, 0);
 
-        // Combineer IV met de versleutelde gegevens en encodeer in base64
-        // $encryptedNaam = base64_encode($iv . $encryptedNaam);
-        // $encryptedEmail = base64_encode($iv . $encryptedEmail);
-        // $encryptedBericht = base64_encode($iv . $encryptedBericht);
-
-        // Decryption 
-        // $plaintext = 'Dalysha';
-        // $ciphertext = openssl_encrypt ($plaintext, $cipherMethod, $encryptionKey, 0, $iv);
-        // echo "Original string: $plaintext\n";
-        // echo "Encrypted string; $ciphertext\n";
-        // $decrypted = openssl_decrypt($ciphertext, $cipherMethod, $encryptionKey, 0, $iv);
-        // echo "Decrypted string: $decrypted\n";
-
         // Databaseconnectie 
-        $con = new mysqli('localhost', 'root', 'root', 'focus6');
-        if ($con->connect_error) {
-            die("Verbinding mislukt: " . $con->connect_error);
-        }
+        // $con = new mysqli('localhost', 'root', 'root', 'focus6');
+        // if ($con->connect_error) {
+        //     die("Verbinding mislukt: " . $con->connect_error);
+        // }
 
         // prepared statement om gegevens veilig in de database op te slaan
         $stmt = $con->prepare("INSERT INTO contactinfo (naam, email, bericht) VALUES (?, ?, ?)");
         if ($stmt) {
             $stmt->bind_param('sss', $encryptedNaam, $encryptedEmail, $encryptedBericht);
             if ($stmt->execute()) {
+                header('Location: contact');
                 echo "<h1>Bedankt!</h1><h3>We nemen zo snel mogelijk contact met u op</h3>";
             } else {
                 echo "<p style='color: red;'>Er is een fout opgetreden tijdens het verzenden van het formulier.</p>";
             }
-        } else {
+        } else {    
             echo "<p style='color: red;'>Fout in prepared statement: " . $con->error . "</p>";
         }
     } else {
         // Sla de foutmeldingen op in de sessie en verwijs terug naar de formulierpagina
         $_SESSION['errors'] = $errors;
-        header('Location: contact.php');
-        exit; // Stop verdere uitvoering
+        // header('Location:  ?view=contact&message=sent');
+        exit; 
     }
 }
 ?>
