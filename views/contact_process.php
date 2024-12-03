@@ -39,26 +39,24 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
         // Geheime sleutel en encryptie methode
         $encryptionKey = "If6q[n93WDc',c>(!EIsRc/_lnrCz&l*"; // Gebruik een veilige sleutel
         $cipherMethod = "aes-256-cbc"; // Encryptiemethode
-        $ivLength = openssl_cipher_iv_length($cipherMethod); // Lengte van IV
-        $iv = openssl_random_pseudo_bytes($ivLength); // Genereer een willekeurige IV
 
         // Versleutel de naam, email en bericht
-        $encryptedNaam = openssl_encrypt($naam, $cipherMethod, $encryptionKey, 0, $iv);
-        $encryptedEmail = openssl_encrypt($email, $cipherMethod, $encryptionKey, 0, $iv);
-        $encryptedBericht = openssl_encrypt($bericht, $cipherMethod, $encryptionKey, 0, $iv);
+        $encryptedNaam = openssl_encrypt($naam, $cipherMethod, $encryptionKey, 0);
+        $encryptedEmail = openssl_encrypt($email, $cipherMethod, $encryptionKey, 0);
+        $encryptedBericht = openssl_encrypt($bericht, $cipherMethod, $encryptionKey, 0);
 
         // Combineer IV met de versleutelde gegevens en encodeer in base64
-        $encryptedNaam = base64_encode($iv . $encryptedNaam);
-        $encryptedEmail = base64_encode($iv . $encryptedEmail);
-        $encryptedBericht = base64_encode($iv . $encryptedBericht);
+        // $encryptedNaam = base64_encode($iv . $encryptedNaam);
+        // $encryptedEmail = base64_encode($iv . $encryptedEmail);
+        // $encryptedBericht = base64_encode($iv . $encryptedBericht);
 
         // Decryption 
-        $plaintext = 'Dalysha';
-        $ciphertext = openssl_encrypt ($plaintext, $cipherMethod, $encryptionKey, 0, $iv);
-        echo "Original string: $plaintext\n";
-        echo "Encrypted string; $ciphertext\n";
-        $decrypted = openssl_decrypt($ciphertext, $cipherMethod, $encryptionKey, 0, $iv);
-        echo "Decrypted string: $decrypted\n";
+        // $plaintext = 'Dalysha';
+        // $ciphertext = openssl_encrypt ($plaintext, $cipherMethod, $encryptionKey, 0, $iv);
+        // echo "Original string: $plaintext\n";
+        // echo "Encrypted string; $ciphertext\n";
+        // $decrypted = openssl_decrypt($ciphertext, $cipherMethod, $encryptionKey, 0, $iv);
+        // echo "Decrypted string: $decrypted\n";
 
         // Databaseconnectie 
         $con = new mysqli('localhost', 'root', 'root', 'focus6');
