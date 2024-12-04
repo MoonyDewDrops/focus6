@@ -32,7 +32,7 @@ $_SESSION['captcha_answer'] = $num1 + $num2;
       ?>
 
 
-      <form id="form" method="POST" action="messageProcess" novalidate onsubmit="return showConfirmation()">
+      <form id="form" method="POST" action="messageProcess" novalidate>
         <div class="row">
           <div class="input_box col-6">
             <input type="text" id="naam" name="naam" class="form-control" placeholder="Naam" required>

@@ -92,12 +92,56 @@ bericht.addEventListener('input', () => {
     }
 });
 
-function myFunction() {
-    var txt;
-    if (confirm("Press a button!")) {
-      txt = "You pressed OK!";
+
+// alles checken zodat de pop up pas nadat alles is ingevult in beeld
+form.addEventListener("submit", (e) => {
+    let isValid = true;
+
+    // Controleer de naam
+    if (!naam.value.trim()) {
+        showError(naam, naamError, "Naam is verplicht");
+        isValid = false;
     } else {
-      txt = "You pressed Cancel!";
+        hideError(naam, naamError);
     }
-    document.getElementById("demo").innerHTML = txt;
-  }
+
+    // Controleer de e-mail
+    if (!email.value.trim()) {
+        showError(email, emailError, "Email is verplicht");
+        isValid = false;
+    } else if (!emailRegex.test(email.value)) {
+        showError(email, emailError, "Voer een geldig e-mailadres in.");
+        isValid = false;
+    } else {
+        hideError(email, emailError);
+    }
+
+    // Controleer het bericht
+    if (!bericht.value.trim()) {
+        showError(bericht, berichtError, "Bericht is verplicht");
+        isValid = false;
+    } else if (bericht.value.length < 10) {
+        showError(bericht, berichtError, "Bericht moet minimaal 10 tekens bevatten.");
+        isValid = false;
+    } else {
+        hideError(bericht, berichtError);
+    }
+
+    // Controleer de captcha
+    const captchaInput = document.getElementById("captcha");
+    const captchaError = document.getElementById("captchaError");
+    if (!captchaInput.value.trim()) {
+        showError(captchaInput, captchaError, "Los de som op.");
+        isValid = false;
+    } else {
+        hideError(captchaInput, captchaError);
+    }
+
+    // Als het formulier niet geldig is verzend hij niet
+    if (!isValid) {
+        e.preventDefault();
+    } else {
+        // Als alle validatie lukt laat hij de pop-up zien
+        alert("Bedankt! We nemen zo snel mogelijk contact met u op.");
+    }
+});
