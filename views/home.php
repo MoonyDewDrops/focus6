@@ -54,7 +54,7 @@ $stmt2->bind_result($informatie, $foto, $backgroundColor, $bolded, $italic, $opa
           ?>
           <div class="top-content">
             <?php
-        } else if ($columnType == 2) {
+        } else if ($columnType == 2 || $columnType == 3) {
           ?>
             <div class="middle-content">
           <?php
@@ -69,24 +69,64 @@ $stmt2->bind_result($informatie, $foto, $backgroundColor, $bolded, $italic, $opa
           $stmt2->store_result();
           $stmt2->fetch();
           $opacity = $opacity / 10;
-
           if ($foto == 0) {
             if ($italic == 1 && $bolded == 1) {
+              if ($backgroundColor == 1) {
+                ?>
+                <div class="coloredColumn">
+                  <?php
+              } else {
+                ?>
+                <div class="normalColumn">
+                  <?php
+              }
               ?>
+                  
                 <p class="home-text italic bold" style="opacity:<?= $opacity ?>; color:<?= $kleur ?>"><?= $informatie ?></p>
+              </div>
                 <?php
             } else if ($italic == 1) {
+              if ($backgroundColor == 1) {
+                ?>
+                <div class="coloredColumn">
+                  <?php
+              } else {
+                ?>
+                <div class="normalColumn">
+                  <?php
+              }
               ?>
                 <p class="home-text italic" style="opacity:<?= $opacity ?>; color:<?= $kleur ?>"><?= $informatie ?></p>
-                <?php
+            </div>
+            <?php
             } else if ($bolded == 1) {
+              if ($backgroundColor == 1) {
+                ?>
+                <div class="coloredColumn">
+                  <?php
+              } else {
+                ?>
+                <div class="normalColumn">
+                  <?php
+              }
               ?>
                 <p class="home-text bold" style="opacity:<?= $opacity ?>; color:<?= $kleur ?>"><?= $informatie ?></p>
-                <?php
+            </div>
+            <?php
             } else {
+              if ($backgroundColor == 1) {
+                ?>
+                <div class="coloredColumn">
+                  <?php
+              } else {
+                ?>
+                <div class="normalColumn">
+                  <?php
+              }
               ?>
                 <p class="home-text" style="opacity:<?= $opacity ?>; color:<?= $kleur ?>"><?= $informatie ?></p>
-                <?php
+            </div>
+            <?php
             }
           } else {
             if ($columnType == 1) {
@@ -102,10 +142,6 @@ $stmt2->bind_result($informatie, $foto, $backgroundColor, $bolded, $italic, $opa
                   <?php
             }
           }
-          ?>
-            
-            <?php
-
         }
         ?>
 

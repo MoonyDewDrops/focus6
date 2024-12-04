@@ -32,7 +32,7 @@ switch ($view) {
         break;
     case 'pages':
         $page = 'pages.php';
-        $style = 'pages.css';
+        $style = 'home.css';
         $js = 'pages.js';
         break;
     case 'contact':
@@ -108,7 +108,7 @@ switch ($view) {
     case 'deleteSocial':
         $page = 'functions/socials/deleteSocial.php';
         break;
-    case 'contact_process.php':
+    case 'messageProcess':
         $page = 'contact_process.php';
         $style = 'bedankt.css';
         $js = 'contact.js';
