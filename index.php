@@ -108,7 +108,7 @@ switch ($view) {
     case 'deleteSocial':
         $page = 'functions/socials/deleteSocial.php';
         break;
-    case 'contact_process.php':
+    case 'messageProcess':
         $page = 'contact_process.php';
         $style = 'bedankt.css';
         $js = 'contact.js';
