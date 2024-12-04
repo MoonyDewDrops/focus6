@@ -163,9 +163,6 @@ if (isset($_SESSION['gebruikersnaam'])) {
     header("Location: ?view=login");
 }
 $con->close();
-
 ?>
-
-    </body>
-
-    </html>
+</body>
+ </html>

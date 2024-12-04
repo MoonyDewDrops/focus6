@@ -57,6 +57,7 @@ $_SESSION['captcha_answer'] = $num1 + $num2;
           <input type="text" id="captcha" name="captcha" class="form-control" placeholder="Antwoord" required>
           <span id="captchaError" style="color: red;"></span>
         </div>
+        <input type="privacy" id="privacy" name="vehicle1" value="bij het aanvinken van d">
       </form>
     </div>
   </div>
