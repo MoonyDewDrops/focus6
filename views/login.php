@@ -68,10 +68,9 @@
                         <input type="submit" name="submit" value="Inloggen">
                     </div>
 
-
-                    <div class="link">
+                    <!-- <div class="link">
                         Heb je nog niet een account? <a href="?view=registreren">Registreer jezelf hier!</a>
-                    </div>
+                    </div> -->
                 </form>
         </div>
     <?php } ?>
