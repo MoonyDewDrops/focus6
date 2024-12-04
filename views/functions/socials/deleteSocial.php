@@ -3,6 +3,7 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
     if (isset($_GET['id'])) {
         $socialID = $_GET['id'];
         $good1 = false;
+        echo "lalala";
 
         $sql1 = "DELETE FROM socials WHERE id = ?";
         $stmt1 = $con->prepare($sql1);
@@ -15,6 +16,8 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
 
         if ($good1){
             header("Location: ?view=admin");
+        } else {
+            echo "Error deleting social: " . $con->error . "<br>";
         }
     }
 }

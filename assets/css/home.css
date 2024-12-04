@@ -116,6 +116,7 @@
 }
 .middle-content .middle-img, .middle-content img {
   width: 20%;
+  min-height: 200px;
   height: auto;
   padding: 20px;
 }

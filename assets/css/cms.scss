@@ -53,9 +53,13 @@
         border: none;
       }
 
-      label {
+      .label {
         font-size: 1rem;
         font-weight: bold;
+      }
+
+      label {
+        font-size: 1rem;
       }
 
       :nth-child(1) {

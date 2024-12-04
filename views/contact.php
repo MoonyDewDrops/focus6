@@ -1,4 +1,4 @@
-<?php include "core/header.php";
+<?php include __DIR__ . "/../core/header.php";
 
 if ($_SERVER['REQUEST_METHOD'] = $_GET) {
   var_dump($_GET);

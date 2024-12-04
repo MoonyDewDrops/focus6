@@ -104,7 +104,7 @@
                                     <p>Notitie toevoegen</p>
                                     <input type="hidden" name="id" value="<?= $contactId; ?>">
                                     <label for="notitie">Notitie:</label>
-                                    <textarea name="notitie" required></textarea>
+                                    <textarea id="notitie" name="notitie" required></textarea>
                                     <input type="submit" value="Toevoegen">
                                 </form>
                                 <span class="close"
@@ -127,11 +127,11 @@
                     <form action="?view=contactAdd" method="post">
                         <p>Bericht toevoegen</p>
                         <label for="name">Naam:</label>
-                        <input type="text" name="name" required>
+                        <input id="name" type="text" name="name" required>
                         <label for="email">Email:</label>
-                        <input type="email" name="email" required>
+                        <input id="email" type="email" name="email" required>
                         <label for="message">Bericht:</label>
-                        <textarea name="message" required></textarea>
+                        <textarea id="message" name="message" required></textarea>
                         <input type="submit" value="Toevoegen">
                     </form>
                     <span class="close" onclick="document.getElementById('newMessage').style.display='none'">&times;</>
