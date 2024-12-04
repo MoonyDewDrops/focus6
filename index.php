@@ -16,6 +16,10 @@ if (!empty($_GET['view'])) {
     $view = str_replace("/", "", $view);
 }
 
+if (!isset($_COOKIE['cookie_agreement'])) {
+    include 'views/cookie_notification.php';
+}
+
 $page = '';
 $style = '';
 $js = '';

@@ -12,6 +12,7 @@
         <div class="loginForm">
 
         <?php  
+          header("Location: ?view=login");
 
           if (isset($_POST['submit'])){
             $gebruikersnaam = $_POST['gebruikersnaam'];
