@@ -46,7 +46,7 @@
 
           </div>
 
-          <div class="input_box">
+          <div class="input_box col-6">
             <div class="input-text">
               <label for="bericht">Bericht:</label>
               <span id="berichtError" style="color: red;"></span>
@@ -56,7 +56,7 @@
 
           </div>
 
-          <div class="input_box">
+          <div class="input_box col-6">
             <div class="input-text">
               <label for="captcha">Los deze som op: <?php echo "$num1 + $num2"; ?></label>
               <span id="captchaError" style="color: red;"></span>
