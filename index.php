@@ -91,7 +91,7 @@ switch ($view) {
         $page = 'functions/contact/contactAdd.php';
         break;
     case 'contactProcess':
-        $page = 'functions/contact/Process.php';
+        $page = 'functions/contact/process.php';
         $style = 'admin_berichten.css';
         break;
     case 'deleteContactProcess':

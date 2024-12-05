@@ -1,4 +1,4 @@
-<?php include_once 'core/admin_header.php'; ?>
+<?php include_once __DIR__ . '/../../../core/admin_header.php'; ?>
 <div class="cmsContainer">
     <p class="cmsTitle">Overzicht bestaande rijen.</p>
     <div class="gridsquare">
@@ -92,26 +92,26 @@
                                                 <?php
                                                 if ($col_bg == '0') {
                                                     ?>
-                                                    <label for="<?= $rowID ?>[<?= $i ?>][BG]">Background</label>
+                                                    <p class="label">Background</p>
                                                     <div>
-                                                        <span>No</span>
-                                                        <input type="radio" name="<?= $rowID ?>[<?= $i ?>][BG]" value="No" checked>
+                                                        <label for="<?= $rowID ?>[<?= $i ?>][BG]NO">No</label>
+                                                        <input id="<?= $rowID ?>[<?= $i ?>][BG]NO" type="radio" name="<?= $rowID ?>[<?= $i ?>][BG]" value="No" checked>
                                                     </div>
                                                     <div>
-                                                        <span>Yes</span>
-                                                        <input type="radio" name="<?= $rowID ?>[<?= $i ?>][BG]" value="Yes">
+                                                        <label for="<?= $rowID ?>[<?= $i ?>][BG]YES">Yes</label>
+                                                        <input id="<?= $rowID ?>[<?= $i ?>][BG]YES" type="radio" name="<?= $rowID ?>[<?= $i ?>][BG]" value="Yes">
                                                     </div>
                                                     <?php
                                                 } else {
                                                     ?>
-                                                    <label for="<?= $rowID ?>[<?= $i ?>][BG]">Background</label>
+                                                    <p class="label">Background</p>
                                                     <div>
-                                                        <span>No</span>
-                                                        <input type="radio" name="<?= $rowID ?>[<?= $i ?>][BG]" value="No">
+                                                        <label for="<?= $rowID ?>[<?= $i ?>][BG]NO">No</label>
+                                                        <input id="<?= $rowID ?>[<?= $i ?>][BG]NO" type="radio" name="<?= $rowID ?>[<?= $i ?>][BG]" value="No">
                                                     </div>
                                                     <div>
-                                                        <span>Yes</span>
-                                                        <input type="radio" name="<?= $rowID ?>[<?= $i ?>][BG]" value="Yes" checked>
+                                                        <label for="<?= $rowID ?>[<?= $i ?>][BG]YES">Yes</label>
+                                                        <input id="<?= $rowID ?>[<?= $i ?>][BG]YES" type="radio" name="<?= $rowID ?>[<?= $i ?>][BG]" value="Yes" checked>
                                                     </div>
                                                     <?php
                                                 }
@@ -121,26 +121,26 @@
                                                 <?php
                                                 if ($col_foto == '0') {
                                                     ?>
-                                                    <label for="<?= $rowID ?>[<?= $i ?>][IMG]">Image</label>
+                                                    <p class="label">Image</p>
                                                     <div>
-                                                        <span>No</span>
-                                                        <input type="radio" name="<?= $rowID ?>[<?= $i ?>][IMG]" value="No" checked>
+                                                        <label for="<?= $rowID ?>[<?= $i ?>][IMG]NO">No</label>
+                                                        <input id="<?= $rowID ?>[<?= $i ?>][IMG]NO" type="radio" name="<?= $rowID ?>[<?= $i ?>][IMG]" value="No" checked>
                                                     </div>
                                                     <div>
-                                                        <span>Yes</span>
-                                                        <input type="radio" name="<?= $rowID ?>[<?= $i ?>][IMG]" value="Yes">
+                                                        <label for="<?= $rowID ?>[<?= $i ?>][IMG]YES">Yes</label>
+                                                        <input id="<?= $rowID ?>[<?= $i ?>][IMG]YES" type="radio" name="<?= $rowID ?>[<?= $i ?>][IMG]" value="Yes">
                                                     </div>
                                                     <?php
                                                 } else {
                                                     ?>
-                                                    <label for="<?= $rowID ?>[<?= $i ?>][IMG]">Image</label>
+                                                    <p class="label">Image</p>
                                                     <div>
-                                                        <span>No</span>
-                                                        <input type="radio" name="<?= $rowID ?>[<?= $i ?>][IMG]" value="No">
+                                                        <label for="<?= $rowID ?>[<?= $i ?>][IMG]NO">No</label>
+                                                        <input id="<?= $rowID ?>[<?= $i ?>][IMG]NO" type="radio" name="<?= $rowID ?>[<?= $i ?>][IMG]" value="No">
                                                     </div>
                                                     <div>
-                                                        <span>Yes</span>
-                                                        <input type="radio" name="<?= $rowID ?>[<?= $i ?>][IMG]" value="Yes" checked>
+                                                        <label for="<?= $rowID ?>[<?= $i ?>][IMG]YES">Yes</label>
+                                                        <input id="<?= $rowID ?>[<?= $i ?>][IMG]YES" type="radio" name="<?= $rowID ?>[<?= $i ?>][IMG]" value="Yes" checked>
                                                     </div>
                                                     <?php
                                                 }
@@ -150,26 +150,26 @@
                                                 <?php
                                                 if ($col_bold == '0') {
                                                     ?>
-                                                    <label for="<?= $rowID ?>[<?= $i ?>][BOLD]">Bold</label>
+                                                    <p class="label">Bold</p>
                                                     <div>
-                                                        <span>No</span>
-                                                        <input type="radio" name="<?= $rowID ?>[<?= $i ?>][BOLD]" value="No" checked>
+                                                        <label for="<?= $rowID ?>[<?= $i ?>][BOLD]NO">No</label>
+                                                        <input id="<?= $rowID ?>[<?= $i ?>][BOLD]NO" type="radio" name="<?= $rowID ?>[<?= $i ?>][BOLD]" value="No" checked>
                                                     </div>
                                                     <div>
-                                                        <span>Yes</span>
-                                                        <input type="radio" name="<?= $rowID ?>[<?= $i ?>][BOLD]" value="Yes">
+                                                        <label for="<?= $rowID ?>[<?= $i ?>][BOLD]YES">Yes</label>
+                                                        <input id="<?= $rowID ?>[<?= $i ?>][BOLD]YES" type="radio" name="<?= $rowID ?>[<?= $i ?>][BOLD]" value="Yes">
                                                     </div>
                                                     <?php
                                                 } else {
                                                     ?>
-                                                    <label for="<?= $rowID ?>[<?= $i ?>][BOLD]">Bold</label>
+                                                    <p for="<?= $rowID ?>[<?= $i ?>][BOLD]">Bold</p>
                                                     <div>
-                                                        <span>No</span>
-                                                        <input type="radio" name="<?= $rowID ?>[<?= $i ?>][BOLD]" value="No">
+                                                        <label for="<?= $rowID ?>[<?= $i ?>][BOLD]NO">No</label>
+                                                        <input id="<?= $rowID ?>[<?= $i ?>][BOLD]NO" type="radio" name="<?= $rowID ?>[<?= $i ?>][BOLD]" value="No">
                                                     </div>
                                                     <div>
-                                                        <span>Yes</span>
-                                                        <input type="radio" name="<?= $rowID ?>[<?= $i ?>][BOLD]" value="Yes" checked>
+                                                        <label for="<?= $rowID ?>[<?= $i ?>][BOLD]YES">Yes</label>
+                                                        <input id="<?= $rowID ?>[<?= $i ?>][BOLD]YES" type="radio" name="<?= $rowID ?>[<?= $i ?>][BOLD]" value="Yes" checked>
                                                     </div>
                                                     <?php
                                                 }
@@ -179,26 +179,26 @@
                                                 <?php
                                                 if ($col_italic == '0') {
                                                     ?>
-                                                    <label for="<?= $rowID ?>[<?= $i ?>][ITALIC]">Italic</label>
+                                                    <p class="label" for="<?= $rowID ?>[<?= $i ?>][ITALIC]">Italic</p>
                                                     <div>
-                                                        <span>No</span>
-                                                        <input type="radio" name="<?= $rowID ?>[<?= $i ?>][ITALIC]" value="No" checked>
+                                                        <label for="<?= $rowID ?>[<?= $i ?>][ITALIC]NO">No</label>
+                                                        <input id="<?= $rowID ?>[<?= $i ?>][ITALIC]NO" type="radio" name="<?= $rowID ?>[<?= $i ?>][ITALIC]" value="No" checked>
                                                     </div>
                                                     <div>
-                                                        <span>Yes</span>
-                                                        <input type="radio" name="<?= $rowID ?>[<?= $i ?>][ITALIC]" value="Yes">
+                                                        <label for="<?= $rowID ?>[<?= $i ?>][ITALIC]YES">Yes</label>
+                                                        <input id="<?= $rowID ?>[<?= $i ?>][ITALIC]YES" type="radio" name="<?= $rowID ?>[<?= $i ?>][ITALIC]" value="Yes">
                                                     </div>
                                                     <?php
                                                 } else {
                                                     ?>
-                                                    <label for="<?= $rowID ?>[<?= $i ?>][ITALIC]">Italic</label>
+                                                    <p class="label" for="<?= $rowID ?>[<?= $i ?>][ITALIC]">Italic</p>
                                                     <div>
-                                                        <span>No</span>
-                                                        <input type="radio" name="<?= $rowID ?>[<?= $i ?>][ITALIC]" value="No">
+                                                        <label for="<?= $rowID ?>[<?= $i ?>][ITALIC]NO">No</label>
+                                                        <input id="<?= $rowID ?>[<?= $i ?>][ITALIC]NO" type="radio" name="<?= $rowID ?>[<?= $i ?>][ITALIC]" value="No">
                                                     </div>
                                                     <div>
-                                                        <span>Yes</span>
-                                                        <input type="radio" name="<?= $rowID ?>[<?= $i ?>][ITALIC]" value="Yes" checked>
+                                                        <label for="<?= $rowID ?>[<?= $i ?>][ITALIC]YES">Yes</label>
+                                                        <input id="<?= $rowID ?>[<?= $i ?>][ITALIC]YES" type="radio" name="<?= $rowID ?>[<?= $i ?>][ITALIC]" value="Yes" checked>
                                                     </div>
                                                     <?php
                                                 }
@@ -206,11 +206,11 @@
                                             </div>
                                             <div>
                                                 <label for="<?= $rowID ?>[<?= $i ?>][OPACITY]">Opacity</label>
-                                                <input type="number" name="<?= $rowID ?>[<?= $i ?>][OPACITY]" min="1" max="10" step="1" value="<?= $col_opacity ?>">
+                                                <input id="<?= $rowID ?>[<?= $i ?>][OPACITY]" type="number" name="<?= $rowID ?>[<?= $i ?>][OPACITY]" min="1" max="10" step="1" value="<?= $col_opacity ?>">
                                             </div>
                                             <div>
                                                 <label for="<?= $rowID ?>[<?= $i ?>][KLEUR]">Color</label>
-                                                <input type="color" name="<?= $rowID ?>[<?= $i ?>][KLEUR]" value="<?= $col_kleur ?>">
+                                                <input id="<?= $rowID ?>[<?= $i ?>][KLEUR]" type="color" name="<?= $rowID ?>[<?= $i ?>][KLEUR]" value="<?= $col_kleur ?>">
                                             </div>
                                             <input type="file" name="<?= $col_id ?>">
                                             <input type="hidden" value="<?= $columnType ?>" name="<?= $rowID ?>[<?= $i ?>][CT]"
@@ -244,21 +244,21 @@
         ?>
 
         <form action="?view=addingRow&id=<?= $paginaID; ?>" method="post" enctype="multipart/form-data">
-            <label for="columnType">Which column-type?</label><br>
-            <label class="columnPicker" for="columnType">
-                <input type="radio" name="columnType" value="1" checked>
+            <p for="columnType">Which column-type?</p><br>
+            <label class="columnPicker" for="columnType1">
+                <input id="columnType1" type="radio" name="columnType" value="1" checked>
                 <img src="assets/img/cms-style/columntype1.png" alt="placeholder">
             </label>
-            <label class="columnPicker" for="columnType">
-                <input type="radio" name="columnType" value="2">
+            <label class="columnPicker" for="columnType2">
+                <input id="columnType2" type="radio" name="columnType" value="2">
                 <img src="assets/img/cms-style/columntype2.png" alt="placeholder">
             </label>
-            <label class="columnPicker" for="columnType">
-                <input type="radio" name="columnType" value="3">
+            <label class="columnPicker" for="columnType3">
+                <input id="columnType3" type="radio" name="columnType" value="3">
                 <img src="assets/img/cms-style/columntype3.png" alt="placeholder">
             </label>
-            <label class="columnPicker" for="columnType">
-                <input type="radio" name="columnType" value="4">
+            <label class="columnPicker" for="columnType4">
+                <input id="columnType4" type="radio" name="columnType" value="4">
                 <img src="assets/img/cms-style/columntype4.png" alt="placeholder">
             </label>
 

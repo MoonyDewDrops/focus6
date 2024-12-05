@@ -30,7 +30,7 @@ if (isset($_SESSION['gebruikersnaam'])) {
     }
     ?>
 
-    <?php include 'core/admin_header.php'; ?>
+    <?php include __DIR__ . '/../core/admin_header.php'; ?>
     <div class="container">
         <div id="paginas" class="cmsOptions">
             <p class="optionTitle">Pagina's</p>
@@ -145,11 +145,11 @@ if (isset($_SESSION['gebruikersnaam'])) {
                         <form action="?view=contactAdd" method="post">
                             <p>Bericht toevoegen</p>
                             <label for="name">Naam:</label>
-                            <input type="text" name="name" required>
+                            <input id="name" type="text" name="name" required>
                             <label for="email">Email:</label>
-                            <input type="email" name="email" required>
+                            <input id="email" type="email" name="email" required>
                             <label for="message">Bericht:</label>
-                            <textarea name="message" required></textarea>
+                            <textarea id="message" name="message" required></textarea>
                             <input type="submit" value="Toevoegen">
                         </form>
                         <span class="close" onclick="document.getElementById('newMessage').style.display='none'">&times;</>

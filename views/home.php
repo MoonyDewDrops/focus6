@@ -211,6 +211,3 @@ if ($qry === false) {
   $qry->close();
 }
 ?> -->
-</body>
-
-</html>
