@@ -16,6 +16,10 @@ if (!empty($_GET['view'])) {
     $view = str_replace("/", "", $view);
 }
 
+if (!isset($_COOKIE['cookie_agreement'])) {
+    include 'views/cookie_notification.php';
+}
+
 $page = '';
 $style = '';
 $js = '';
@@ -32,7 +36,7 @@ switch ($view) {
         break;
     case 'pages':
         $page = 'pages.php';
-        $style = 'pages.css';
+        $style = 'home.css';
         $js = 'pages.js';
         break;
     case 'contact':
@@ -87,7 +91,7 @@ switch ($view) {
         $page = 'functions/contact/contactAdd.php';
         break;
     case 'contactProcess':
-        $page = 'functions/contact/Process.php';
+        $page = 'functions/contact/process.php';
         $style = 'admin_berichten.css';
         break;
     case 'deleteContactProcess':
@@ -108,7 +112,7 @@ switch ($view) {
     case 'deleteSocial':
         $page = 'functions/socials/deleteSocial.php';
         break;
-    case 'contact_process.php':
+    case 'messageProcess':
         $page = 'contact_process.php';
         $style = 'bedankt.css';
         $js = 'contact.js';
