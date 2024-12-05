@@ -1,4 +1,4 @@
-<?php include_once 'core/admin_header.php'; ?>
+<?php include_once __DIR__ . '/../../../core/admin_header.php'; ?>
 <div class="cmsContainer">
     <p class="cmsTitle">Pagina configuratie</p>
     <form action="?view=creating" method="post" enctype="multipart/form-data">

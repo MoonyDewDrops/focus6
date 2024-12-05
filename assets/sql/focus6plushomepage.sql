@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.1
+-- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Generation Time: Nov 29, 2024 at 01:02 PM
--- Server version: 10.4.32-MariaDB
--- PHP Version: 8.2.12
+-- Host: localhost:3306
+-- Generation Time: Dec 04, 2024 at 03:58 PM
+-- Server version: 8.0.30
+-- PHP Version: 8.1.10
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `focus6`
+-- Database: `focus6plushomepage`
 --
 
 -- --------------------------------------------------------
@@ -28,11 +28,18 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `contactinfo` (
-  `id` int(11) NOT NULL,
-  `naam` varchar(50) NOT NULL,
-  `email` varchar(100) NOT NULL,
-  `bericht` varchar(500) NOT NULL
+  `id` int NOT NULL,
+  `naam` varchar(50) COLLATE utf8mb4_general_ci NOT NULL,
+  `email` varchar(100) COLLATE utf8mb4_general_ci NOT NULL,
+  `bericht` varchar(500) COLLATE utf8mb4_general_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `contactinfo`
+--
+
+INSERT INTO `contactinfo` (`id`, `naam`, `email`, `bericht`) VALUES
+(3, 'dhdrh', 'Julia@Julia.com', 'Hallo! Ik ben een mens.');
 
 -- --------------------------------------------------------
 
@@ -41,9 +48,9 @@ CREATE TABLE `contactinfo` (
 --
 
 CREATE TABLE `logininfo` (
-  `id` int(11) NOT NULL,
-  `gebruikersnaam` varchar(50) NOT NULL,
-  `wachtwoord` mediumtext NOT NULL
+  `id` int NOT NULL,
+  `gebruikersnaam` varchar(50) COLLATE utf8mb4_general_ci NOT NULL,
+  `wachtwoord` mediumtext COLLATE utf8mb4_general_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -51,8 +58,7 @@ CREATE TABLE `logininfo` (
 --
 
 INSERT INTO `logininfo` (`id`, `gebruikersnaam`, `wachtwoord`) VALUES
-(1, 'admin', '$2y$10$AYL/dfvt3afDg2H3n0erB.ClRJ3zRE7KNLup5evNGY9c3B2EL8bm.'),
-(2, '22', '$2y$10$tACGBlX.sCQDGXdzWgz5Vu/z/HonpyPgURyurwQiNrkK7jhoYZd1u');
+(1, 'arthur', '$2y$10$4tJIfHC2GQsNC.R7f.TPGu0agJ3cV57yu8J3nYqnL/q8bX7PxX67S');
 
 -- --------------------------------------------------------
 
@@ -61,9 +67,9 @@ INSERT INTO `logininfo` (`id`, `gebruikersnaam`, `wachtwoord`) VALUES
 --
 
 CREATE TABLE `notities` (
-  `id` int(11) NOT NULL,
-  `notitie` varchar(500) NOT NULL,
-  `contact_id` int(11) NOT NULL
+  `id` int NOT NULL,
+  `notitie` varchar(500) COLLATE utf8mb4_general_ci NOT NULL,
+  `contact_id` int NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -73,10 +79,10 @@ CREATE TABLE `notities` (
 --
 
 CREATE TABLE `paginagrid` (
-  `id` int(11) NOT NULL,
-  `rowPosition` int(11) NOT NULL,
-  `columnType` int(11) NOT NULL,
-  `pageValue` int(11) NOT NULL
+  `id` int NOT NULL,
+  `rowPosition` int NOT NULL,
+  `columnType` int NOT NULL,
+  `pageValue` int NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -97,16 +103,16 @@ INSERT INTO `paginagrid` (`id`, `rowPosition`, `columnType`, `pageValue`) VALUES
 --
 
 CREATE TABLE `paginainfo` (
-  `id` int(11) NOT NULL,
-  `informatie` varchar(1000) NOT NULL,
-  `whichRow` int(11) NOT NULL,
-  `colum` int(11) NOT NULL,
-  `foto` tinyint(1) DEFAULT 0,
-  `backgroundColor` tinyint(1) NOT NULL DEFAULT 0,
-  `bold` tinyint(1) NOT NULL DEFAULT 0,
-  `italic` tinyint(1) NOT NULL DEFAULT 0,
-  `opacity` int(11) NOT NULL DEFAULT 10,
-  `kleur` varchar(10) NOT NULL DEFAULT '#ff0000'
+  `id` int NOT NULL,
+  `informatie` varchar(1000) COLLATE utf8mb4_general_ci NOT NULL,
+  `whichRow` int NOT NULL,
+  `colum` int NOT NULL,
+  `foto` tinyint(1) DEFAULT '0',
+  `backgroundColor` tinyint(1) NOT NULL DEFAULT '0',
+  `bold` tinyint(1) NOT NULL DEFAULT '0',
+  `italic` tinyint(1) NOT NULL DEFAULT '0',
+  `opacity` int NOT NULL DEFAULT '10',
+  `kleur` varchar(10) COLLATE utf8mb4_general_ci NOT NULL DEFAULT '#ff0000'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -128,8 +134,8 @@ INSERT INTO `paginainfo` (`id`, `informatie`, `whichRow`, `colum`, `foto`, `back
 --
 
 CREATE TABLE `paginas` (
-  `id` int(11) NOT NULL,
-  `paginaNaam` varchar(50) NOT NULL
+  `id` int NOT NULL,
+  `paginaNaam` varchar(50) COLLATE utf8mb4_general_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -146,10 +152,10 @@ INSERT INTO `paginas` (`id`, `paginaNaam`) VALUES
 --
 
 CREATE TABLE `socials` (
-  `id` int(11) NOT NULL,
-  `naam` varchar(50) NOT NULL,
-  `link` varchar(500) NOT NULL,
-  `image` varchar(500) NOT NULL
+  `id` int NOT NULL,
+  `naam` varchar(50) COLLATE utf8mb4_general_ci NOT NULL,
+  `link` varchar(500) COLLATE utf8mb4_general_ci NOT NULL,
+  `image` varchar(500) COLLATE utf8mb4_general_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -209,43 +215,43 @@ ALTER TABLE `socials`
 -- AUTO_INCREMENT for table `contactinfo`
 --
 ALTER TABLE `contactinfo`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `logininfo`
 --
 ALTER TABLE `logininfo`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `notities`
 --
 ALTER TABLE `notities`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `paginagrid`
 --
 ALTER TABLE `paginagrid`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `paginainfo`
 --
 ALTER TABLE `paginainfo`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT for table `paginas`
 --
 ALTER TABLE `paginas`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `socials`
 --
 ALTER TABLE `socials`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- Constraints for dumped tables

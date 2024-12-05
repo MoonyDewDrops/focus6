@@ -16,6 +16,10 @@ if (!empty($_GET['view'])) {
     $view = str_replace("/", "", $view);
 }
 
+if (!isset($_COOKIE['cookie_agreement'])) {
+    include 'views/cookie_notification.php';
+}
+
 $page = '';
 $style = '';
 $js = '';
@@ -40,6 +44,9 @@ switch ($view) {
         $style = 'contact.css';
         $js = 'contact.js';
         break;
+    case 'verwerkContact':
+        $page = 'contact_process.php';
+        break;
     case 'login':
         $page = 'login.php';
         $style = 'login.css';
@@ -48,7 +55,7 @@ switch ($view) {
         $page = 'admin.php';
         $style = 'admin.css';
         break;
-    case 'registreren':
+    case 'changeLoginInfo':
         $page = 'registreren.php';
         $style = 'login.css';
         break;
@@ -87,7 +94,7 @@ switch ($view) {
         $page = 'functions/contact/contactAdd.php';
         break;
     case 'contactProcess':
-        $page = 'functions/contact/Process.php';
+        $page = 'functions/contact/process.php';
         $style = 'admin_berichten.css';
         break;
     case 'deleteContactProcess':

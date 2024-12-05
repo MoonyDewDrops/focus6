@@ -43,9 +43,12 @@
   font-size: 1rem;
   border: none;
 }
-.cmsContainer .gridsquare .columnSettings label {
+.cmsContainer .gridsquare .columnSettings .label {
   font-size: 1rem;
   font-weight: bold;
+}
+.cmsContainer .gridsquare .columnSettings label {
+  font-size: 1rem;
 }
 .cmsContainer .gridsquare .columnSettings :nth-child(1) {
   grid-column: 1/span 2;

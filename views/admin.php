@@ -1,5 +1,4 @@
 <?php
-if (isset($_SESSION['gebruikersnaam'])) {
     //sql command
     $sql = "SELECT * FROM paginas";
     $result = $con->query($sql);
@@ -30,7 +29,7 @@ if (isset($_SESSION['gebruikersnaam'])) {
     }
     ?>
 
-    <?php include 'core/admin_header.php'; ?>
+    <?php include __DIR__ . '/../core/admin_header.php'; ?>
     <div class="container">
         <div id="paginas" class="cmsOptions">
             <p class="optionTitle">Pagina's</p>
@@ -52,25 +51,32 @@ if (isset($_SESSION['gebruikersnaam'])) {
                                 <p onclick="document.getElementById('del<?= $pagina['id']; ?>').style.display='grid'">Delete</p>
                             </td>
                         </tr>
-
-                        <div id="del<?= $pagina['id']; ?>" class="modal">
-                            <div class="modal-content">
-                                <p class="modalTitle">Weet je zeker dat je deze pagina (<?= $pagina['paginaNaam']; ?>) wilt
-                                    verwijderen?</p>
-                                <span class="close"
-                                    onclick="document.getElementById('del<?= $pagina['id']; ?>').style.display='none'">&times;</span>
-                                <a class="deleteYes" href='?view=deletePageProcess&id=<?= $pagina['id']; ?>'>Ja</a>
-                                <p class="deleteNo"
-                                    onclick="document.getElementById('del<?= $pagina['id']; ?>').style.display='none'">Nee</p>
-                            </div>
-
-                        </div>
                         <?php
-
                     }
                 }
                 ?>
             </table>
+            <?php
+            if (isset($paginas)) {
+                foreach ($paginas as $pagina) {
+                    ?>
+                    <div id="del<?= $pagina['id']; ?>" class="modal">
+                        <div class="modal-content">
+                            <p class="modalTitle">Weet je zeker dat je deze pagina (<?= $pagina['paginaNaam']; ?>) wilt
+                                verwijderen?</p>
+                            <span class="close"
+                                onclick="document.getElementById('del<?= $pagina['id']; ?>').style.display='none'">&times;</span>
+                            <a class="deleteYes" href='?view=deletePageProcess&id=<?= $pagina['id']; ?>'>Ja</a>
+                            <p class="deleteNo" onclick="document.getElementById('del<?= $pagina['id']; ?>').style.display='none'">
+                                Nee</p>
+                        </div>
+
+                    </div>
+
+                    <?php
+                }
+            }
+            ?>
             <a class="add" href="?view=createProcess"> Pagina toevoegen </a>
         </div>
         <div id="socials" class="cmsOptions">
@@ -79,8 +85,7 @@ if (isset($_SESSION['gebruikersnaam'])) {
                 <tr class="socialsRow">
                     <th>Naam</th>
                     <th>Link</th>
-                    <th>Image</th>
-                    <th></th>
+                    <th colspan="2">Image</th>
                 </tr>
                 <tr class="socialsRow">
                     <?php
@@ -90,7 +95,7 @@ if (isset($_SESSION['gebruikersnaam'])) {
                             <td><a href="<?= $link ?>"><?= $socialsNaam ?></a> </td>
                             <td><?= $link ?></td>
                             <td><img src="<?= $image ?>" style="height:50px;width:auto;"></td>
-                            <td><a href="?view=deleteSocial?id=<?= $socialsID ?>">Delete</a></td>
+                            <td><a href="deleteSocial?id=<?= $socialsID ?>">Delete</a></td>
                             <?php
                         }
                     }
@@ -104,65 +109,66 @@ if (isset($_SESSION['gebruikersnaam'])) {
                     <form action="?view=createSocial" method="post" enctype="multipart/form-data">
                         <p>Social toevoegen</p>
                         <label for="photo">Photo:</label>
-                        <input type="file" id="photo" name="photo">
+                        <input type="file" id="photo" name="photo" required>
                         <label for="media">Social media:</label>
                         <input type="text" id="media" name="media" required>
                         <label for="Link">Link:</label>
-                        <textarea type="text" id="Link" name="Link" required></textarea>
+                        <textarea id="Link" name="Link" required></textarea>
                         <input type="submit" value="Social toevoegen">
                     </form>
-                    <span class="close" onclick="document.getElementById('newSocial').style.display='none'">&times;</>
+                    <span class="close" onclick="document.getElementById('newSocial').style.display='none'">&times;</span>
                 </div>
             </div>
         </div>
-            <div id="contactberichten" class="cmsOptions">
-                <p class="optionTitle">Berichten</p>
-                <?php
-                if ($contactqry->execute()) {
-                    $encryptionKey = "If6q[n93WDc',c>(!EIsRc/_lnrCz&l*"; // Gebruik een veilige sleutel
-                    $cipherMethod = "aes-256-cbc"; // Encryptiemethode
-            
-                    while ($contactqry->fetch()) {
-                        $name_decrypt = openssl_decrypt($name, $cipherMethod, $encryptionKey, 0);
-                        $email_decrypt = openssl_decrypt($email, $cipherMethod, $encryptionKey, 0);
-                        $message_decrypt = openssl_decrypt($message, $cipherMethod, $encryptionKey, 0);
-                        ?>
-                        <div class="berichtencontainer">
-                            <p><?= $name_decrypt ?></p>
-                            <p><?= $email_decrypt ?></p>
-                            <p><?= $message_decrypt ?></p>
-                        </div>
-                        <?php
-                    }
-                }
-                $contactqry->close();
-                ?>
-                <a class="add" href="contactProcess">Alle berichten</a>
-                <p class="add" onclick="document.getElementById('newMessage').style.display='grid'">Bericht toevoegen</p>
-                <div id="newMessage" class="modal">
-                    <div class="modal-content">
-
-                        <form action="?view=contactAdd" method="post">
-                            <p>Bericht toevoegen</p>
-                            <label for="name">Naam:</label>
-                            <input type="text" name="name" required>
-                            <label for="email">Email:</label>
-                            <input type="email" name="email" required>
-                            <label for="message">Bericht:</label>
-                            <textarea name="message" required></textarea>
-                            <input type="submit" value="Toevoegen">
-                        </form>
-                        <span class="close" onclick="document.getElementById('newMessage').style.display='none'">&times;</>
+        <div id="contactberichten" class="cmsOptions">
+            <p class="optionTitle">Berichten</p>
+            <?php
+            if ($contactqry->execute()) {
+                $encryptionKey = "If6q[n93WDc',c>(!EIsRc/_lnrCz&l*"; // Gebruik een veilige sleutel
+                $cipherMethod = "aes-256-cbc"; // Encryptiemethode
+        
+                while ($contactqry->fetch()) {
+                    $name_decrypt = openssl_decrypt($name, $cipherMethod, $encryptionKey, 0);
+                    $email_decrypt = openssl_decrypt($email, $cipherMethod, $encryptionKey, 0);
+                    $message_decrypt = openssl_decrypt($message, $cipherMethod, $encryptionKey, 0);
+                    ?>
+                    <div class="berichtencontainer">
+                        <p><?= $name_decrypt ?></p>
+                        <p><?= $email_decrypt ?></p>
+                        <p><?= $message_decrypt ?></p>
                     </div>
+                    <?php
+                }
+            }
+            $contactqry->close();
+            ?>
+            <a class="add" href="contactProcess">Alle berichten</a>
+            <p class="add" onclick="document.getElementById('newMessage').style.display='grid'">Bericht toevoegen</p>
+            <div id="newMessage" class="modal">
+                <div class="modal-content">
+
+                    <form action="?view=contactAdd" method="post">
+                        <p>Bericht toevoegen</p>
+                        <label for="name">Naam:</label>
+                        <input id="name" type="text" name="name" required>
+                        <label for="email">Email:</label>
+                        <input id="email" type="email" name="email" required>
+                        <label for="message">Bericht:</label>
+                        <textarea id="message" name="message" required></textarea>
+                        <input type="submit" value="Toevoegen">
+                    </form>
+                    <span class="close" onclick="document.getElementById('newMessage').style.display='none'">&times;</span>
                 </div>
             </div>
         </div>
+
         <?php
 
-} else if (!isset($_SESSION['gebruikersnaam'])) {
-    header("Location: ?view=login");
-}
 $con->close();
-?>
+
+
+
 </body>
- </html>
+
+</html>
+
