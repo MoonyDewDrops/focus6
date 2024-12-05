@@ -1,5 +1,4 @@
 <?php
-if (isset($_SESSION['gebruikersnaam'])) {
     //sql command
     $sql = "SELECT * FROM paginas";
     $result = $con->query($sql);
@@ -158,12 +157,7 @@ if (isset($_SESSION['gebruikersnaam'])) {
             </div>
         </div>
         <?php
-
-} else if (!isset($_SESSION['gebruikersnaam'])) {
-    header("Location: ?view=login");
-}
 $con->close();
-
 ?>
 
     </body>
