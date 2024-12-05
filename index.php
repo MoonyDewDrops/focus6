@@ -55,7 +55,7 @@ switch ($view) {
         $page = 'admin.php';
         $style = 'admin.css';
         break;
-    case 'registreren':
+    case 'changeLoginInfo':
         $page = 'registreren.php';
         $style = 'login.css';
         break;
