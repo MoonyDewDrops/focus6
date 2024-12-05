@@ -39,10 +39,15 @@ $_SESSION['captcha_answer'] = $num1 + $num2;
             <label for="naam">Naam</label>
             <span id="naamError" style="color: red;"></span>
           </div>
-          <div class="input_box col-6">
-            <input type="text" id="email" name="email" class="form-control" placeholder="Email" required>
-            <label for="email">Email</label>
-            <span id="emailError" style="color: red;"></span>
+
+          <div class="input_box">
+            <div class="input-text">
+              <label for="bericht">Bericht:</label>
+              <span id="berichtError" style="color: red;"></span>
+            </div>
+            <input type="text" id="bericht" name="bericht" class="" required
+              minlength="10">
+
           </div>
           <div class="input_box col-6">
             <input type="text" id="bericht" name="bericht" class="form-control" placeholder="Bericht" required
