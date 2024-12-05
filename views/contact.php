@@ -64,6 +64,11 @@
             <input type="text" id="captcha" name="captcha" class="" required>
           </div>
         </div>
+      </form>
+    </div>
+  </div>
+</div>
+
 
         <input class="button" type="submit" value="Verzenden">
       </div>
