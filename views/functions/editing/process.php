@@ -162,7 +162,7 @@
                                                     <?php
                                                 } else {
                                                     ?>
-                                                    <p for="<?= $rowID ?>[<?= $i ?>][BOLD]">Bold</p>
+                                                    <p class="label">Bold</p>
                                                     <div>
                                                         <label for="<?= $rowID ?>[<?= $i ?>][BOLD]NO">No</label>
                                                         <input id="<?= $rowID ?>[<?= $i ?>][BOLD]NO" type="radio" name="<?= $rowID ?>[<?= $i ?>][BOLD]" value="No">
@@ -179,7 +179,7 @@
                                                 <?php
                                                 if ($col_italic == '0') {
                                                     ?>
-                                                    <p class="label" for="<?= $rowID ?>[<?= $i ?>][ITALIC]">Italic</p>
+                                                    <p class="label">Italic</p>
                                                     <div>
                                                         <label for="<?= $rowID ?>[<?= $i ?>][ITALIC]NO">No</label>
                                                         <input id="<?= $rowID ?>[<?= $i ?>][ITALIC]NO" type="radio" name="<?= $rowID ?>[<?= $i ?>][ITALIC]" value="No" checked>
@@ -191,7 +191,7 @@
                                                     <?php
                                                 } else {
                                                     ?>
-                                                    <p class="label" for="<?= $rowID ?>[<?= $i ?>][ITALIC]">Italic</p>
+                                                    <p class="label">Italic</p>
                                                     <div>
                                                         <label for="<?= $rowID ?>[<?= $i ?>][ITALIC]NO">No</label>
                                                         <input id="<?= $rowID ?>[<?= $i ?>][ITALIC]NO" type="radio" name="<?= $rowID ?>[<?= $i ?>][ITALIC]" value="No">
@@ -214,10 +214,10 @@
                                             </div>
                                             <input type="file" name="<?= $col_id ?>">
                                             <input type="hidden" value="<?= $columnType ?>" name="<?= $rowID ?>[<?= $i ?>][CT]"
-                                                id="columnType">
-                                            <input type="hidden" value="<?= $rowID ?>" name="<?= $rowID ?>[<?= $i ?>][ROW]" id="welkeRow">
+                                                >
+                                            <input type="hidden" value="<?= $rowID ?>" name="<?= $rowID ?>[<?= $i ?>][ROW]" >
                                             <input type="hidden" value="<?= $i ?>" name="<?= $rowID ?>[<?= $i ?>][COL]"
-                                                id="hoeveelsteKolom">
+                                                >
                                         </div>
                                         <?php
                                     }
@@ -244,7 +244,7 @@
         ?>
 
         <form action="?view=addingRow&id=<?= $paginaID; ?>" method="post" enctype="multipart/form-data">
-            <p for="columnType">Which column-type?</p><br>
+            <p class="label">Which column-type?</p><br>
             <label class="columnPicker" for="columnType1">
                 <input id="columnType1" type="radio" name="columnType" value="1" checked>
                 <img src="assets/img/cms-style/columntype1.png" alt="placeholder">

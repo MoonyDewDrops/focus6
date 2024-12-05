@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Focus6</title>
+    <link rel="icon" type="image/x-icon" href="assets/images/image1.png">
     <link rel="stylesheet" href="<?= 'assets/css/style.css' ?>">
     <link rel="stylesheet" href="<?= 'assets/css/header.css' ?>">
     <link rel="stylesheet" href="<?= 'assets/css/footer.css' ?>">
