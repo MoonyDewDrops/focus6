@@ -46,7 +46,7 @@
 
           </div>
 
-          <div class="input_box col-6">
+          <div class="input_box">
             <div class="input-text">
               <label for="bericht">Bericht:</label>
               <span id="berichtError" style="color: red;"></span>
