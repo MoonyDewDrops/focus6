@@ -67,7 +67,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
     } else {
         // Sla de foutmeldingen op in de sessie en verwijs terug naar de formulierpagina
         $_SESSION['errors'] = $errors;
-        // header('Location:  ?view=contact&message=sent');
+        header('Location:  ?view=contact&message=sent');
         exit; 
     }
 }

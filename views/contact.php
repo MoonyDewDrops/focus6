@@ -1,4 +1,4 @@
-<body>
+
   <?php include "core/header.php";
 
   // Genereer twee willekeurige getallen voor de captcha
@@ -26,7 +26,7 @@
     }
     ?>
 
-    <form id="form" method="POST" action="contact_process.php" novalidate>
+    <form id="form" method="POST" action="verwerkContact" novalidate>
       <div class="input">
         <div class="text-fields">
           <div class="input_box">
@@ -71,4 +71,3 @@
   </main>
 
   <?php include __DIR__ . '/../core/footer.php'; ?>
-</body>

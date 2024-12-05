@@ -103,13 +103,13 @@
                                 <form action="?view=addNotitieProcess" method="post">
                                     <p>Notitie toevoegen</p>
                                     <input type="hidden" name="id" value="<?= $contactId; ?>">
-                                    <label for="notitie">Notitie:</label>
-                                    <textarea id="notitie" name="notitie" required></textarea>
+                                    <label for="notitie<?= $contactId; ?>">Notitie:</label>
+                                    <textarea id="notitie<?= $contactId; ?>" name="notitie" required></textarea>
                                     <input type="submit" value="Toevoegen">
                                 </form>
                                 <span class="close"
                                     onclick="document.getElementById('newNote<?= $contactId; ?>').style.display='none'">&times;
-                                    </d>
+                        </span>
                             </div>
                         </div>
                     </div>
@@ -134,7 +134,7 @@
                         <textarea id="message" name="message" required></textarea>
                         <input type="submit" value="Toevoegen">
                     </form>
-                    <span class="close" onclick="document.getElementById('newMessage').style.display='none'">&times;</>
+                    <span class="close" onclick="document.getElementById('newMessage').style.display='none'">&times;</span>
                 </div>
             </div>
         </div>

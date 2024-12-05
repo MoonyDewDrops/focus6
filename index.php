@@ -44,6 +44,9 @@ switch ($view) {
         $style = 'contact.css';
         $js = 'contact.js';
         break;
+    case 'verwerkContact':
+        $page = 'contact_process.php';
+        break;
     case 'login':
         $page = 'login.php';
         $style = 'login.css';

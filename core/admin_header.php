@@ -19,7 +19,7 @@
 
     <body>
         <header>
-            <img src="https://placeholder.co/200x100"></img>
+            <img src="assets/images/logo.png" alt="logo">
             <p>Welkom <?= $_SESSION['gebruikersnaam']; ?></p>
             <div class="adminlink">
                 <a href="admin#paginas">Paginas</a>

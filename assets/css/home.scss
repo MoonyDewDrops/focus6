@@ -101,6 +101,12 @@
 
 .row4{
     grid-template-columns: 1fr 1fr 1fr;
+    img {
+        width: 80%;
+        max-width: 200px;
+        align-self: center;
+        justify-self: center;
+    }
 }
 
 .home-text {
